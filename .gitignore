@@ -1,0 +1,4 @@
+data/**
+!data/MANIFEST.md
+!data/manifest.csv
+!data/_이동기록.csv
