@@ -19,3 +19,9 @@ etl_test/
 
 # 파일럿 묶음
 corpus_test/
+
+# 밤샘 작업 로그
+logs/
+
+# OCR 중간 결과 캐시
+.cache/

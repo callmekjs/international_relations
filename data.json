@@ -530,14 +530,14 @@
         "chapter": 1,
         "section": 2,
         "label": "외교정책 기조",
-        "page": 26
+        "page": 22
       },
       "markStyle": "number",
       "status": "verified",
       "sourceFiles": [
         "2025년도 국제정세와 외교활동.pdf"
       ],
-      "note": "**북핵이 4번.** 외부 충격 없이 내려간 첫 사례"
+      "note": "**한반도·북핵이 4번.** 1998~2025 범위에서 처음 4번으로 기록된 사례"
     }
   ],
   "priorities": [
@@ -2868,7 +2868,7 @@
         "edition": "2025년도 국제정세와 외교활동",
         "chapter": 1,
         "section": 2,
-        "page": null
+        "page": 23
       },
       "flags": []
     },
@@ -2896,13 +2896,13 @@
       "ordinal": 4,
       "ordinalSource": "기조절",
       "title": "북핵문제 해결과 한반도 평화체제를 향한 실질적 진전",
-      "quote": "이재명 대통령은 한반도의 지속가능한 평화를 위해 2025년 8·15 경축사 계기 북한의 체제를 존중하고, 어떠한 형태의 흡수통일도 추구하지 않으며, 일체의 적대행위를 할 뜻이 없음을 천명하였다.",
+      "quote": "우리 정부는 한반도의 지속가능한 평화를 위해 북한의 체제를 존중하고, 어떠한 형태의 흡수통일도 추구하지 않으며, 일체의 적대행위를 할 뜻이 없음을 천명하였다.",
       "stream": "peninsula",
       "source": {
         "edition": "2025년도 국제정세와 외교활동",
         "chapter": 1,
         "section": 2,
-        "page": null
+        "page": 26
       },
       "flags": []
     },
@@ -2934,7 +2934,7 @@
         "edition": "2025년도 국제정세와 외교활동",
         "chapter": 1,
         "section": 2,
-        "page": 26
+        "page": 27
       },
       "flags": []
     },
@@ -2950,7 +2950,7 @@
         "edition": "2025년도 국제정세와 외교활동",
         "chapter": 1,
         "section": 2,
-        "page": 27
+        "page": 28
       },
       "flags": []
     }
