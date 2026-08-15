@@ -13,3 +13,6 @@ authoring/_quotes.tsv
 
 __pycache__/
 *.pyc
+
+# 파일럿 산출물 — data/ 에서 다시 만든다
+etl_test/
