@@ -32,6 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / "lib"))
 
 from dehead import strip_pages          # noqa: E402
 from formats import read_any            # noqa: E402
+from hanja_ko import to_hangul          # noqa: E402
 from stage_io import PROJECT_ROOT, write_json_atomic  # noqa: E402
 
 if __name__ == "__main__":
@@ -62,6 +63,11 @@ _MARK_SECTION = re.compile(r"제\s*(\d{1,2})\s*절\s*([^\n]{0,40})")
 
 # 문단으로 인정할 최소 길이. 이보다 짧으면 제목·쪽번호 잔해일 가능성이 높다.
 MIN_PARA_CHARS = 25   # 문장 단위라 문단보다 짧다
+
+# 이보다 긴 덩어리는 문장이 아니다. 단일 파일 연도는 부록이 파일명으로
+# 구별되지 않아 표가 통째로 한 문장이 된다(2020년 46,928자 실측).
+# 길이로 알아채고 줄 단위로 되돌린다.
+MAX_SENT_CHARS = 1000
 
 
 def administration(year: int) -> str | None:
@@ -272,6 +278,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                 "쪽": p["page"], "반쪽": p["half"], "인쇄쪽": p.get("printedPage"),
                 "장": cur["chapter"], "절": cur["section"],
                 "OCR유래": bool(p.get("ocr")), "원문": p["text"],
+                "한글": to_hangul(p["text"])[0],
             })
 
             if toc:
@@ -290,7 +297,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                         "연도": year, "정권": admin,
                         "장": None, "장제목": None, "절": None, "절제목": None,
                         "쪽": p["page"], "인쇄쪽": p.get("printedPage"),
-                        "원문": line,
+                        "원문": line, "한글": to_hangul(line)[0],
                         "출처파일": path.name, "역할": role,
                         "OCR유래": bool(p.get("ocr")),
                     })
@@ -308,6 +315,32 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         whole = "".join(buf)
         n_para = 0
         for start, sent in split_sentences_with_pos(whole):
+            # 너무 긴 것은 문장이 아니라 표다. 단일 파일 연도는 부록이 파일명으로
+            # 구별되지 않아 표가 통째로 한 덩어리가 된다(2020년 46,928자 실측).
+            if len(sent) > MAX_SENT_CHARS:
+                info2 = marks[0][1] if marks else None
+                for pos, mm in marks:
+                    if pos <= start:
+                        info2 = mm
+                    else:
+                        break
+                for line in [x.strip() for x in re.split(r"(?<=\S)\s{3,}", sent)]:
+                    if len(line) < MIN_TABLE_CHARS or re.fullmatch(r"[\d\s.,·\-—()]+", line):
+                        continue
+                    seq += 1
+                    para_rows.append({
+                        "id": f"{year}-t{seq:05d}", "단위": "표줄",
+                        "연도": year, "정권": admin,
+                        "장": info2["chapter"] if info2 else None, "장제목": None,
+                        "절": None, "절제목": None,
+                        "쪽": info2["page"] if info2 else None,
+                        "인쇄쪽": info2["printed"] if info2 else None,
+                        "원문": line, "한글": to_hangul(line)[0],
+                        "출처파일": path.name, "역할": role,
+                        "OCR유래": info2["ocr"] if info2 else False,
+                    })
+                    n_table += 1
+                continue
             info = marks[0][1] if marks else {"chapter": chapter, "chapterTitle": None,
                                               "section": None, "sectionTitle": None,
                                               "page": 1, "printed": None, "ocr": False}
@@ -323,7 +356,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                 "장": info["chapter"], "장제목": info["chapterTitle"],
                 "절": info["section"], "절제목": info["sectionTitle"],
                 "쪽": info["page"], "인쇄쪽": info["printed"],
-                "원문": sent,
+                "원문": sent, "한글": to_hangul(sent)[0],
                 "출처파일": path.name, "역할": role,
                 "OCR유래": info["ocr"],
             })
