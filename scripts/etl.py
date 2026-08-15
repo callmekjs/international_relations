@@ -116,7 +116,19 @@ _TOC_LINE = re.compile(r"[.·…]{5,}|^\s*[\d\s.·]+$")
 # 앞서 `(.{4,60}?)\s*[.·…\s]{2,}\s*` 로 썼다가 물렸다(2026-08-15).
 # 가운데 `\s` 가 앞뒤 `\s*` 와 겹쳐서, 안 맞는 긴 줄을 만나면 경우의 수가
 # 폭발해 10분을 넘겨도 안 끝났다. 점선 문자만 요구해 겹침을 없앤다.
+#
+# 판마다 목차 모양이 다르다. 셋 다 받아야 한다(2026-08-15 실측).
+#   ① 제목……045      2013년
+#   ② 제목    045     2020·2002년 (점선 없이 공백만)
+#   ③ 008  제목       2020년 (쪽번호가 앞)
+# 이걸 놓치면 목차 쪽이 본문으로 처리돼 목차의 절 번호가 본문 절을 덮어쓴다.
+# 2020년 절 결측 45%의 진짜 원인이었다.
 _TOC_ENTRY = re.compile(r"^\s*(\S[^\n]{2,58}?)[.·…]{2,}\s*(\d{1,3})\s*$")
+# 공백형은 위험하다. 본문 문장도 '…하였다.   17' 처럼 끝나면 목차로 오인된다.
+# 실제로 2002년 정답지가 6/6 → 3/6 으로 떨어졌다(2026-08-15). 그래서 제목이
+# **장·절 표시로 시작할 때만** 인정한다.
+_TOC_ENTRY_SPACED = re.compile(r"^\s*(제\s*\d{1,2}\s*[장절][^\n]{2,54}?)\s{2,}(\d{1,3})\s*$")
+_TOC_ENTRY_NUMFIRST = re.compile(r"^\s*(\d{1,3})\s{2,}(제\s*\d{1,2}\s*[장절][^\n]{0,54})\s*$")
 _TOC_MAX_LINE = 120        # 이보다 긴 줄은 목차가 아니다. 먼저 걸러 시간을 아낀다
 # 그 줄이 몇 장·몇 절인지
 _TOC_CH = re.compile(r"제\s*(\d{1,2})\s*장")
@@ -145,11 +157,18 @@ def parse_toc(page: dict, file_chapter: int | None = None) -> list[dict]:
         if ch_here:
             cur_ch = int(ch_here.group(1))
 
-        m = _TOC_ENTRY.match(line)
-        if not m:
+        title = pg = None
+        m = _TOC_ENTRY.match(line) or _TOC_ENTRY_SPACED.match(line)
+        if m:
+            title, pg = m.group(1).strip(), int(m.group(2))
+        else:
+            m = _TOC_ENTRY_NUMFIRST.match(line)
+            if m:
+                pg, title = int(m.group(1)), m.group(2).strip()
+        if not title or pg is None or pg > 2000:
             continue
-        title, pg = m.group(1).strip(), int(m.group(2))
-        if not title or pg > 2000:
+        # 숫자만 있거나 너무 짧은 제목은 목차가 아니다
+        if len(re.sub(r"[\d\s.·…|]", "", title)) < 3:
             continue
         sec = _TOC_SEC.search(title)
         entries.append({
@@ -214,17 +233,97 @@ def split_sentences_with_pos(text: str) -> list[tuple[int, str]]:
     return out
 
 
-def trace_structure(text: str, cur: dict) -> dict:
-    """본문에서 '제N장'·'제N절'을 만나면 현재 위치를 갱신한다.
-    한 쪽 안에서 절이 바뀌면 그 쪽의 뒷부분은 새 절로 본다 — 여기서는
-    쪽 단위로만 갱신하므로 경계가 한 쪽 어긋날 수 있다(검사에서 본다)."""
-    m = _MARK_CHAPTER.search(text)
-    if m:
-        cur = {**cur, "chapter": int(m.group(1)), "chapterTitle": m.group(2).strip() or None,
-               "section": None, "sectionTitle": None}
-    m = _MARK_SECTION.search(text)
-    if m:
-        cur = {**cur, "section": int(m.group(1)), "sectionTitle": m.group(2).strip() or None}
+# 장·절 제목으로 인정할 줄의 최대 길이. 제목은 짧다. 본문 문장 속의
+# '제2장 참조' 같은 언급과 가르는 기준이다.
+HEADING_MAX_LINE = 50
+
+
+def _heading(line: str, pat: re.Pattern) -> tuple[int, str] | None:
+    """그 줄이 **제목 줄 자체**인가. 본문에 '제2장' 이라는 말이 나온 것과 다르다."""
+    s = line.strip()
+    if not s or len(s) > HEADING_MAX_LINE:
+        return None
+    m = pat.match(s)          # 줄 **머리**에 있어야 한다
+    if not m:
+        return None
+    return int(m.group(1)), (m.group(2) or "").strip()
+
+
+def hard_split(blob: str) -> list[str]:
+    """긴 덩어리를 **무슨 일이 있어도** 조각낸다.
+
+    앞서 공백 3칸으로만 끊었더니, 그 기준이 안 통하는 덩어리는 이름만
+    '표줄'로 바뀐 채 46,928자 그대로 남았다(2026-08-15 실측). 레코드 하나가
+    전체 글자의 6%를 차지해 통계를 망가뜨린다.
+
+    끊는 자를 여러 개 두고, 그래도 길면 마지막에는 길이로 자른다."""
+    pieces = [blob]
+    for sep in (r"\s{3,}", r"\n", r"(?<=\d\.)\s", r"(?<=\))\s", r"(?<=\d\))\s"):
+        nxt = []
+        for x in pieces:
+            nxt.extend(re.split(sep, x) if len(x) > MAX_SENT_CHARS else [x])
+        pieces = nxt
+
+    out = []
+    for x in pieces:
+        x = re.sub(r"\s{2,}", " ", x).strip()
+        while len(x) > MAX_SENT_CHARS:      # 끝내 안 끊기면 길이로 자른다
+            out.append(x[:MAX_SENT_CHARS])
+            x = x[MAX_SENT_CHARS:]
+        if len(x) >= MIN_TABLE_CHARS and not re.fullmatch(r"[\d\s.,·\-—()]+", x):
+            out.append(x)
+    return out
+
+
+def trace_line(line: str, cur: dict, lock_chapter: bool) -> dict:
+    """줄 하나를 보고 장·절을 갱신한다. 제목 줄일 때만 바뀐다."""
+    if not lock_chapter:
+        h = _heading(line, _MARK_CHAPTER)
+        if h:
+            # **같은 장이면 절을 건드리지 않는다.** 쪽마다 반복되는 머리글
+            # ('제1장 2020년 국제 정세 및 외교정책 기조')이 매번 절을 지워서
+            # 2020년 절 결측이 45%였다. 장이 실제로 바뀔 때만 절을 초기화한다.
+            if h[0] == cur.get("chapter"):
+                return cur
+            return {**cur, "chapter": h[0], "chapterTitle": _clean_title(h[1]),
+                    "section": None, "sectionTitle": None}
+    h = _heading(line, _MARK_SECTION)
+    if h:
+        return {**cur, "section": h[0], "sectionTitle": _clean_title(h[1])}
+    return cur
+
+
+def _clean_title(t: str) -> str | None:
+    """제목 뒤에 붙은 쪽번호와 구분 기호를 떼어낸다.
+    '| 국제 정세 개관', '국제협력 및 연대 추진   045' 같은 것들이 온다."""
+    t = re.sub(r"^[|｜:：\-—\s]+", "", t or "")
+    t = re.sub(r"\s*\d{1,3}\s*$", "", t)
+    t = re.sub(r"\s{2,}", " ", t).strip()
+    return t or None
+
+
+def trace_structure(text: str, cur: dict, lock_chapter: bool) -> dict:
+    """쪽을 훑어 현재 장·절을 갱신한다.
+
+    2026-08-15 실측: 본문에 '제2장' 이라는 **말이 나오기만 하면** 장을 바꾸던
+    탓에, 2013년 제1장 파일에서 나온 172문장 중 장=1 인 것이 16개뿐이었다.
+    나머지는 엉뚱한 장으로 갔다.
+
+    그래서 두 가지를 바꿨다.
+      1) 파일명이 장을 알려준 파일(제1장.pdf)에서는 **본문이 장을 못 바꾼다.**
+         파일명이 본문보다 믿을 만하다.
+      2) 단일 파일이라 파일명이 안 알려줄 때만 본문에서 찾되, 그 줄이
+         **제목 줄 자체**일 때만 인정한다(짧고, 줄 머리에 있어야 한다).
+    """
+    for line in text.splitlines():
+        if not lock_chapter:
+            h = _heading(line, _MARK_CHAPTER)
+            if h:
+                cur = {**cur, "chapter": h[0], "chapterTitle": h[1] or None,
+                       "section": None, "sectionTitle": None}
+        h = _heading(line, _MARK_SECTION)
+        if h:
+            cur = {**cur, "section": h[0], "sectionTitle": h[1] or None}
     return cur
 
 
@@ -269,7 +368,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         n_table = n_toc = 0
 
         for p in pages:
-            cur = trace_structure(p["text"], cur)
+            cur = trace_structure(p["text"], cur, lock_chapter=(chapter is not None))
             toc = parse_toc(p, chapter)
             kind = "toc" if toc else ("table" if role == "appendix" else "body")
             page_rows.append({
@@ -286,7 +385,17 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                 for e in toc:
                     toc_rows.append({**e, "연도": year, "출처파일": path.name, "쪽위치": p["page"]})
                 n_toc += len(toc)
-                continue
+                # **쪽을 통째로 버리지 않는다.** HWP·DOC 는 파일 하나가 '1쪽'
+                # 이라, 그 쪽을 목차로 판정하면 파일 전체가 사라진다.
+                # 2002년 정답지가 6/6 → 3/6 으로 떨어진 원인이었다.
+                # 목차로 잡힌 줄만 빼고 나머지는 그대로 본문으로 다룬다.
+                toc_lines = {re.sub(r"\s+", "", e["제목"]) for e in toc}
+                kept = [ln for ln in p["text"].splitlines()
+                        if re.sub(r"\s+", "", ln)[:40] not in
+                        {t[:40] for t in toc_lines} and not _TOC_LINE.search(ln)]
+                p = {**p, "text": "\n".join(kept)}
+                if len(p["text"].strip()) < 200:
+                    continue        # 진짜 목차 전용 쪽이면 남는 게 없다
 
             if role == "appendix":
                 # 부록은 표다. 문장으로 못 나누므로 줄 단위로 뽑는다.
@@ -304,11 +413,20 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                     n_table += 1
                 continue
 
-            flat = re.sub(r"\s*\n\s*", " ", p["text"]).strip() + " "
-            marks.append((cursor, {**cur, "page": p["page"],
-                                   "printed": p.get("printedPage"), "ocr": bool(p.get("ocr"))}))
-            buf.append(flat)
-            cursor += len(flat)
+            # 장·절을 **줄 단위로** 따라간다. 쪽 단위로 하면 두 가지가 깨진다.
+            #   1) 한 쪽 안에서 절이 바뀌면 그 쪽 전체가 한쪽 절로 몰린다
+            #   2) HWP·DOC 는 파일 하나가 통째로 '1쪽' 이라 파일 전체가 한 값을 받는다
+            #      (2002년 절 결측 27.7%, 2020년 45.2% 의 원인이었다)
+            for line in p["text"].splitlines():
+                cur = trace_line(line, cur, lock_chapter=(chapter is not None))
+                piece = line.strip()
+                if not piece:
+                    continue
+                marks.append((cursor, {**cur, "page": p["page"],
+                                       "printed": p.get("printedPage"),
+                                       "ocr": bool(p.get("ocr"))}))
+                buf.append(piece + " ")
+                cursor += len(piece) + 1
 
         # **파일 전체를 이어붙여 문장을 나눈다.** 쪽 단위로 자르면 쪽을 넘어가는
         # 문장이 중간에서 끊긴다(2026-08-15 실측: '…이룩함' 처럼 잘렸다).
@@ -324,7 +442,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                         info2 = mm
                     else:
                         break
-                for line in [x.strip() for x in re.split(r"(?<=\S)\s{3,}", sent)]:
+                for line in hard_split(sent):
                     if len(line) < MIN_TABLE_CHARS or re.fullmatch(r"[\d\s.,·\-—()]+", line):
                         continue
                     seq += 1
