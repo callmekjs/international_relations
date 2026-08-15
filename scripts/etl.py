@@ -501,7 +501,13 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
     dump("sentences.jsonl", para_rows)
 
     # 기준선 — 다시 뽑았을 때 얼마나 달라졌는지 재는 자
-    chars = [len(r["원문"]) for r in page_rows]
+    #
+    # 공백을 빼고 센다. 옛 PDF 는 칸을 맞추려고 여백 공백을 잔뜩 넣어 두는데,
+    # 그것까지 세면 '내용'이 아니라 '조판'을 재게 된다. 2026-08-16 에 띄어쓰기
+    # 되살리기를 넣었더니 2013년 글자수가 437,801 → 303,062 (-31%) 로 떨어져
+    # 기준선이 헛경보를 울렸다 — 줄어든 13만 자는 전부 여백 공백이었고
+    # 문장 수는 1,767 → 1,769 로 그대로였다.
+    chars = [len("".join(r["원문"].split())) for r in page_rows]
     meta = {
         "year": year, "administration": admin, "etlVersion": ETL_VERSION,
         "files": {"total": len(picked), "ok": sum(1 for s in sources if s["status"] == "ok"),

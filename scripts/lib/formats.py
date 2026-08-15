@@ -9,6 +9,7 @@
 """
 
 import re
+import unicodedata
 import zlib
 from pathlib import Path
 
@@ -41,8 +42,115 @@ def _ocr_progress(done: int, total: int) -> None:
 # 인용에서 (…) 로 끊는다 — 생략 표시이자 '여기서 머리글이 끼어든다'는 기록이다.
 
 
+# ── 띄어쓰기 되살리기 ────────────────────────────────────────────────────────
+#
+# 2003~2011년 PDF 는 띄어쓰기를 글자로 저장하지 않는다. 글자를 제자리에 찍어
+# 놓기만 해서, 눈으로 보면 띄어져 있는데 뽑아 보면 붙어 나온다(2026-08-16 실측:
+# 본문 공백 비율 6%, 정상 연도는 21%). '미국과중국은' 처럼 붙으면 낱말을 찾을
+# 수 없어 지식그래프·개체추출에 못 쓴다 — 8개년이 통째로 죽는다.
+#
+# 그래서 글자마다 **가로 위치**를 읽어, 앞 글자 오른쪽 끝과 다음 글자 왼쪽 끝이
+# 벌어진 자리에 공백을 넣는다. 연도로 분기하지 않는다 — 정상 연도는 글자 사이
+# 간격이 0 이하라 이 규칙이 아무것도 바꾸지 않는다.
+#
+# 문턱은 실측으로 정했다(글자 폭 대비 간격 비율, 앞뒤 글자 중 넓은 쪽 기준):
+#     정상 연도(2012·2013)  50%~99% 구간이 전부 -0.03 ~ +0.00
+#     고장 연도(2003~2011)  95%까지 음수, 99%에서 +0.26 ~ +0.36 으로 튄다
+# 0.15 는 그 사이다. 낱말 경계는 잡고 글자 사이는 건드리지 않는다.
+#
+# 검증(2026-08-16, 2003·2005·2007·2009·2011·2013·2020 전 쪽):
+#     공백을 뺀 '글자 알맹이'가 줄어든 쪽 **0개**. 늘어난 쪽은 부록 표에서
+#     되살아난 나라 이름들이었다. 공백 비율은 6% → 17~25% 로 정상 복귀.
+# 앞서 두 번(2026-08-15) '개선'이 본문을 깎아먹은 적이 있어, 글자 손실 0 을
+# 확인하기 전에는 넣지 않았다.
+WORD_GAP_RATIO = 0.15    # 이보다 벌어지면 낱말 사이 → 공백 하나
+COLUMN_GAP_RATIO = 1.5   # 이보다 벌어지면 칸 사이 → 공백 둘
+
+# 마침표 뒤만은 좌표로 알 수 없다. 2026-08-16 실측(2005년 제1장 13쪽):
+#     낱말 사이   '를'→'위' +0.272   '핵'→'문' +0.313
+#     마침표 뒤   '다.'→'또'  -0.268  ← 오히려 겹친다
+# 이 글꼴은 마침표를 다음 글자에 바짝 붙여 조판한다. 그래서 문장이 통째로
+# 이어붙어 버렸다(2005년 문장 1,140 → 512개, 중앙 71 → 184자).
+#
+# 좌표가 말해주지 않으니 국문 조판 규칙을 쓴다 — **문장부호 앞이 한글이면
+# 그 부호 뒤는 띄어 쓴다.** 한국어는 낱말 안에 마침표를 넣지 않기 때문이다.
+#
+# 판단은 부호 '뒤'가 아니라 '앞'을 본다. 뒤를 보면 '있습니다.2005년에' 처럼
+# 숫자가 이어지는 자리를 놓친다(첫 시도에서 겪었다). 앞을 보면 이렇게 갈린다:
+#     '…있습니다.2005년'  앞이 '다' → 띄운다   ✓
+#     '9.19'  '2005.12'    앞이 숫자 → 그대로   ✓
+#     'Rev. Kim'           앞이 로마자 → 그대로 ✓
+#     '채택,APEC정상회의'   앞이 '택' → 띄운다   ✓
+_CTRL_CATEGORIES = frozenset(("Cc", "Cf", "Cs", "Co", "Cn"))
+_AFTER_PUNCT = frozenset(".,?!")
+_NO_SPACE_BEFORE = frozenset(")]}»”’′\"'.,;:·")   # 닫는 부호 앞은 띄우지 않는다
+
+
+def _is_hangul(c: str) -> bool:
+    return "가" <= c <= "힣"
+
+# 칸 경계를 공백 **둘**로 남기는 이유: 하류가 그것으로 표와 목차를 알아본다
+# (etl.py 의 split_table_lines·_TOC_ENTRY_SPACED 가 \s{2,} 를 본다).
+# 하나로 뭉개면 목차 줄이 본문 문장과 구별되지 않는다.
+
+
+def _push_space(buf: list[str], n: int) -> None:
+    """줄 끝에 공백을 n개 둔다. 이미 있으면 넓은 쪽을 남긴다(칸 경계 보존)."""
+    have = 0
+    while buf and buf[-1] == " ":
+        buf.pop()
+        have += 1
+    if not buf:          # 줄 앞 공백은 버린다
+        return
+    buf.extend(" " * max(have, n))
+
+
 def _page_text(page, clip) -> str:
-    return page.get_text("text", clip=clip, sort=True)
+    """쪽을 글자로 읽되, 벌어진 자리에 띄어쓰기를 되살려 넣는다."""
+    try:
+        raw = page.get_text("rawdict", clip=clip, sort=True)
+    except Exception:
+        return page.get_text("text", clip=clip, sort=True)
+
+    lines: list[str] = []
+    for block in raw.get("blocks", []):
+        if block.get("type") != 0:        # 0 = 글자, 1 = 그림
+            continue
+        for line in block.get("lines", []):
+            buf: list[str] = []
+            prev_x1 = prev_w = None
+            for span in line.get("spans", []):
+                for ch in span.get("chars", []):
+                    c = ch["c"]
+                    # rawdict 는 조판용 제어문자를 그대로 넘긴다. text 모드는
+                    # 걸러낸다. 남겨 두면 낱말 한가운데 \x03 이 박혀 정답지
+                    # 대조가 깨진다(2026-08-16: '구현하고,\x03이를' — 2005년
+                    # 인용 4건 중 3건이 여기서 어긋났다).
+                    if c and unicodedata.category(c) in _CTRL_CATEGORIES:
+                        continue
+                    x0, _, x1, _ = ch["bbox"]
+                    w = x1 - x0
+                    if c.isspace():
+                        _push_space(buf, 1)
+                    else:
+                        if prev_x1 is not None:
+                            ref = max(prev_w, w)
+                            # 폭이 0에 가까운 글자는 기준으로 쓸 수 없다
+                            if ref > 0.5:
+                                gap = (x0 - prev_x1) / ref
+                                if gap > COLUMN_GAP_RATIO:
+                                    _push_space(buf, 2)
+                                elif gap > WORD_GAP_RATIO:
+                                    _push_space(buf, 1)
+                        if (len(buf) >= 2 and buf[-1] in _AFTER_PUNCT
+                                and _is_hangul(buf[-2]) and c not in _NO_SPACE_BEFORE):
+                            _push_space(buf, 1)
+                        buf.append(c)
+                    prev_x1, prev_w = x1, w
+            text = "".join(buf).strip()
+            if text:
+                lines.append(text)
+    return "\n".join(lines)
 
 
 def _page_blocks(page, clip) -> list[str]:
