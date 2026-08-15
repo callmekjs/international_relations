@@ -105,6 +105,72 @@ _SENT_END = re.compile(r"(?<=다\.)\s|(?<=다\.\”)\s|(?<=음\.)\s|(?<=임\.)\s
 # 목차·표 잔해를 걸러낸다. 점선이 길게 이어지거나 숫자만 있는 줄이다.
 _TOC_LINE = re.compile(r"[.·…]{5,}|^\s*[\d\s.·]+$")
 
+# 목차 한 줄:  제목 …… 쪽번호
+#
+# 앞서 `(.{4,60}?)\s*[.·…\s]{2,}\s*` 로 썼다가 물렸다(2026-08-15).
+# 가운데 `\s` 가 앞뒤 `\s*` 와 겹쳐서, 안 맞는 긴 줄을 만나면 경우의 수가
+# 폭발해 10분을 넘겨도 안 끝났다. 점선 문자만 요구해 겹침을 없앤다.
+_TOC_ENTRY = re.compile(r"^\s*(\S[^\n]{2,58}?)[.·…]{2,}\s*(\d{1,3})\s*$")
+_TOC_MAX_LINE = 120        # 이보다 긴 줄은 목차가 아니다. 먼저 걸러 시간을 아낀다
+# 그 줄이 몇 장·몇 절인지
+_TOC_CH = re.compile(r"제\s*(\d{1,2})\s*장")
+_TOC_SEC = re.compile(r"제\s*(\d{1,2})\s*절")
+# 한 쪽에 목차 줄이 이만큼 있으면 그 쪽은 목차다
+TOC_MIN_LINES = 4
+
+# 표 한 줄로 인정할 최소 길이. 부록은 국가명·날짜·숫자라 문장보다 짧다.
+MIN_TABLE_CHARS = 8
+
+
+def parse_toc(page: dict, file_chapter: int | None = None) -> list[dict]:
+    """목차 쪽에서 '제목 → 쪽번호' 를 뽑는다.
+
+    목차를 버리지 않는 이유는, 이것이 **본문에 장·절이 다 있는지 검사할
+    근거**가 되기 때문이다. 문서가 스스로 밝힌 구조라 우리가 추측할 필요가 없다.
+
+    장 번호는 절 목록 **위에** 따로 적혀 있다. 그래서 쪽을 훑어 내려가며
+    마지막으로 본 장을 이어서 붙인다. 그것도 없으면 파일명이 알려준 장을 쓴다."""
+    entries = []
+    cur_ch = file_chapter
+    for line in page["text"].splitlines():
+        if len(line) > _TOC_MAX_LINE:
+            continue
+        ch_here = _TOC_CH.search(line)
+        if ch_here:
+            cur_ch = int(ch_here.group(1))
+
+        m = _TOC_ENTRY.match(line)
+        if not m:
+            continue
+        title, pg = m.group(1).strip(), int(m.group(2))
+        if not title or pg > 2000:
+            continue
+        sec = _TOC_SEC.search(title)
+        entries.append({
+            "제목": re.sub(r"\s{2,}", " ", title),
+            "쪽": pg,
+            "장": cur_ch,
+            "절": int(sec.group(1)) if sec else None,
+        })
+    return entries if len(entries) >= TOC_MIN_LINES else []
+
+
+def split_table_lines(page: dict) -> list[str]:
+    """부록은 표다. 문장으로 나눌 수 없다.
+
+    2013년 부록 83쪽에서 문장이 1개만 나왔다 — 표는 '…하였다.' 로 끝나지
+    않기 때문이다. 그렇다고 버리면 수교일·공관 현황·조약 목록 같은
+    자료를 통째로 잃는다. **줄 하나를 한 레코드로** 삼는다."""
+    out = []
+    for line in page["text"].splitlines():
+        s = re.sub(r"\s{2,}", " ", line).strip()
+        if len(s) < MIN_TABLE_CHARS:
+            continue
+        if re.fullmatch(r"[\d\s.,·\-—()]+", s):   # 숫자만 있는 줄
+            continue
+        out.append(s)
+    return out
+
 
 def split_sentences(page: dict) -> list[str]:
     """쪽을 **문장** 단위로 나눈다.
@@ -174,6 +240,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
 
     page_rows: list[dict] = []
     para_rows: list[dict] = []
+    toc_rows: list[dict] = []
     sources: list[dict] = []
     seq = 0
 
@@ -193,14 +260,43 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         marks = []          # (글자위치, 쪽정보) — 문장이 어느 쪽에서 시작했는지 되짚는다
         buf = []
         cursor = 0
+        n_table = n_toc = 0
+
         for p in pages:
             cur = trace_structure(p["text"], cur)
+            toc = parse_toc(p, chapter)
+            kind = "toc" if toc else ("table" if role == "appendix" else "body")
             page_rows.append({
                 "연도": year, "정권": admin, "출처파일": path.name, "역할": role,
+                "쪽종류": kind,
                 "쪽": p["page"], "반쪽": p["half"], "인쇄쪽": p.get("printedPage"),
                 "장": cur["chapter"], "절": cur["section"],
                 "OCR유래": bool(p.get("ocr")), "원문": p["text"],
             })
+
+            if toc:
+                # 목차는 본문이 아니다. 구조 검증용으로 따로 모은다.
+                for e in toc:
+                    toc_rows.append({**e, "연도": year, "출처파일": path.name, "쪽위치": p["page"]})
+                n_toc += len(toc)
+                continue
+
+            if role == "appendix":
+                # 부록은 표다. 문장으로 못 나누므로 줄 단위로 뽑는다.
+                for line in split_table_lines(p):
+                    seq += 1
+                    para_rows.append({
+                        "id": f"{year}-t{seq:05d}", "단위": "표줄",
+                        "연도": year, "정권": admin,
+                        "장": None, "장제목": None, "절": None, "절제목": None,
+                        "쪽": p["page"], "인쇄쪽": p.get("printedPage"),
+                        "원문": line,
+                        "출처파일": path.name, "역할": role,
+                        "OCR유래": bool(p.get("ocr")),
+                    })
+                    n_table += 1
+                continue
+
             flat = re.sub(r"\s*\n\s*", " ", p["text"]).strip() + " "
             marks.append((cursor, {**cur, "page": p["page"],
                                    "printed": p.get("printedPage"), "ocr": bool(p.get("ocr"))}))
@@ -212,7 +308,9 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         whole = "".join(buf)
         n_para = 0
         for start, sent in split_sentences_with_pos(whole):
-            info = marks[0][1]
+            info = marks[0][1] if marks else {"chapter": chapter, "chapterTitle": None,
+                                              "section": None, "sectionTitle": None,
+                                              "page": 1, "printed": None, "ocr": False}
             for pos, m in marks:
                 if pos <= start:
                     info = m
@@ -220,7 +318,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                     break
             seq += 1
             para_rows.append({
-                "id": f"{year}-s{seq:05d}",
+                "id": f"{year}-s{seq:05d}", "단위": "문장",
                 "연도": year, "정권": admin,
                 "장": info["chapter"], "장제목": info["chapterTitle"],
                 "절": info["section"], "절제목": info["sectionTitle"],
@@ -234,12 +332,13 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         sources.append({
             "file": path.name, "role": role, "chapter": chapter, "status": "ok",
             "format": path.suffix.lower().lstrip("."),
-            "pages": len(pages), "sentences": n_para,
+            "pages": len(pages), "sentences": n_para, "tableLines": n_table, "tocEntries": n_toc,
             "spread": any(p["half"] for p in pages),
             "ocr": any(p.get("ocr") for p in pages),
             "runningHeads": head_stats,
         })
-        print(f"   {path.name[:44]:<46} {len(pages):>4}쪽 {n_para:>5}문장")
+        extra = (f" {n_table:>4}표줄" if n_table else "") + (f" {n_toc:>4}목차" if n_toc else "")
+        print(f"   {path.name[:44]:<46} {len(pages):>4}쪽 {n_para:>5}문장{extra}")
 
     def dump(name: str, rows: list[dict]) -> None:
         with open(out_dir / name, "w", encoding="utf-8") as f:
@@ -247,6 +346,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     dump("pages.jsonl", page_rows)
+    dump("toc.jsonl", toc_rows)
     dump("sentences.jsonl", para_rows)
 
     # 기준선 — 다시 뽑았을 때 얼마나 달라졌는지 재는 자
@@ -256,7 +356,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         "files": {"total": len(picked), "ok": sum(1 for s in sources if s["status"] == "ok"),
                   "failed": sum(1 for s in sources if s["status"] == "failed")},
         "counts": {"pages": len(page_rows), "sentences": len(para_rows),
-                   "chars": sum(chars)},
+                   "tocEntries": len(toc_rows), "chars": sum(chars)},
         "baseline": {
             "charsPerPageAvg": round(sum(chars) / len(chars), 1) if chars else 0,
             "emptyPages": sum(1 for c in chars if c < 50),

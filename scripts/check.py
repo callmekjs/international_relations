@@ -131,10 +131,15 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
     else:
         rows.append(("OK", "빈 쪽", f"{empty}/{len(pages)}쪽"))
 
+    # 본문 문장과 부록 표줄은 성질이 다르다. 표는 '…하였다.' 로 끝나지 않고
+    # 장·절도 없다. 섞어서 재면 부록이 많은 해가 통째로 오류로 뜬다.
+    body = [s for s in sents if s.get("단위", "문장") == "문장"]
+    table = [s for s in sents if s.get("단위") == "표줄"]
+
     # 4. 문장 품질 — 짧은 것만 잔뜩이면 나누기가 잘못된 것이다
-    lens = sorted(len(s["원문"]) for s in sents)
+    lens = sorted(len(s["원문"]) for s in body)
     if not lens:
-        rows.append(("오류", "문장", "하나도 없다"))
+        rows.append(("오류", "문장", "본문 문장이 하나도 없다"))
     else:
         short = sum(1 for x in lens if x < 60) / len(lens)
         mid = lens[len(lens) // 2]
@@ -144,18 +149,27 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
         else:
             rows.append(("OK", "문장", f"{len(lens)}개 · 중앙 {mid}자 · 60자미만 {short*100:.0f}%"))
 
-    # 5. 장 배정
-    no_ch = sum(1 for s in sents if not s.get("장"))
-    if sents:
-        r = no_ch / len(sents)
+    if table:
+        rows.append(("OK", "부록 표줄", f"{len(table)}개"))
+
+    toc_path = d / "toc.jsonl"
+    if toc_path.exists():
+        toc = [json.loads(l) for l in toc_path.read_text(encoding="utf-8").splitlines()]
+        if toc:
+            rows.append(("OK", "목차", f"{len(toc)}개 항목"))
+
+    # 5. 장 배정 — 본문만 본다. 표줄에는 장이 없는 것이 정상이다
+    no_ch = sum(1 for s in body if not s.get("장"))
+    if body:
+        r = no_ch / len(body)
         lvl = "오류" if r > 0.15 else ("미완" if r > 0.03 else "OK")
-        rows.append((lvl, "장 배정", f"장 없는 문장 {no_ch}개 ({r*100:.0f}%)"))
+        rows.append((lvl, "장 배정", f"장 없는 본문 문장 {no_ch}개 ({r*100:.0f}%)"))
 
     # 6. 정답지 대조 — 사람이 확인한 문장이 전문 안에 있나
     ref = load_reference(year)
     if ref:
-        body = normalize_for_match(" ".join(s["원문"] for s in sents))
-        found = sum(1 for q in ref if normalize_for_match(q) in body)
+        joined = normalize_for_match(" ".join(s["원문"] for s in sents))
+        found = sum(1 for q in ref if normalize_for_match(q) in joined)
         if found == len(ref):
             rows.append(("OK", "정답지", f"{found}/{len(ref)}건 모두 들어 있다"))
         elif found >= len(ref) * 0.8:
@@ -167,7 +181,10 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
     # 7. 기준선 — 지난번 통과한 결과와 얼마나 달라졌나
     base = baseline.get(str(year))
     if base:
-        cur = {"pages": meta["counts"]["pages"], "sentences": meta["counts"]["sentences"],
+        # 본문 문장과 표줄을 따로 센다. 부록 처리가 바뀌면 표줄만 늘어야지
+        # 본문이 함께 흔들리면 안 된다 — 나눠 놔야 어느 쪽이 변했는지 보인다.
+        cur = {"pages": meta["counts"]["pages"],
+               "sentences": len(body), "tableLines": len(table),
                "chars": meta["counts"]["chars"]}
         drift = []
         for k, v in cur.items():
@@ -225,9 +242,13 @@ def main() -> None:
                 print(f"\n  → {out_root / str(y)} 를 지웠다. 원인을 고치고 다시 돌린다.")
         elif a.save_baseline:
             meta = json.loads((out_root / str(y) / "meta.json").read_text(encoding="utf-8"))
-            baseline[str(y)] = {"pages": meta["counts"]["pages"],
-                                "sentences": meta["counts"]["sentences"],
-                                "chars": meta["counts"]["chars"]}
+            sents_all = [json.loads(l) for l in
+                         (out_root / str(y) / "sentences.jsonl").read_text(encoding="utf-8").splitlines()]
+            baseline[str(y)] = {
+                "pages": meta["counts"]["pages"],
+                "sentences": sum(1 for s in sents_all if s.get("단위", "문장") == "문장"),
+                "tableLines": sum(1 for s in sents_all if s.get("단위") == "표줄"),
+                "chars": meta["counts"]["chars"]}
             print(f"\n  → 기준선 저장")
 
     if a.save_baseline:
