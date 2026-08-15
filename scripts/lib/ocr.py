@@ -25,7 +25,17 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 CACHE_ROOT = PROJECT_ROOT / ".cache" / "ocr"
 
 OCR_DPI = 300      # 200 은 본문 작은 글자가 뭉개지고, 400 은 느린 만큼 이득이 없다
-OCR_LANG = "kor"
+
+# 한국어**와 한자**를 함께 켠다. 1989~1996년 백서는 국한문 혼용이라
+# 한국어만 켜면 한자 자리가 통째로 쓰레기가 된다(2026-08-15 실측):
+#     kor 만        →  짧시조"89 ※파을  /  %투프 구현  /  훼※빼가
+#     kor+chi_tra   →  實用主開的 接近含   (실용주의적 접근을)
+# 대신 쪽당 2.3초 → 6초로 느려진다. 읽을 수 없는 글자를 빨리 만드는 것보다
+# 읽을 수 있는 글자를 천천히 만드는 게 낫다.
+#
+# 연도로 나누지 않는다. 요즘 백서에도 한자가 괄호 안에 나오고(韓·中·日),
+# 어느 해에 한자가 있을지는 파일을 열기 전에는 알 수 없다.
+OCR_LANG = "kor+chi_tra"
 OCR_PSM = "6"      # 한 덩어리 문단으로 취급 — 2단 조판이 아닌 백서 본문에 맞다
 
 _TESS_CANDIDATES = (
@@ -51,9 +61,13 @@ def find_tesseract() -> str | None:
 
 
 def find_tessdata() -> str | None:
-    """kor.traineddata 가 실제로 있는 폴더를 고른다."""
+    """필요한 언어팩이 **모두** 있는 폴더를 고른다.
+
+    OCR_LANG 은 'kor+chi_tra' 처럼 여럿을 더한 값이라 그대로 파일명으로
+    쓸 수 없다. 하나라도 빠진 폴더를 고르면 Tesseract 가 조용히 실패한다."""
+    needed = [x for x in OCR_LANG.split("+") if x]
     for c in _TESSDATA_CANDIDATES:
-        if c and (Path(c) / f"{OCR_LANG}.traineddata").exists():
+        if c and all((Path(c) / f"{lang}.traineddata").exists() for lang in needed):
             return c
     return None
 
@@ -84,7 +98,11 @@ def ocr_pdf(path: Path, spread_min_width: int, progress=None) -> tuple[list[dict
     if not tessdata:
         return [], f"{OCR_LANG}.traineddata 를 찾지 못함 — 언어팩이 필요하다"
 
-    cache_path = CACHE_ROOT / f"{_sha256(path)}.json"
+    # 캐시 이름에 **읽기 설정**을 함께 넣는다. 파일 지문만 쓰면, 언어팩을
+    # 바꿔도 예전 결과가 그대로 돌아온다 — 한자를 켜 놓고 한글만 읽은 결과를
+    # 다시 받는 셈이다(2026-08-16 에 이 함정에 빠질 뻔했다).
+    recipe = f"{OCR_LANG}-{OCR_DPI}-psm{OCR_PSM}"
+    cache_path = CACHE_ROOT / f"{_sha256(path)}.{recipe}.json"
     if cache_path.exists():
         try:
             return json.loads(cache_path.read_text(encoding="utf-8")), None
