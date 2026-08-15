@@ -2,3 +2,14 @@ data/**
 !data/MANIFEST.md
 !data/manifest.csv
 !data/_이동기록.csv
+
+# 파생 산출물 — 원본에서 언제든 다시 만든다(python scripts/run.py)
+# 저장소에 남길 것은 '사람이 확인한 표'(authoring/)와 그 결과(data.json)다
+text/
+reports/
+
+# apply_quotes 가 먹고 버리는 임시 패치
+authoring/_quotes.tsv
+
+__pycache__/
+*.pyc

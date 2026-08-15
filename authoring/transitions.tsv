@@ -1,0 +1,16 @@
+# 정권 이음매 — 여기 적히지 않은 해는 build 가 자동으로 steady 로 채운다.
+#
+# **교체가 없던 해도 화면에 같은 형식으로 나와야 한다**(스펙 §8-5).
+# 대조군 없이 교체만 보여주면 독자가 인과를 읽는다. "평시엔 이만큼 변하는구나"를
+# 직접 비교하게 하는 것이 우리 목소리로 인과를 주장하지 않는 방법이다.
+#
+# type: steady(교체 없음) | same-bloc(같은 계열) | opposition(여야 교체) | impeachment(탄핵)
+#
+coverageYear	type	outgoing	incoming	date	note
+1998	opposition	김영삼	김대중	1998-02-25	헌정 사상 첫 여야 정권교체. IMF 외환위기 직후
+2003	same-bloc	김대중	노무현	2003-02-25
+2008	opposition	노무현	이명박	2008-02-25
+2013	same-bloc	이명박	박근혜	2013-02-25
+2017	impeachment	박근혜	문재인	2017-05-10	탄핵으로 인수위 없이 출범
+2022	opposition	문재인	윤석열	2022-05-10
+2025	impeachment	윤석열	이재명	2025-06-04	탄핵으로 인수위 없이 출범
