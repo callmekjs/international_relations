@@ -1,4 +1,4 @@
-"""
+﻿"""
 [1] extract — 원본 문서를 대상연도별 텍스트로 뽑는다.
 
     data/<대상연도>/*.{pdf,hwp,doc}  →  text/<대상연도>.txt
@@ -14,7 +14,7 @@
     python scripts/extract.py --force         # 이미 만든 것도 다시
 """
 
-EXTRACTOR_VERSION = "v1.4"   # v1.1 머리글 제거 / v1.4 인쇄된 쪽번호 기록
+EXTRACTOR_VERSION = "v1.5"   # v1.1 머리글 제거 / v1.4 인쇄된 쪽번호 기록
 
 import hashlib
 import io

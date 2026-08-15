@@ -247,6 +247,46 @@ STAGES = [("extract", "원본 → 텍스트"), ("authoring", "표의 정합성")
           ("verify", "인용 원문 대조"), ("final", "최종 완결성")]
 
 
+def completion_table(editions: dict, pr_rows: list[dict]) -> None:
+    """연도별로 무엇이 채워졌고 무엇이 비었는지 한눈에.
+
+    WARN 목록은 '무엇이 문제인가'를 알려주지만 '얼마나 남았나'는 안 보인다.
+    끝났는지 판단하려면 연도별로 늘어놓고 봐야 한다."""
+    by_year: dict[int, list[dict]] = {}
+    for r in pr_rows:
+        by_year.setdefault(int(r["coverageYear"]), []).append(r)
+
+    def bare(s):
+        return normalize_for_match(_LEAD_MARK.sub("", (s or "").strip()))
+
+    print("\n" + "=" * 60)
+    print("  연도별 완성도")
+    print("=" * 60)
+    print(f"{'연도':<6}{'상태':<12}{'항목':>4}{'인용문':>7}{'쪽수':>6}  ")
+    print("-" * 46)
+
+    done_all = 0
+    for y in sorted(editions):
+        st = (editions[y].get("status") or "").strip()
+        items = by_year.get(y, [])
+        if not items:
+            note = {"blocked": "원본 결손", "no-section": "그 판에 없음"}.get(st, "미착수")
+            print(f"{y:<6}{st:<12}{'-':>4}{'-':>7}{'-':>6}  {note}")
+            continue
+        rich = sum(1 for r in items if bare(r.get("quote")) != bare(r.get("title")))
+        paged = sum(1 for r in items if (r.get("srcPage") or "").strip())
+        n = len(items)
+        full = (rich == n and paged == n)
+        done_all += full
+        bar = "완료" if full else ""
+        print(f"{y:<6}{st:<12}{n:>4}{f'{rich}/{n}':>7}{f'{paged}/{n}':>6}  {bar}")
+
+    fillable = [y for y, r in editions.items()
+                if (r.get("status") or "").strip() not in ("blocked", "no-section")]
+    print("-" * 46)
+    print(f"  채울 수 있는 {len(fillable)}개년 중 완전히 끝난 것: {done_all}개년")
+
+
 def main() -> None:
     strict = "--strict" in sys.argv
     only = None
@@ -276,6 +316,9 @@ def main() -> None:
                 continue          # 문제가 있을 땐 INFO 를 접어둔다
             print(f"   {mark[level]} {msg}")
         print()
+
+    if not only and not f.of("extract", "BLOCK") and not f.of("authoring", "BLOCK"):
+        completion_table(editions, pr_rows)
 
     blocks, warns = f.of(level="BLOCK"), f.of(level="WARN")
     write_json_atomic(REPORTS_ROOT / "audit_report.json", {

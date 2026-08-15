@@ -22,8 +22,18 @@ MIN_RATIO = 0.25         # 그리고 전체 쪽의 이만큼 이상
 MAX_HEAD_LEN = 60        # 긴 줄은 본문이다
 
 _PAGE_NUM = re.compile(r"^\s*[\[(]?\s*\d{1,4}\s*[\])]?\s*$")
-_PAGE_NUM_WITH_BAR = re.compile(r"^\s*\d{1,4}\s*[|｜/]\s*.{0,40}$|^\s*.{0,40}\s*[|｜/]\s*\d{1,4}\s*$")
 _WS = re.compile(r"\s+")
+
+# 머리글 앞뒤에 쪽번호가 붙어 나오는 판이 있다(2022~2024).
+#   008 제1장 2022년 국제정세 및 외교정책 기조
+# 숫자가 매쪽 달라 '반복되는 줄'로 안 잡히고, 그래서 머리글도 안 지워지고
+# 쪽번호도 못 건진다. 비교 전에 앞뒤 숫자를 떼어내는 방법을 시험했다가 물렸다
+# (2026-08-15): 본문 줄에서도 숫자가 떨어져 나가 서로 다른 문장이 같은 줄로
+# 묶였고, 쪽번호는 오히려 줄었으며(2020년 352→175) 2012·2018년 인용문이
+# 깨졌다. verify 가 잡아 되돌렸다.
+#
+# 이 판들의 쪽수는 사람이 인쇄본을 보고 적는다. 머리글 몇 개 지우자고
+# 본문을 잃을 수는 없다.
 
 
 def _key(line: str) -> str:
@@ -73,7 +83,7 @@ def strip_pages(pages: list[dict]) -> tuple[list[dict], dict]:
                 continue
             if _PAGE_NUM.match(line):
                 removed_num += 1
-                n = int(k.strip("[]()"))
+                n = int(_WS.sub("", line).strip("[]()"))
                 if 1 <= n <= 2000:      # 연도·전화번호 같은 숫자를 쪽수로 오인하지 않게
                     printed.append(n)
                 continue
