@@ -3,23 +3,23 @@
 :root{
   --ground:#f6f4ef; --panel:#fffdf9; --line:#ddd7c9; --line-soft:#eae5d9;
   --ink:#1c1a17; --ink-2:#57524a; --ink-3:#8b8478;
-  --country:#1f6f6b; --org:#8a6a1f; --policy:#7b3a68; --event:#a8442a;
-  --edge:rgba(90,84,74,.20); --edge-hot:rgba(28,26,23,.55);
-  --shadow:0 1px 2px rgba(40,34,24,.06),0 8px 24px rgba(40,34,24,.07);
+  --country:#1f6f6b; --org:#8a6a1f; --policy:#7b3a68; --event:#a8442a; --treaty:#3a5a8f;
+  --협력:#2f7d5e; --갈등:#b23a2e; --대화:#3a5a8f; --지원:#8a6a1f;
+  --edge:rgba(90,84,74,.18); --edge-hot:rgba(28,26,23,.55);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
   --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
-  --country:#5fc7bd; --org:#d8ae53; --policy:#cf8ab6; --event:#e58a68;
-  --edge:rgba(200,196,187,.16); --edge-hot:rgba(236,234,229,.6);
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.35);
+  --country:#5fc7bd; --org:#d8ae53; --policy:#cf8ab6; --event:#e58a68; --treaty:#7fa8e0;
+  --협력:#5fbf92; --갈등:#e5715f; --대화:#7fa8e0; --지원:#d8ae53;
+  --edge:rgba(200,196,187,.15); --edge-hot:rgba(236,234,229,.6);
 }}
 :root[data-theme="dark"]{
   --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
   --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
-  --country:#5fc7bd; --org:#d8ae53; --policy:#cf8ab6; --event:#e58a68;
-  --edge:rgba(200,196,187,.16); --edge-hot:rgba(236,234,229,.6);
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.35);
+  --country:#5fc7bd; --org:#d8ae53; --policy:#cf8ab6; --event:#e58a68; --treaty:#7fa8e0;
+  --협력:#5fbf92; --갈등:#e5715f; --대화:#7fa8e0; --지원:#d8ae53;
+  --edge:rgba(200,196,187,.15); --edge-hot:rgba(236,234,229,.6);
 }
 *{box-sizing:border-box}
 body{
@@ -27,108 +27,109 @@ body{
   font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
   font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;
 }
-.serif{font-family:"Nanum Myeongjo","Apple SD Gothic Neo",Batang,"Times New Roman",serif}
-.wrap{display:grid;grid-template-columns:236px minmax(0,1fr) 300px;height:100vh;height:100dvh}
-@media(max-width:1000px){.wrap{grid-template-columns:1fr;grid-template-rows:auto 60vh auto;height:auto}}
+.serif{font-family:"Nanum Myeongjo","Apple SD Gothic Neo",Batang,serif}
+.wrap{display:grid;grid-template-columns:244px minmax(0,1fr) 312px;height:100vh;height:100dvh}
+@media(max-width:1040px){.wrap{grid-template-columns:1fr;grid-template-rows:auto 60vh auto;height:auto}}
 
-/* ── 왼쪽 ── */
-aside{background:var(--panel);border-right:1px solid var(--line);padding:20px 18px;overflow-y:auto;display:flex;flex-direction:column;gap:22px}
-h1{font-size:19px;line-height:1.25;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.sub{color:var(--ink-3);font-size:11.5px;margin-top:6px;letter-spacing:.02em}
-.grp{display:flex;flex-direction:column;gap:9px}
-.lbl{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-3);font-weight:700}
-.kinds{display:flex;flex-direction:column;gap:5px}
-.kind{display:flex;align-items:center;gap:9px;padding:6px 9px;border:1px solid var(--line-soft);
-  border-radius:7px;background:none;color:var(--ink);cursor:pointer;font:inherit;font-size:12.5px;text-align:left;
+aside,.detail{background:var(--panel);overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:18px}
+aside{border-right:1px solid var(--line)}
+.detail{border-left:1px solid var(--line)}
+h1{font-size:18px;line-height:1.25;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--ink-3);font-size:11px;margin-top:5px;letter-spacing:.02em}
+.grp{display:flex;flex-direction:column;gap:8px}
+.lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-3);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:flex;align-items:center;gap:6px;padding:4px 8px;border:1px solid var(--line-soft);
+  border-radius:6px;background:none;color:var(--ink);cursor:pointer;font:inherit;font-size:11.5px;
   transition:border-color .15s,opacity .15s}
-.kind:hover{border-color:var(--line)}
-.kind[aria-pressed="false"]{opacity:.34}
-.kind:focus-visible{outline:2px solid var(--ink-2);outline-offset:2px}
-.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
-.kind .n{margin-left:auto;color:var(--ink-3);font-size:11px;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--line)}
+.chip[aria-pressed="false"]{opacity:.32}
+.chip:focus-visible{outline:2px solid var(--ink-2);outline-offset:2px}
+.chip .n{color:var(--ink-3);font-size:10px;font-variant-numeric:tabular-nums}
+.dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.seg{display:flex;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden}
+.seg button{flex:1;padding:5px 4px;border:0;background:none;color:var(--ink-2);font:inherit;
+  font-size:11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ground);color:var(--ink);font-weight:700}
+.seg button:focus-visible{outline:2px solid var(--ink-2);outline-offset:-2px}
 input[type=range]{width:100%;accent-color:var(--country)}
-.yr{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.yr b{color:var(--ink);font-size:15px;font-weight:700}
-.adm{font-size:11.5px;color:var(--ink-2)}
-.searchbox{width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:7px;
-  background:var(--ground);color:var(--ink);font:inherit;font-size:12.5px}
+.yr{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.yr b{color:var(--ink);font-size:14px}
+.searchbox{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:6px;
+  background:var(--ground);color:var(--ink);font:inherit;font-size:12px}
 .searchbox:focus-visible{outline:2px solid var(--ink-2);outline-offset:1px}
-.gap{font-size:11.5px;line-height:1.6;color:var(--ink-2);background:color-mix(in srgb,var(--event) 9%,transparent);
-  border:1px solid color-mix(in srgb,var(--event) 30%,transparent);border-radius:7px;padding:9px 11px}
+.gap{font-size:11px;line-height:1.55;color:var(--ink-2);border:1px solid var(--event);
+  border-radius:6px;padding:8px 10px}
 .gap b{color:var(--event)}
-.hint{font-size:11px;color:var(--ink-3);line-height:1.55;border-top:1px solid var(--line-soft);padding-top:12px;margin-top:auto}
+.note{font-size:10.5px;color:var(--ink-3);line-height:1.55;border-top:1px solid var(--line-soft);
+  padding-top:10px;margin-top:auto}
+.note b{color:var(--ink-2)}
 
-/* ── 가운데 ── */
 main{position:relative;overflow:hidden;background:var(--ground)}
 canvas{display:block;width:100%;height:100%;cursor:grab}
 canvas:active{cursor:grabbing}
-.badge{position:absolute;left:14px;top:12px;font-size:11px;color:var(--ink-3);
-  background:var(--panel);border:1px solid var(--line-soft);border-radius:20px;padding:4px 11px;
+.badge{position:absolute;left:12px;top:11px;font-size:10.5px;color:var(--ink-3);background:var(--panel);
+  border:1px solid var(--line-soft);border-radius:20px;padding:3px 10px;
   font-variant-numeric:tabular-nums;pointer-events:none}
 
-/* ── 오른쪽 ── */
-.detail{background:var(--panel);border-left:1px solid var(--line);padding:20px 18px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
-.empty{color:var(--ink-3);font-size:12.5px;line-height:1.7}
-.name{font-size:22px;letter-spacing:-.015em;margin:0;line-height:1.2}
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-2);margin-top:5px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:8px;overflow:hidden}
-.stat{background:var(--panel);padding:9px 11px}
-.stat .k{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3)}
-.stat .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:1px}
-.spark{width:100%;height:52px;display:block}
-.quote{font-size:12.5px;line-height:1.75;color:var(--ink-2);border-left:2px solid var(--line);padding-left:11px}
-.quote cite{display:block;font-style:normal;font-size:10.5px;color:var(--ink-3);margin-top:7px;letter-spacing:.03em}
-.rel{display:flex;flex-direction:column;gap:2px}
-.rel button{display:flex;align-items:center;gap:8px;width:100%;padding:5px 7px;border:0;border-radius:6px;
-  background:none;color:var(--ink);font:inherit;font-size:12.5px;cursor:pointer;text-align:left}
+.name{font-size:21px;letter-spacing:-.015em;margin:0;line-height:1.2}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink-2);margin-top:4px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:7px;overflow:hidden}
+.stat{background:var(--panel);padding:8px 10px}
+.stat .k{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
+.stat .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+.spark{width:100%;height:48px;display:block}
+.quote{font-size:12px;line-height:1.7;color:var(--ink-2);border-left:2px solid var(--line);padding-left:10px}
+.quote cite{display:block;font-style:normal;font-size:10px;color:var(--ink-3);margin-top:6px}
+.rel button{display:flex;align-items:center;gap:7px;width:100%;padding:4px 6px;border:0;border-radius:5px;
+  background:none;color:var(--ink);font:inherit;font-size:12px;cursor:pointer;text-align:left}
 .rel button:hover{background:var(--ground)}
 .rel button:focus-visible{outline:2px solid var(--ink-2);outline-offset:-2px}
-.rel .w{margin-left:auto;color:var(--ink-3);font-size:11px;font-variant-numeric:tabular-nums}
-.bar{height:3px;border-radius:2px;flex:0 0 34px;background:var(--line)}
+.rel .w{margin-left:auto;color:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums}
+.rel .kind{font-size:9.5px;padding:0 5px;border-radius:9px;border:1px solid currentColor;flex:0 0 auto}
+.empty{color:var(--ink-3);font-size:12px;line-height:1.7}
 </style>
 
 <div class="wrap">
 <aside>
   <div>
     <h1 class="serif">외교백서 지식그래프</h1>
-    <div class="sub">1989 – 2025 · 37개년</div>
+    <div class="sub" id="scope"></div>
   </div>
 
-  <div class="grp">
-    <div class="lbl">점의 종류</div>
-    <div class="kinds" id="kinds"></div>
-  </div>
+  <div class="grp"><div class="lbl">점의 종류</div><div class="chips" id="kinds"></div></div>
 
   <div class="grp">
-    <div class="lbl">연도</div>
+    <div class="lbl">시기</div>
+    <div class="chips" id="admins"></div>
     <input type="range" id="year" aria-label="연도">
     <div class="yr"><span id="ylo"></span><b id="ynow"></b><span id="yhi"></span></div>
-    <div class="adm" id="adm"></div>
   </div>
 
   <div id="gap"></div>
 
   <div class="grp">
-    <div class="lbl">찾기</div>
-    <input class="searchbox" id="q" placeholder="미국, 신남방정책…" aria-label="개체 찾기">
+    <div class="lbl">선의 굵기</div>
+    <div class="seg" id="metric">
+      <button type="button" data-m="weight" aria-pressed="true">함께 나온 횟수</button>
+      <button type="button" data-m="pmi" aria-pressed="false">특별함</button>
+    </div>
   </div>
 
-  <div class="hint">
-    점을 누르면 오른쪽에 자세히 나옵니다.<br>
-    빈 곳을 끌면 화면이 움직이고, 휠로 크기를 바꿉니다.<br><br>
-    선의 굵기는 <b>한 문장 안에 함께 나온 횟수</b>입니다.
+  <div class="grp"><div class="lbl">관계 종류</div><div class="chips" id="rels"></div></div>
+
+  <div class="grp">
+    <div class="lbl">찾기</div>
+    <input class="searchbox" id="q" placeholder="북한, 신남방정책…" aria-label="개체 찾기">
   </div>
+
+  <div class="note" id="note"></div>
 </aside>
 
-<main>
-  <canvas id="cv"></canvas>
-  <div class="badge" id="badge"></div>
-</main>
+<main><canvas id="cv"></canvas><div class="badge" id="badge"></div></main>
 
-<div class="detail" id="detail">
-  <p class="empty">왼쪽 그래프에서 점을 고르세요.<br><br>
-  37년치 외교백서 문장 65,611개에서 나라·기구·정책·사건을 뽑고, 한 문장 안에 함께 나온 것끼리 이었습니다.</p>
-</div>
+<div class="detail" id="detail"></div>
 </div>
 
 <script>
@@ -137,87 +138,125 @@ const KIND = {
   country:{label:"나라",   css:"--country"},
   org:    {label:"국제기구", css:"--org"},
   policy: {label:"정책",   css:"--policy"},
-  event:  {label:"사건·조약",css:"--event"},
+  event:  {label:"사건",   css:"--event"},
+  treaty: {label:"조약",   css:"--treaty"},
 };
+const RELS = DATA.meta.relKinds;
+const ADMINS = [...new Set(Object.values(DATA.meta.yearAdmin))];
 const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 
 const nodes = DATA.nodes.map(n => ({...n, x:0, y:0, vx:0, vy:0}));
 const byId = new Map(nodes.map(n => [n.id, n]));
 const links = DATA.links.map(l => ({...l, s:byId.get(l.source), t:byId.get(l.target)}))
                         .filter(l => l.s && l.t);
-nodes.forEach(n => n.deg = 0);
-links.forEach(l => { l.s.deg++; l.t.deg++; });
 
-const years = DATA.meta.years;
-const on = {country:true, org:true, policy:true, event:true};
-let year = null, sel = null, hover = null, query = "";
+const on = Object.fromEntries(Object.keys(KIND).map(k => [k, true]));
+const relOn = Object.fromEntries([...RELS, "언급"].map(r => [r, true]));
+let year = null, admin = null, sel = null, hover = null, query = "", metric = "weight";
 
-/* ── 왼쪽 조작판 ── */
-const kindsEl = document.getElementById("kinds");
-for (const [k, v] of Object.entries(KIND)) {
+/* ── 조작판 ── */
+const mk = (host, key, color, label, count, toggle) => {
   const b = document.createElement("button");
-  b.className = "kind"; b.type = "button"; b.setAttribute("aria-pressed", "true");
-  b.innerHTML = `<span class="dot" style="background:var(${v.css})"></span>${v.label}
-    <span class="n">${nodes.filter(n => n.kind === k).length}</span>`;
-  b.onclick = () => { on[k] = !on[k]; b.setAttribute("aria-pressed", on[k]); layout(); };
-  kindsEl.append(b);
+  b.className = "chip"; b.type = "button"; b.setAttribute("aria-pressed", "true");
+  b.innerHTML = `<span class="dot" style="background:${color}"></span>${label}` +
+                (count != null ? `<span class="n">${count}</span>` : "");
+  b.onclick = () => { const v = b.getAttribute("aria-pressed") === "true";
+    b.setAttribute("aria-pressed", !v); toggle(!v); layout(); };
+  host.append(b);
+};
+for (const [k, v] of Object.entries(KIND))
+  mk(document.getElementById("kinds"), k, `var(${v.css})`, v.label,
+     nodes.filter(n => n.kind === k).length, s => on[k] = s);
+for (const r of RELS)
+  mk(document.getElementById("rels"), r, `var(--${r})`, r,
+     links.filter(l => l.rel === r).length, s => relOn[r] = s);
+mk(document.getElementById("rels"), "언급", cssv("--ink-3"), "함께 언급",
+   links.filter(l => !l.rel).length, s => relOn["언급"] = s);
+
+const admHost = document.getElementById("admins");
+for (const a of ADMINS) {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.setAttribute("aria-pressed", "false");
+  b.textContent = a;
+  b.onclick = () => {
+    const now = admin === a ? null : a;
+    admHost.querySelectorAll(".chip").forEach(x =>
+      x.setAttribute("aria-pressed", x.textContent === now));
+    admin = now; if (admin) { year = null; yr.value = years.length; }
+    setScope(); layout();
+  };
+  admHost.append(b);
 }
-const yr = document.getElementById("year");
+
+const years = DATA.meta.years, yr = document.getElementById("year");
 yr.min = 0; yr.max = years.length; yr.value = years.length; yr.step = 1;
 document.getElementById("ylo").textContent = years[0];
 document.getElementById("yhi").textContent = years[years.length - 1];
-function setYear() {
+yr.oninput = () => {
   const i = +yr.value;
   year = i === years.length ? null : years[i];
-  document.getElementById("ynow").textContent = year ?? "전체";
-  document.getElementById("adm").textContent = year ? DATA.meta.yearAdmin[year] + " 정권" : "37개년 전부";
+  if (year) { admin = null; admHost.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", "false")); }
+  setScope(); layout();
+};
+document.getElementById("q").oninput = e => { query = e.target.value.trim(); draw(); };
+document.getElementById("metric").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  metric = b.dataset.m;
+  document.getElementById("metric").querySelectorAll("button")
+    .forEach(x => x.setAttribute("aria-pressed", x === b));
+  draw();
+};
+
+function setScope() {
+  document.getElementById("ynow").textContent = year ?? (admin ? admin : "전체");
+  document.getElementById("scope").textContent =
+    year ? `${year}년 · ${DATA.meta.yearAdmin[year]} 정권`
+    : admin ? `${admin} 정권` : `1989 – 2025 · 37개년`;
   const g = year && (DATA.meta.gaps || {})[year];
   document.getElementById("gap").innerHTML = g
     ? `<div class="gap"><b>원본 결손</b> — ${g.map(x => `${x.missing} 없음(${x.ratio})`).join(", ")}.
-       ${g[0].cause} 이 해가 작아 보이는 것은 <b>자료가 없어서</b>이지 외교가 적었기 때문이 아닙니다.</div>`
-    : "";
-  layout();
+       이 해가 작아 보이는 것은 자료가 없어서이지 외교가 적었기 때문이 아닙니다.</div>` : "";
 }
-yr.oninput = setYear;
-document.getElementById("q").oninput = e => { query = e.target.value.trim(); draw(); };
 
 /* ── 무엇을 보일지 ── */
-const cnt = (o, y) => y ? (o.byYear[y] || 0) : o.total ?? Object.values(o.byYear).reduce((a, b) => a + b, 0);
-let shown = [], shownL = [];
+const yearsOf = a => a ? years.filter(y => DATA.meta.yearAdmin[y] === a) : null;
+function cnt(o) {
+  if (year) return o.byYear[year] || 0;
+  const ys = yearsOf(admin);
+  if (!ys) return o.total ?? Object.values(o.byYear).reduce((x, y) => x + y, 0);
+  return ys.reduce((s, y) => s + (o.byYear[y] || 0), 0);
+}
+let shown = [], shownL = [], alpha = 1;
 function layout() {
-  shown = nodes.filter(n => on[n.kind] && cnt(n, year) > 0);
+  shown = nodes.filter(n => on[n.kind] && cnt(n) > 0);
   const S = new Set(shown.map(n => n.id));
   shownL = links.filter(l => S.has(l.s.id) && S.has(l.t.id) &&
-                             (year ? (l.byYear[year] || 0) > 0 : true));
-  const seen = new Set(); shownL.forEach(l => { seen.add(l.s.id); seen.add(l.t.id); });
-  shown.forEach(n => { if (!n.placed) { n.x = (Math.random() - .5) * 500; n.y = (Math.random() - .5) * 500; n.placed = 1; } });
-  document.getElementById("badge").textContent = `점 ${shown.length} · 선 ${shownL.length}`;
+                             relOn[l.rel || "언급"] && cnt(l) > 0);
+  shown = shown.filter(n => shownL.some(l => l.s === n || l.t === n) || shownL.length === 0);
+  shown.forEach(n => { if (!n.placed) { n.x = (Math.random()-.5)*520; n.y = (Math.random()-.5)*520; n.placed = 1; } });
+  document.getElementById("badge").textContent =
+    `점 ${shown.length} · 선 ${shownL.length} · 종류 붙은 선 ${shownL.filter(l => l.rel).length}`;
   alpha = .9;
 }
 
-/* ── 힘 계산 (직접 만든 간단한 것) ── */
-let alpha = 1;
 function tick() {
-  const w = year ? y => (l => l.byYear[year] || 0) : null;
   for (const l of shownL) {
-    const dx = l.t.x - l.s.x, dy = l.t.y - l.s.y;
-    const d = Math.hypot(dx, dy) || 1;
-    const want = 70 + 260 / (1 + Math.log1p(l.weight));
+    const dx = l.t.x - l.s.x, dy = l.t.y - l.s.y, d = Math.hypot(dx, dy) || 1;
+    const want = 70 + 250 / (1 + Math.log1p(l.weight));
     const f = (d - want) / d * .012 * alpha;
-    l.s.vx += dx * f; l.s.vy += dy * f; l.t.vx -= dx * f; l.t.vy -= dy * f;
+    l.s.vx += dx*f; l.s.vy += dy*f; l.t.vx -= dx*f; l.t.vy -= dy*f;
   }
   for (let i = 0; i < shown.length; i++) {
     const a = shown[i];
-    for (let j = i + 1; j < shown.length; j++) {
+    for (let j = i+1; j < shown.length; j++) {
       const b = shown[j];
-      let dx = b.x - a.x, dy = b.y - a.y;
-      let d2 = dx * dx + dy * dy;
+      let dx = b.x-a.x, dy = b.y-a.y, d2 = dx*dx + dy*dy;
       if (d2 > 260000) continue;
       if (d2 < 1) { dx = Math.random(); dy = Math.random(); d2 = 1; }
-      const f = 900 * alpha / d2;
-      a.vx -= dx * f; a.vy -= dy * f; b.vx += dx * f; b.vy += dy * f;
+      const f = 900*alpha/d2;
+      a.vx -= dx*f; a.vy -= dy*f; b.vx += dx*f; b.vy += dy*f;
     }
-    a.vx -= a.x * .0016 * alpha; a.vy -= a.y * .0016 * alpha;
+    a.vx -= a.x*.0016*alpha; a.vy -= a.y*.0016*alpha;
     a.x += a.vx *= .82; a.y += a.vy *= .82;
   }
   alpha *= .992;
@@ -225,123 +264,111 @@ function tick() {
 
 /* ── 그리기 ── */
 const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
-let W = 0, H = 0, dpr = 1, k = 1, ox = 0, oy = 0;
-function resize() {
-  dpr = Math.min(devicePixelRatio || 1, 2);
-  W = cv.clientWidth; H = cv.clientHeight;
-  cv.width = W * dpr; cv.height = H * dpr;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
+let W=0, H=0, dpr=1, k=1, ox=0, oy=0;
+function resize(){ dpr = Math.min(devicePixelRatio||1, 2); W = cv.clientWidth; H = cv.clientHeight;
+  cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
 addEventListener("resize", resize);
-const rad = n => 4 + Math.sqrt(cnt(n, year)) * (year ? 2.4 : .55);
-const sx = n => n.x * k + ox + W / 2, sy = n => n.y * k + oy + H / 2;
+const rad = n => 4 + Math.sqrt(cnt(n)) * (year ? 2.4 : (admin ? 1.0 : .55));
+const sx = n => n.x*k + ox + W/2, sy = n => n.y*k + oy + H/2;
+const thick = l => metric === "pmi"
+  ? Math.max(.4, (l.pmi + 3) * .55)
+  : Math.max(.4, Math.log1p(cnt(l)) * .55);
 
 function draw() {
-  ctx.clearRect(0, 0, W, H);
-  const near = sel ? new Set(shownL.filter(l => l.s === sel || l.t === sel).flatMap(l => [l.s.id, l.t.id])) : null;
+  ctx.clearRect(0,0,W,H);
+  const near = sel ? new Set(shownL.filter(l => l.s===sel||l.t===sel).flatMap(l => [l.s.id, l.t.id])) : null;
   ctx.lineCap = "round";
   for (const l of shownL) {
-    const hot = sel && (l.s === sel || l.t === sel);
-    ctx.strokeStyle = hot ? cssv("--edge-hot") : cssv("--edge");
-    ctx.globalAlpha = sel && !hot ? .22 : 1;
-    ctx.lineWidth = Math.max(.4, Math.log1p((year ? l.byYear[year] || 0 : l.weight)) * .55) * Math.min(k, 1.6);
+    const hot = sel && (l.s===sel || l.t===sel);
+    ctx.strokeStyle = l.rel ? cssv("--" + l.rel) : (hot ? cssv("--edge-hot") : cssv("--edge"));
+    ctx.globalAlpha = sel && !hot ? .16 : (l.rel ? .75 : 1);
+    ctx.lineWidth = thick(l) * Math.min(k, 1.6);
     ctx.beginPath(); ctx.moveTo(sx(l.s), sy(l.s)); ctx.lineTo(sx(l.t), sy(l.t)); ctx.stroke();
   }
   ctx.globalAlpha = 1;
   const hit = query ? nodes.filter(n => n.id.includes(query)).map(n => n.id) : null;
   for (const n of shown) {
-    const r = rad(n) * Math.min(k, 1.5), X = sx(n), Y = sy(n);
-    const dim = (sel && !near.has(n.id) && n !== sel) || (hit && !hit.includes(n.id));
-    ctx.globalAlpha = dim ? .18 : 1;
+    const r = rad(n)*Math.min(k,1.5), X = sx(n), Y = sy(n);
+    const dim = (sel && !near.has(n.id) && n!==sel) || (hit && !hit.includes(n.id));
+    ctx.globalAlpha = dim ? .16 : 1;
     ctx.beginPath(); ctx.arc(X, Y, r, 0, 7);
     ctx.fillStyle = cssv(KIND[n.kind].css); ctx.fill();
-    if (n === sel || n === hover) { ctx.lineWidth = 2; ctx.strokeStyle = cssv("--ink"); ctx.stroke(); }
-    const big = cnt(n, year) > (year ? 6 : 300);
-    if (!dim && (big || n === sel || n === hover || (hit && hit.includes(n.id)))) {
-      ctx.font = `${n === sel ? 700 : 500} ${Math.min(13, 10 + r / 5)}px system-ui,sans-serif`;
+    if (n===sel || n===hover) { ctx.lineWidth = 2; ctx.strokeStyle = cssv("--ink"); ctx.stroke(); }
+    const big = cnt(n) > (year ? 6 : (admin ? 60 : 300));
+    if (!dim && (big || n===sel || n===hover || (hit && hit.includes(n.id)))) {
+      ctx.font = `${n===sel?700:500} ${Math.min(13, 10+r/5)}px system-ui,sans-serif`;
       ctx.fillStyle = cssv("--ink"); ctx.textAlign = "center";
-      ctx.fillText(n.id, X, Y - r - 5);
+      ctx.fillText(n.id, X, Y-r-5);
     }
   }
   ctx.globalAlpha = 1;
 }
-(function loop() { if (alpha > .002) tick(); draw(); requestAnimationFrame(loop); })();
+(function loop(){ if (alpha > .002) tick(); draw(); requestAnimationFrame(loop); })();
 
 /* ── 눌렀을 때 ── */
-function at(mx, my) {
-  let best = null, bd = 400;
-  for (const n of shown) {
-    const d = (sx(n) - mx) ** 2 + (sy(n) - my) ** 2;
-    const r = (rad(n) * Math.min(k, 1.5) + 7) ** 2;
-    if (d < r && d < bd) { bd = d; best = n; }
-  }
-  return best;
-}
+function at(mx,my){ let best=null, bd=400;
+  for (const n of shown) { const d=(sx(n)-mx)**2+(sy(n)-my)**2, r=(rad(n)*Math.min(k,1.5)+7)**2;
+    if (d<r && d<bd) { bd=d; best=n; } } return best; }
 let drag = null;
 cv.onpointerdown = e => { drag = {x:e.clientX, y:e.clientY, ox, oy, moved:0}; cv.setPointerCapture(e.pointerId); };
-cv.onpointermove = e => {
-  const r = cv.getBoundingClientRect();
-  if (drag) {
-    drag.moved += Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y);
-    ox = drag.ox + e.clientX - drag.x; oy = drag.oy + e.clientY - drag.y;
-  } else { hover = at(e.clientX - r.left, e.clientY - r.top); cv.style.cursor = hover ? "pointer" : "grab"; }
-};
-cv.onpointerup = e => {
-  const r = cv.getBoundingClientRect();
-  if (drag && drag.moved < 5) { const n = at(e.clientX - r.left, e.clientY - r.top); select(n); }
-  drag = null;
-};
-cv.onwheel = e => { e.preventDefault(); const f = Math.exp(-e.deltaY * .0012); k = Math.max(.25, Math.min(4, k * f)); };
+cv.onpointermove = e => { const r = cv.getBoundingClientRect();
+  if (drag) { drag.moved += Math.abs(e.clientX-drag.x)+Math.abs(e.clientY-drag.y);
+    ox = drag.ox + e.clientX-drag.x; oy = drag.oy + e.clientY-drag.y; }
+  else { hover = at(e.clientX-r.left, e.clientY-r.top); cv.style.cursor = hover ? "pointer" : "grab"; } };
+cv.onpointerup = e => { const r = cv.getBoundingClientRect();
+  if (drag && drag.moved < 5) select(at(e.clientX-r.left, e.clientY-r.top)); drag = null; };
+cv.onwheel = e => { e.preventDefault(); k = Math.max(.25, Math.min(4, k*Math.exp(-e.deltaY*.0012))); };
 
-/* ── 오른쪽 자세히 ── */
+/* ── 자세히 ── */
 function select(n) {
   sel = n;
   const d = document.getElementById("detail");
-  if (!n) { d.innerHTML = `<p class="empty">왼쪽 그래프에서 점을 고르세요.</p>`; return; }
-  const rel = shownL.filter(l => l.s === n || l.t === n)
-    .map(l => ({o: l.s === n ? l.t : l.s, w: year ? (l.byYear[year] || 0) : l.weight}))
-    .filter(r => r.w > 0).sort((a, b) => b.w - a.w).slice(0, 14);
+  if (!n) { d.innerHTML = `<p class="empty">점을 고르면 여기에 자세히 나옵니다.</p>`; return; }
+  const rel = shownL.filter(l => l.s===n || l.t===n)
+    .map(l => ({o: l.s===n ? l.t : l.s, w: cnt(l), rel: l.rel, sample: l.sample}))
+    .filter(r => r.w > 0).sort((a,b) => b.w - a.w).slice(0, 14);
   const max = rel.length ? rel[0].w : 1;
-  const vals = years.map(y => n.byYear[y] || 0), mx = Math.max(...vals, 1);
-  const pts = vals.map((v, i) => `${i / (vals.length - 1) * 260},${48 - v / mx * 42}`).join(" ");
-  const adm = Object.entries(n.byAdmin).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const src = year || admin ? n.byYear : n.rateByYear;
+  const vals = years.map(y => (n.rateByYear[y] ?? 0)), mx = Math.max(...vals, .1);
+  const pts = vals.map((v,i) => `${i/(vals.length-1)*260},${46 - v/mx*40}`).join(" ");
+  const withRel = rel.find(r => r.rel && r.sample);
+  const adm = Object.entries(n.byAdmin).sort((a,b) => b[1]-a[1]).slice(0,3);
 
   d.innerHTML = `
-    <div>
-      <h2 class="name serif">${n.id}</h2>
-      <div class="tag"><span class="dot" style="background:var(${KIND[n.kind].css})"></span>${KIND[n.kind].label}</div>
-    </div>
+    <div><h2 class="name serif">${n.id}</h2>
+      <div class="tag"><span class="dot" style="background:var(${KIND[n.kind].css})"></span>${KIND[n.kind].label}</div></div>
     <div class="stats">
-      <div class="stat"><div class="k">언급</div><div class="v">${(year ? n.byYear[year] || 0 : n.total).toLocaleString()}</div></div>
-      <div class="stat"><div class="k">최다 연도</div><div class="v">${n.peak}</div></div>
+      <div class="stat"><div class="k">언급</div><div class="v">${cnt(n).toLocaleString()}</div></div>
+      <div class="stat"><div class="k">분량대비 최고</div><div class="v">${n.peakRate}</div></div>
       <div class="stat"><div class="k">처음</div><div class="v">${n.first}</div></div>
       <div class="stat"><div class="k">마지막</div><div class="v">${n.last}</div></div>
     </div>
-    <div>
-      <div class="lbl" style="margin-bottom:6px">해마다</div>
-      <svg class="spark" viewBox="0 0 260 52" preserveAspectRatio="none" aria-hidden="true">
-        <polyline points="${pts}" fill="none" stroke="var(${KIND[n.kind].css})" stroke-width="1.6"/>
-      </svg>
-      <div class="yr"><span>${years[0]}</span><span>${years[years.length - 1]}</span></div>
-    </div>
-    <div>
-      <div class="lbl" style="margin-bottom:6px">많이 다룬 정권</div>
-      <div class="adm">${adm.map(([a, c]) => `${a} ${c.toLocaleString()}`).join(" · ")}</div>
-    </div>
-    ${n.sample ? `<div><div class="lbl" style="margin-bottom:6px">백서 원문</div>
-      <blockquote class="quote">${n.sample.text}
-      <cite>${n.sample.year}년 외교백서 · ${n.sample.admin} 정권</cite></blockquote></div>` : ""}
-    <div>
-      <div class="lbl" style="margin-bottom:6px">함께 나온 것 ${rel.length}</div>
+    <div><div class="lbl" style="margin-bottom:5px">해마다 (백서 분량 대비)</div>
+      <svg class="spark" viewBox="0 0 260 50" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="${pts}" fill="none" stroke="var(${KIND[n.kind].css})" stroke-width="1.6"/></svg>
+      <div class="yr"><span>${years[0]}</span><span>${years[years.length-1]}</span></div></div>
+    <div><div class="lbl" style="margin-bottom:5px">많이 다룬 정권</div>
+      <div class="sub" style="margin:0">${adm.map(([a,c]) => `${a} ${c.toLocaleString()}`).join(" · ")}</div></div>
+    ${withRel ? `<div><div class="lbl" style="margin-bottom:5px">관계의 근거</div>
+      <blockquote class="quote">${withRel.sample.text}
+      <cite>${withRel.sample.year}년 · ${n.id}—${withRel.o.id} → <b style="color:var(--${withRel.rel})">${withRel.rel}</b></cite></blockquote></div>` : ""}
+    <div><div class="lbl" style="margin-bottom:5px">이어진 것 ${rel.length}</div>
       <div class="rel">${rel.map(r => `<button type="button" data-id="${r.o.id}">
         <span class="dot" style="background:var(${KIND[r.o.kind].css})"></span>${r.o.id}
-        <span class="bar"><span style="display:block;height:100%;border-radius:2px;width:${r.w / max * 100}%;background:var(${KIND[r.o.kind].css})"></span></span>
-        <span class="w">${r.w}</span></button>`).join("")}</div>
-    </div>`;
+        ${r.rel ? `<span class="kind" style="color:var(--${r.rel})">${r.rel}</span>` : ""}
+        <span class="w">${r.w}</span></button>`).join("")}</div></div>`;
   d.querySelectorAll("[data-id]").forEach(b => b.onclick = () => select(byId.get(b.dataset.id)));
   d.scrollTop = 0;
 }
 
-resize(); setYear();
-select(byId.get("미국") || nodes[0]);
+document.getElementById("note").innerHTML =
+  `백서 문장 <b>${DATA.meta.sentences.toLocaleString()}개</b>에서 뽑았습니다.<br>
+   선은 <b>한 문장 안에 함께 나온 것</b>이고, 그중 관계 종류가 붙은 것은
+   <b>${links.filter(l => l.rel).length}개</b>입니다.<br><br>
+   표본 15개를 원문과 대조한 결과 <b>정확도 87%</b>,
+   아는 사실 18건 채점 <b>17건 통과</b>.<br>
+   나머지는 나열 문장이라 관계로 보지 않았습니다.`;
+
+resize(); setScope(); layout();
+select(byId.get("북한") || nodes[0]);
 </script>
