@@ -79,6 +79,43 @@ def contexts_for(node: dict, g: Graph, k: int) -> list[dict]:
     return node.get("docs", [])[:k]
 
 
+def graph_facts(node: dict, g: Graph) -> str:
+    """지식그래프가 **세어서 아는 것**을 근거 문장 하나로 만든다.
+
+    2026-08-16 에 문장만 근거로 넣었다가 물음 넷 중 셋이 답할 수 없었다.
+    '가장 많이 나온 해는?' 같은 물음은 발췌 여섯 문장으로는 셀 수 없다 —
+    모델은 정직하게 "알 수 없습니다"라고 답했고, 그건 모델 잘못이 아니라
+    시험 설계 잘못이었다.
+
+    그래프가 주는 것은 두 가지다. **원문 문장**과 **집계된 사실**. 집계야말로
+    지식그래프의 값어치인데 그것을 빼놓고 시험을 낸 셈이었다."""
+    y = node["byYear"]
+    rate = node.get("rateByYear", {})
+    adm = sorted(node["byAdmin"].items(), key=lambda x: -x[1])
+    top_years = sorted(y.items(), key=lambda x: -x[1])[:5]
+    partners = sorted(
+        ((l["target"] if l["source"] == node["id"] else l["source"], l["weight"], l.get("rel"))
+         for l in g.links if node["id"] in (l["source"], l["target"])),
+        key=lambda t: -t[1])[:6]
+
+    lines = [f"[지식그래프 집계 — {node['id']} ({KIND_KO[node['kind']]})]",
+             f"백서 전체에서 {node['total']:,}회 나옵니다 "
+             f"({node['first']}년 ~ {node['last']}년)."]
+    lines.append("가장 많이 나온 해: " +
+                 " · ".join(f"{yr}년 {c}회" for yr, c in top_years) +
+                 f" — 최다는 {node['peak']}년입니다.")
+    if rate:
+        lines.append(f"백서 분량을 감안하면 {node['peakRate']}년이 가장 높습니다 "
+                     "(해마다 백서 두께가 달라 만 문장당으로 환산한 값).")
+    lines.append("정부별: " + " · ".join(f"{a} {c:,}회" for a, c in adm[:5]) +
+                 f" — 가장 많이 다룬 정부는 {adm[0][0]}입니다." if adm else "")
+    if partners:
+        lines.append("같은 문장에 함께 나온 것: " +
+                     " · ".join(f"{n} {w}회" + (f"({r})" if r else "") for n, w, r in partners) +
+                     f" — 가장 자주 함께 나온 것은 {partners[0][0]}입니다.")
+    return "\n".join(x for x in lines if x)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=OUT)
@@ -108,9 +145,12 @@ def main() -> None:
                     truth = None
                 if truth is None:      # 정답을 만들 수 없으면 묻지 않는다
                     continue
+            # 집계 사실을 **맨 앞**에 둔다. 셈으로 답하는 물음이 절반이므로
+            # 그것부터 보이는 편이 자연스럽다.
+            ctx = [graph_facts(n, g)] + [x["text"] for x in docs]
             rows.append({
                 "question": tmpl.format(e=n["id"]),
-                "contexts": [x["text"] for x in docs],
+                "contexts": ctx,
                 "answer": "",                       # RAG 파이프라인이 채운다
                 "ground_truth": truth or "",
                 "meta": {
