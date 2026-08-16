@@ -135,6 +135,9 @@ ENG_RATIO_MIN = 0.10
 # 관계 종류를 붙일 조건. 과반이 한 쪽이고, 그 근거가 세 문장 이상일 때만.
 REL_CONF_MIN = 0.60
 REL_COUNT_MIN = 3
+# 개체 하나에 붙일 근거 문장 수. 한 해에서 너무 많이 가져오면 편중된다.
+DOCS_PER_YEAR = 3
+DOCS_PER_NODE = 24
 
 
 def build_alias_map(groups: dict) -> list[tuple[str, str]]:
@@ -231,16 +234,23 @@ def main() -> None:
 
     country_alias = build_alias_map(COUNTRIES)
     org_alias = build_alias_map(ORGS)
+    ALIASES = {**COUNTRIES, **ORGS}
 
     mentions: dict[str, Counter] = defaultdict(Counter)
     kind_of: dict[str, str] = {}
     admin_of: dict[str, Counter] = defaultdict(Counter)
     eng_of: Counter = Counter()
+    # 실제 원문에 **어떤 모양으로** 쓰였는지 기록한다. '인태전략'으로 모았지만
+    # 원문에는 '인태 전략'이라 적혀 있어, 화면이 표시할 곳을 못 찾았다.
+    surfaces: dict[str, Counter] = defaultdict(Counter)
     edges: Counter = Counter()
     edge_years: dict[tuple, Counter] = defaultdict(Counter)
     edge_kinds: dict[tuple, Counter] = defaultdict(Counter)
     edge_sample: dict[tuple, dict] = {}
-    sample_of: dict[str, tuple] = {}
+    # 개체마다 **근거 문장**을 모은다. 지식그래프는 "그래서 어디에 그렇게
+    # 쓰여 있나"에 답할 수 있어야 한다. 답할 수 없으면 그림일 뿐이다.
+    # 해마다 골고루 담는다 — 한 해 것만 잔뜩 있으면 흐름을 못 본다.
+    docs_of: dict[str, dict[int, list]] = defaultdict(lambda: defaultdict(list))
     year_admin: dict[int, str] = {}
     sent_per_year: Counter = Counter()
     n_sent = 0
@@ -279,6 +289,7 @@ def main() -> None:
                 for w0 in find_named(text, kind):
                     w = canon_name(w0)
                     found.add(w); kind_of[w] = kind
+                    surfaces[w][w0] += 1
                     i = text.find(w0) + len(w0)
                     if _ENG.search(text[i:i + 70]):
                         eng_of[w] += 1
@@ -286,8 +297,13 @@ def main() -> None:
             for name in found:
                 mentions[name][year] += 1
                 admin_of[name][admin] += 1
-                if name not in sample_of and 40 < len(text) < 220:
-                    sample_of[name] = (year, admin, text)
+                if 45 < len(text) < 300 and len(docs_of[name][year]) < DOCS_PER_YEAR:
+                    docs_of[name][year].append({
+                        "year": year, "admin": admin, "text": text,
+                        "chapter": r.get("장"), "section": r.get("절"),
+                        "page": r.get("인쇄쪽") or r.get("쪽"),
+                        "src": r.get("출처파일"), "id": r.get("id"),
+                    })
 
             ordered = sorted(found)
             for i, a in enumerate(ordered):
@@ -357,10 +373,21 @@ def main() -> None:
         # **분량 보정.** 해마다 백서 두께가 다르다(2004년 276문장, 2012년 2,080문장).
         # 그대로 세면 '그 해 백서가 두꺼웠나'를 재는 셈이 된다.
         rate = {str(y): round(c / sent_per_year[y] * 10000, 1) for y, c in sorted(cnt.items())}
-        s = sample_of.get(name)
+        # 해마다 하나씩 돌아가며 뽑아 시기가 골고루 섞이게 한다
+        pool, ys = [], sorted(docs_of[name])
+        for i in range(DOCS_PER_YEAR):
+            for y in ys:
+                if i < len(docs_of[name][y]):
+                    pool.append(docs_of[name][y][i])
+        docs = pool[:DOCS_PER_NODE]
         adm = admin_of[name]
+        # 화면이 원문에 표시를 하려면 **어떤 말로 쓰였는지** 알아야 한다.
+        # 'UN' 이 든 문장이 '유엔' 노드에 붙는데, 그 문장에 '유엔'이라는
+        # 글자는 없다(2026-08-16: 1,277개 원문 중 422개가 그랬다).
+        aliases = sorted(set(ALIASES.get(name) or ([name] + [w for w, _ in surfaces[name].most_common(6)])),
+                         key=len, reverse=True)
         nodes.append({
-            "id": name, "kind": kind,
+            "id": name, "kind": kind, "aliases": aliases,
             "total": sum(cnt.values()),
             "byYear": {str(y): c for y, c in sorted(cnt.items())},
             "rateByYear": rate,
@@ -369,7 +396,8 @@ def main() -> None:
             "first": min(cnt), "last": max(cnt),
             "peak": max(cnt, key=cnt.get),
             "peakRate": max(rate, key=rate.get),
-            "sample": {"year": s[0], "admin": s[1], "text": s[2]} if s else None,
+            "docs": docs,
+            "docCount": sum(len(v) for v in docs_of[name].values()),
         })
 
     # ── 선 ──────────────────────────────────────────────────────────────────

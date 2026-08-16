@@ -94,6 +94,19 @@ canvas:active{cursor:grabbing}
 .rel .w{margin-left:auto;color:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums}
 .rel .kind{font-size:9.5px;padding:0 5px;border-radius:9px;border:1px solid currentColor;flex:0 0 auto}
 .empty{color:var(--ink-3);font-size:12px;line-height:1.7}
+.docs{display:flex;flex-direction:column;gap:0}
+.doc{border-top:1px solid var(--line-soft);padding:9px 0}
+.doc:first-child{border-top:0}
+.doc p{margin:0;font-size:12px;line-height:1.68;color:var(--ink)}
+.doc .meta{display:flex;gap:6px;flex-wrap:wrap;font-size:9.5px;color:var(--ink-3);
+  margin-top:5px;font-variant-numeric:tabular-nums}
+.doc .meta b{color:var(--ink-2);font-weight:600}
+.doc mark{background:color-mix(in srgb,currentColor 18%,transparent);color:inherit;
+  border-radius:2px;padding:0 1px}
+.more{border:1px solid var(--line-soft);border-radius:6px;background:none;color:var(--ink-2);
+  font:inherit;font-size:11.5px;padding:6px;cursor:pointer;width:100%}
+.more:hover{border-color:var(--line);color:var(--ink)}
+.more:focus-visible{outline:2px solid var(--ink-2);outline-offset:1px}
 </style>
 
 <div class="wrap">
@@ -216,6 +229,7 @@ const periodEl = document.getElementById("periods");
 function goto(nextAdmin, nextYear) {
   admin = nextAdmin; year = nextYear;
   renderPeriods(); setScope(); layout();
+  if (sel) { docLimit = 5; renderDocs(sel); }
 }
 
 function renderPeriods() {
@@ -392,7 +406,7 @@ cv.onwheel = e => { e.preventDefault(); k = Math.max(.25, Math.min(4, k*Math.exp
 
 /* ── 자세히 ── */
 function select(n) {
-  sel = n;
+  sel = n; docLimit = 5;
   const d = document.getElementById("detail");
   if (!n) { d.innerHTML = `<p class="empty">점을 고르면 여기에 자세히 나옵니다.</p>`; return; }
   const rel = shownL.filter(l => l.s===n || l.t===n)
@@ -420,6 +434,7 @@ function select(n) {
       <div class="yr"><span>${years[0]}</span><span>${years[years.length-1]}</span></div></div>
     <div><div class="lbl" style="margin-bottom:5px">많이 다룬 정권</div>
       <div class="sub" style="margin:0">${adm.map(([a,c]) => `${a} ${c.toLocaleString()}`).join(" · ")}</div></div>
+    <div id="docs"></div>
     ${withRel ? `<div><div class="lbl" style="margin-bottom:5px">관계의 근거</div>
       <blockquote class="quote">${withRel.sample.text}
       <cite>${withRel.sample.year}년 · ${n.id}—${withRel.o.id} → <b style="color:var(--${withRel.rel})">${withRel.rel}</b></cite></blockquote></div>` : ""}
@@ -428,8 +443,47 @@ function select(n) {
         <span class="dot" style="background:var(${KIND[r.o.kind].css})"></span>${r.o.id}
         ${r.rel ? `<span class="kind" style="color:var(--${r.rel})">${r.rel}</span>` : ""}
         <span class="w">${r.w}</span></button>`).join("")}</div></div>`;
+  renderDocs(n);
   d.querySelectorAll("[data-id]").forEach(b => b.onclick = () => select(byId.get(b.dataset.id)));
   d.scrollTop = 0;
+}
+
+/* 근거 원문 — 지식그래프의 점이 '어디에 그렇게 쓰여 있나'를 보여준다.
+   그래프만 있고 원문이 없으면 확인할 길이 없다. */
+let docLimit = 5;
+function renderDocs(n) {
+  const host = document.getElementById("docs");
+  if (!host) return;
+  const scope = d => (!year && !admin) || (year ? d.year === year : d.admin === admin);
+  const all = (n.docs || []).filter(scope);
+  if (!all.length) {
+    // '아예 안 나왔다'와 '데모에 안 담았다'는 다르다. 섞으면 오해한다.
+    const c = cnt(n);
+    host.innerHTML = `<div class="lbl" style="margin-bottom:5px">원문</div>
+      <p class="empty">${c > 0
+        ? `이 시기에 ${c}번 나오지만, 데모에는 원문을 담지 않았습니다.`
+        : "이 시기에는 나오지 않습니다."}</p>`;
+    return;
+  }
+  const list = all.slice(0, docLimit);
+  // 이름에 표시를 한다. 정규식 대신 쪼개서 붙인다 — 이름에 특수문자가
+  // 들어 있어도 안전하고, 이스케이프를 틀릴 일이 없다.
+  const esc = t => t.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  // 별칭까지 표시한다 — 'UN' 이 든 문장도 '유엔' 노드의 근거다
+  const hl = t => (n.aliases || [n.id]).reduce(
+    (acc, a) => acc.split(a).join(`${a}`), esc(t))
+    .split("").join("<mark>").split("").join("</mark>");
+  host.innerHTML = `
+    <div class="lbl" style="margin-bottom:5px">원문 ${all.length}${all.length < n.docCount ? ` / 전체 ${n.docCount}` : ""}</div>
+    <div class="docs">${list.map(x => `<div class="doc">
+      <p>${hl(x.text)}</p>
+      <div class="meta"><b>${x.year}년</b> ${x.admin} 정권
+        ${x.chapter ? `· ${x.chapter}장` : ""}${x.section ? ` ${x.section}절` : ""}
+        ${x.page ? `· ${x.page}쪽` : ""} · ${x.src}</div></div>`).join("")}</div>
+    ${all.length > list.length
+      ? `<button class="more" type="button" id="moreDocs">더 보기 (${all.length - list.length}개 남음)</button>` : ""}`;
+  const m = document.getElementById("moreDocs");
+  if (m) m.onclick = () => { docLimit += 10; renderDocs(n); };
 }
 
 document.getElementById("note").innerHTML =
