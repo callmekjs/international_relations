@@ -87,12 +87,18 @@ def main() -> None:
         # 대조를 못 한다고 그냥 통과시키면 지어내도 아무도 모른다. 그래서
         # **대신 지켜야 할 것**을 요구한다 — 어느 파일 몇 쪽인지 정확히 적을 것.
         # 누구든 그 쪽을 열어 눈으로 확인할 수 있으면 근거는 성립한다.
-        if "from-scan" in (r.get("flags") or ""):
+        # from-scan  스캔을 사람이 읽은 줄(1989~1991)
+        # page-cited  대조용 글월에 안 담긴 쪽을 인용한 줄(2016년 제3~7장 —
+        #             extract.py 는 제1·2장만 읽는다)
+        # 둘 다 **쪽으로 근거를 대는** 방식이다. 글월 대조를 못 하는 대신
+        # 사람이 열어볼 자리를 반드시 남긴다.
+        flags = r.get("flags") or ""
+        if "from-scan" in flags or "page-cited" in flags:
             checked += 1
             if not (r.get("srcEdition") or "").strip():
-                failures.append((r["id"], "from-scan 인데 srcEdition 이 없다"))
+                failures.append((r["id"], "쪽으로 근거를 대는 줄인데 srcEdition 이 없다"))
             if not (r.get("srcPage") or "").strip():
-                failures.append((r["id"], "from-scan 인데 srcPage 가 없다 — "
+                failures.append((r["id"], "쪽으로 근거를 대는 줄인데 srcPage 가 없다 — "
                                           "사람이 열어볼 쪽을 반드시 적는다"))
             for field in ("title", "quote"):
                 if not (r.get(field) or "").strip():

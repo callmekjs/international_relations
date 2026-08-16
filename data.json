@@ -6,7 +6,7 @@
     "coverage": {
       "from": 1989,
       "to": 2025,
-      "withPriorities": 35,
+      "withPriorities": 37,
       "total": 37
     }
   },
@@ -545,13 +545,13 @@
       "section": {
         "chapter": 1,
         "section": 2,
-        "label": "외교정책 기조",
+        "label": "제2~7장 배열",
         "page": null
       },
-      "markStyle": null,
-      "status": "blocked",
+      "markStyle": "heading",
+      "status": "partial",
       "sourceFiles": [],
-      "note": "**원본 PDF에 인쇄 22~23쪽 결손.** 제1장은 21쪽에서 끝나고 제2장은 24쪽에서 시작한다. MANIFEST 미기록 결함. 다른 소장처 필요"
+      "note": "제1장은 「2016년 국제 정세」 하나뿐이라 「외교정책 기조」 절이 없다. 대신 **장 배열이 그 해의 우선순위**다(제2~7장). extract.py 는 제1·2장만 읽으므로 장 표지 쪽을 인용해 근거를 댄다"
     },
     {
       "coverageYear": 2017,
@@ -638,13 +638,13 @@
       "section": {
         "chapter": null,
         "section": null,
-        "label": null,
+        "label": "제2~8장 배열",
         "page": null
       },
-      "markStyle": null,
-      "status": "no-section",
+      "markStyle": "heading",
+      "status": "verified",
       "sourceFiles": [],
-      "note": "**「외교정책 기조」 절이 이 판에 없다.** 편제가 바뀌어 제1장이 「2021년 국제정세」 하나뿐이고 제2장부터 코로나19·한반도·지역 외교로 넘어간다. 못 채운 것이 아니라 원래 없는 것이다"
+      "note": "편제가 바뀌어 「외교정책 기조」 절이 없다. 대신 **장 배열이 그 해의 우선순위**다(제2~8장). 장 제목은 대조용 원문에 그대로 있어 전건 대조했다"
     },
     {
       "coverageYear": 2022,
@@ -3321,6 +3321,114 @@
       ]
     },
     {
+      "id": "2016-1",
+      "coverageYear": 2016,
+      "ordinal": 1,
+      "ordinalSource": "장 배열",
+      "title": "한반도 평화와 안정 유지",
+      "quote": "제2장 한반도 평화와 안정 유지",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 2,
+        "section": null,
+        "page": 24
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-2",
+      "coverageYear": 2016,
+      "ordinal": 2,
+      "ordinalSource": "장 배열",
+      "title": "글로벌 네트워크 확대",
+      "quote": "제3장 글로벌 네트워크 확대",
+      "stream": "regional",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 3,
+        "section": null,
+        "page": 60
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-3",
+      "coverageYear": 2016,
+      "ordinal": 3,
+      "ordinalSource": "장 배열",
+      "title": "경제협력 역량 강화",
+      "quote": "제4장 경제협력 역량 강화",
+      "stream": "economy",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 4,
+        "section": null,
+        "page": 105
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-4",
+      "coverageYear": 2016,
+      "ordinal": 4,
+      "ordinalSource": "장 배열",
+      "title": "국제사회 내 역할 확대 및 위상 제고",
+      "quote": "제5장 국제사회 내 역할 확대 및 위상 제고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 5,
+        "section": null,
+        "page": 142
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-5",
+      "coverageYear": 2016,
+      "ordinal": 5,
+      "ordinalSource": "장 배열",
+      "title": "대국민 서비스 확충",
+      "quote": "제6장 대국민 서비스 확충",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 6,
+        "section": null,
+        "page": 170
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-6",
+      "coverageYear": 2016,
+      "ordinal": 6,
+      "ordinalSource": "장 배열",
+      "title": "효과적인 선진외교 수행 체제 구축",
+      "quote": "제7장 효과적인 선진외교 수행 체제 구축",
+      "stream": "capacity",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 7,
+        "section": null,
+        "page": 200
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
       "id": "2017-1",
       "coverageYear": 2017,
       "ordinal": 1,
@@ -3630,6 +3738,118 @@
         "chapter": 1,
         "section": 2,
         "page": 25
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-1",
+      "coverageYear": 2021,
+      "ordinal": 1,
+      "ordinalSource": "장 배열",
+      "title": "코로나19 극복을 위한 외교",
+      "quote": "제2장 코로나19 극복을 위한 외교",
+      "stream": "global-role",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 2,
+        "section": null,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-2",
+      "coverageYear": 2021,
+      "ordinal": 2,
+      "ordinalSource": "장 배열",
+      "title": "한반도 평화와 역내 협력",
+      "quote": "제3장 한반도 평화와 역내 협력",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 3,
+        "section": null,
+        "page": 34
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-3",
+      "coverageYear": 2021,
+      "ordinal": 3,
+      "ordinalSource": "장 배열",
+      "title": "지역 외교",
+      "quote": "제4장 지역 외교",
+      "stream": "regional",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 4,
+        "section": null,
+        "page": 60
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-4",
+      "coverageYear": 2021,
+      "ordinal": 4,
+      "ordinalSource": "장 배열",
+      "title": "경제-안보-기술 융합외교",
+      "quote": "제5장 경제-안보-기술 융합외교",
+      "stream": "economy",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 5,
+        "section": null,
+        "page": 114
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-5",
+      "coverageYear": 2021,
+      "ordinal": 5,
+      "ordinalSource": "장 배열",
+      "title": "다자외교 및 개발협력",
+      "quote": "제6장 다자외교 및 개발협력",
+      "stream": "global-role",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 6,
+        "section": null,
+        "page": 146
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-6",
+      "coverageYear": 2021,
+      "ordinal": 6,
+      "ordinalSource": "장 배열",
+      "title": "국민과 함께하는 외교",
+      "quote": "제7장 국민과 함께하는 외교",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 7,
+        "section": null,
+        "page": 180
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-7",
+      "coverageYear": 2021,
+      "ordinal": 7,
+      "ordinalSource": "장 배열",
+      "title": "외교역량 강화 노력",
+      "quote": "제8장 외교역량 강화 노력",
+      "stream": "capacity",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 8,
+        "section": null,
+        "page": 218
       },
       "flags": []
     },
@@ -4093,10 +4313,12 @@
         "2013-1",
         "2014-1",
         "2015-2",
+        "2016-1",
         "2017-2",
         "2018-1",
         "2019-1",
         "2020-2",
+        "2021-2",
         "2022-1",
         "2023-1",
         "2024-1",
@@ -4153,10 +4375,12 @@
         "2009-3",
         "2010-2",
         "2013-3",
+        "2016-2",
         "2017-3",
         "2018-3",
         "2019-3",
         "2020-4",
+        "2021-3",
         "2022-3",
         "2023-3",
         "2023-4",
@@ -4197,6 +4421,8 @@
         "2013-6",
         "2014-5",
         "2015-4",
+        "2016-3",
+        "2021-4",
         "2022-5",
         "2023-5",
         "2024-6",
@@ -4229,8 +4455,11 @@
         "2013-4",
         "2014-3",
         "2015-3",
+        "2016-4",
         "2017-4",
         "2020-5",
+        "2021-1",
+        "2021-5",
         "2022-4",
         "2023-6",
         "2025-6"
@@ -4260,6 +4489,7 @@
         "2013-5",
         "2014-4",
         "2015-5",
+        "2016-5",
         "2018-4",
         "2019-4",
         "2020-1",
@@ -4285,7 +4515,8 @@
         "2006-5",
         "2011-5",
         "2015-6",
-        "2017-5"
+        "2017-5",
+        "2021-6"
       ]
     },
     {
@@ -4302,6 +4533,8 @@
         "2009-6",
         "2010-7",
         "2011-6",
+        "2016-6",
+        "2021-7",
         "2025-1"
       ]
     },
