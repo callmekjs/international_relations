@@ -1,0 +1,313 @@
+{
+  "meta": {
+    "coverageYear": 2025,
+    "title": "2025년도 국제정세와 외교활동",
+    "publishedYear": 2026,
+    "administration": "이재명",
+    "status": "verified",
+    "sourceFile": "2025년도 국제정세와 외교활동.pdf",
+    "sourcePath": "data/2025/2025년도 국제정세와 외교활동.pdf",
+    "extractionPath": "text/2025.txt",
+    "sourceBytes": 40276562,
+    "sourceMegabytes": 38.4,
+    "pageCount": 171,
+    "chapter": 1,
+    "section": 2,
+    "sectionLabel": "외교정책 기조",
+    "externalDataUsed": false,
+    "methodVersion": "2025-single-year-v1"
+  },
+  "summary": {
+    "priorityCount": 7,
+    "priorityBodyWords": 1460,
+    "topThreeWordShare": 57.1,
+    "policySectionCharacters": 5317,
+    "documentCharacters": 217725,
+    "longestPriorityId": "2025-2"
+  },
+  "priorities": [
+    {
+      "id": "2025-1",
+      "ordinal": 1,
+      "title": "국익 중심 실용외교 기반 구축",
+      "streamId": "capacity",
+      "streamLabel": "외교역량",
+      "characters": 520,
+      "words": 150,
+      "quote": "이러한 기조 하에서 정부는 첫째, 국익 기반의 전략적 파트너십을 확대해왔다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 22
+      },
+      "flags": [],
+      "wordShare": 10.3
+    },
+    {
+      "id": "2025-2",
+      "ordinal": 2,
+      "title": "주변국 관계의 신속한 안정화",
+      "streamId": "neighbors",
+      "streamLabel": "주변국·동맹",
+      "characters": 1310,
+      "words": 405,
+      "quote": "2025년은 한·미 양국의 신 정부가 출범한 해로, 우리 정부는 한미동맹을 미래형 포괄적 전략동맹으로 격상시켜 나가기 위해 그 어느 때보다 활발한 고위급 교류를 전개하였다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [],
+      "wordShare": 27.7
+    },
+    {
+      "id": "2025-3",
+      "ordinal": 3,
+      "title": "외교다변화를 통한 전략적 지평 확장",
+      "streamId": "regional",
+      "streamLabel": "지역 다변화",
+      "characters": 770,
+      "words": 243,
+      "quote": "3. 외교다변화를 통한 전략적 지평 확장",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": [
+        "heading-only"
+      ],
+      "wordShare": 16.6
+    },
+    {
+      "id": "2025-4",
+      "ordinal": 4,
+      "title": "북핵문제 해결과 한반도 평화체제를 향한 실질적 진전",
+      "streamId": "peninsula",
+      "streamLabel": "한반도·북핵",
+      "characters": 504,
+      "words": 156,
+      "quote": "이재명 대통령은 한반도의 지속가능한 평화를 위해 2025년 8·15 경축사 계기 북한의 체제를 존중하고, 어떠한 형태의 흡수통일도 추구하지 않으며, 일체의 적대행위를 할 뜻이 없음을 천명하였다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [],
+      "wordShare": 10.7
+    },
+    {
+      "id": "2025-5",
+      "ordinal": 5,
+      "title": "경제외교 및 과학기술 역량 강화",
+      "streamId": "economy",
+      "streamLabel": "경제·통상",
+      "characters": 521,
+      "words": 150,
+      "quote": "기존의 국제 경제질서가 흔들리고 글로벌 공급망이 재편되는 상황에서 외교부는 대외 충격에 대한 효과적 대응 기반을 마련하고, 기업 체감형 경제외교를 구현하기 위해 노력하였다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 26
+      },
+      "flags": [],
+      "wordShare": 10.3
+    },
+    {
+      "id": "2025-6",
+      "ordinal": 6,
+      "title": "글로벌 책임강국 실현을 통한 국격 제고",
+      "streamId": "global-role",
+      "streamLabel": "국제기구·국격",
+      "characters": 595,
+      "words": 171,
+      "quote": "정부는 2025년 G7 정상회의, 유엔총회, ASEAN 정상회의, G20 정상회의 참석과 APEC 정상회의의 성공적 개최 등 주요 다자회의 일정을 통해 국제사회에서 우리의 위상을 더욱 높여나갔다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 26
+      },
+      "flags": [],
+      "wordShare": 11.7
+    },
+    {
+      "id": "2025-7",
+      "ordinal": 7,
+      "title": "촘촘한 재외국민 보호 및 권익 증진",
+      "streamId": "overseas-koreans",
+      "streamLabel": "재외국민",
+      "characters": 609,
+      "words": 185,
+      "quote": "해외위난 상황이 보다 복잡하고 다양해진 상황 속에서 정부는 재외국민의 생명과 재산을 보호하기 위하여 다양한 노력을 기울이고 있다.",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 27
+      },
+      "flags": [],
+      "wordShare": 12.7
+    }
+  ],
+  "actors": [
+    {
+      "id": "north-korea",
+      "label": "북한",
+      "variants": "북한·남북·대북·북핵",
+      "policySection": 9,
+      "fullDocument": 172
+    },
+    {
+      "id": "united-states",
+      "label": "미국",
+      "variants": "미국·한미·미측",
+      "policySection": 18,
+      "fullDocument": 357
+    },
+    {
+      "id": "china",
+      "label": "중국",
+      "variants": "중국·한중·미중",
+      "policySection": 8,
+      "fullDocument": 204
+    },
+    {
+      "id": "japan",
+      "label": "일본",
+      "variants": "일본·한일·미일",
+      "policySection": 10,
+      "fullDocument": 225
+    },
+    {
+      "id": "russia",
+      "label": "러시아",
+      "variants": "러시아·한러·러북",
+      "policySection": 4,
+      "fullDocument": 75
+    },
+    {
+      "id": "asean",
+      "label": "아세안",
+      "variants": "아세안·ASEAN",
+      "policySection": 5,
+      "fullDocument": 183
+    },
+    {
+      "id": "un",
+      "label": "유엔",
+      "variants": "유엔·UN",
+      "policySection": 6,
+      "fullDocument": 320
+    },
+    {
+      "id": "g7",
+      "label": "G7",
+      "variants": "G7",
+      "policySection": 7,
+      "fullDocument": 58
+    },
+    {
+      "id": "g20",
+      "label": "G20",
+      "variants": "G20",
+      "policySection": 4,
+      "fullDocument": 51
+    },
+    {
+      "id": "apec",
+      "label": "APEC",
+      "variants": "APEC",
+      "policySection": 3,
+      "fullDocument": 133
+    },
+    {
+      "id": "global-south",
+      "label": "글로벌 사우스",
+      "variants": "글로벌 사우스",
+      "policySection": 4,
+      "fullDocument": 14
+    },
+    {
+      "id": "eu",
+      "label": "EU",
+      "variants": "유럽연합·EU",
+      "policySection": 0,
+      "fullDocument": 85
+    }
+  ],
+  "concepts": [
+    {
+      "label": "협력",
+      "count": 39
+    },
+    {
+      "label": "안보",
+      "count": 18
+    },
+    {
+      "label": "정상회의",
+      "count": 15
+    },
+    {
+      "label": "경제",
+      "count": 12
+    },
+    {
+      "label": "국민",
+      "count": 11
+    },
+    {
+      "label": "국제사회",
+      "count": 11
+    },
+    {
+      "label": "평화",
+      "count": 9
+    },
+    {
+      "label": "AI",
+      "count": 8
+    },
+    {
+      "label": "국익",
+      "count": 7
+    },
+    {
+      "label": "공급망",
+      "count": 6
+    },
+    {
+      "label": "실용",
+      "count": 6
+    },
+    {
+      "label": "기술",
+      "count": 5
+    },
+    {
+      "label": "다자",
+      "count": 3
+    },
+    {
+      "label": "위기",
+      "count": 2
+    }
+  ],
+  "methodology": {
+    "actorUnit": "선정한 표기와 결합어의 출현 횟수",
+    "lengthUnit": "제목·반복 머리글을 제외한 뒤 공백으로 나눈 어절 수",
+    "policyScope": "제1장 제2절 외교정책 기조",
+    "documentScope": "2025년도 국제정세와 외교활동 전체 추출문",
+    "cautions": [
+      "우선순위 번호는 백서에 인쇄된 순서이며 별도의 점수로 바꾸지 않았다.",
+      "본문 분량과 표기 횟수는 문서 편집상의 강조를 보여주지만 정책 성과나 예산을 뜻하지 않는다.",
+      "행위자 집계는 공개된 표기 사전에 따른 기계적 출현 횟수이며 문맥의 긍정·부정은 판정하지 않는다."
+    ]
+  }
+}

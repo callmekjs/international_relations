@@ -1,0 +1,4935 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "buildVersion": "v1.0",
+    "builtAt": "2026-08-16",
+    "coverage": {
+      "from": 1989,
+      "to": 2025,
+      "withPriorities": 37,
+      "total": 37
+    }
+  },
+  "editions": [
+    {
+      "coverageYear": 1989,
+      "title": "1990 외교백서",
+      "publishedYear": 1990,
+      "administration": "노태우",
+      "brand": "제6공화국",
+      "section": {
+        "chapter": 1,
+        "section": 3,
+        "label": "1989년도 외교시책",
+        "page": null
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "1990 외교백서 제1장.pdf"
+      ],
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어(300·500dpi × psm 3·4·6 전부 시험, 핵심어 6개 중 1개) 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
+    },
+    {
+      "coverageYear": 1990,
+      "title": "1991 외교백서",
+      "publishedYear": 1991,
+      "administration": "노태우",
+      "brand": "제6공화국",
+      "section": {
+        "chapter": 1,
+        "section": 3,
+        "label": "1990년도 외교시책",
+        "page": null
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "1991 외교백서 제1장.pdf"
+      ],
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
+    },
+    {
+      "coverageYear": 1991,
+      "title": "1992 외교백서",
+      "publishedYear": 1992,
+      "administration": "노태우",
+      "brand": "제6공화국",
+      "section": {
+        "chapter": 1,
+        "section": 3,
+        "label": "1991년도 주요 시책",
+        "page": null
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "1992 외교백서 제1장.pdf"
+      ],
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
+    },
+    {
+      "coverageYear": 1992,
+      "title": "1993 외교백서",
+      "publishedYear": 1993,
+      "administration": "노태우",
+      "brand": "제6공화국",
+      "section": {
+        "chapter": 2,
+        "section": 3,
+        "label": "1992년도 외교시책",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "1993 외교백서 머리말_목차.pdf",
+        " 1993 외교백서 부록.pdf",
+        " 1993 외교백서 제1장.pdf 외"
+      ],
+      "note": "노태우 정부 마지막 대상연도. 이 해가 있어야 노태우→김영삼 비교가 선다"
+    },
+    {
+      "coverageYear": 1993,
+      "title": "1994 외교백서",
+      "publishedYear": 1994,
+      "administration": "김영삼",
+      "brand": "문민정부",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "1993년도 주요정책 목표",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "1994 외교백서 머리말_목차.pdf",
+        " 1994 외교백서 부록.pdf",
+        " 1994 외교백서 제1장.pdf 외"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 1994,
+      "title": "1995 외교백서",
+      "publishedYear": 1995,
+      "administration": "김영삼",
+      "brand": "문민정부",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "1994년도 주요 외교정책 목표",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "1995 외교백서 머리말.pdf",
+        " 1995 외교백서 부록.pdf",
+        " 1995 외교백서 제1장.pdf 외"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 1995,
+      "title": "1996 외교백서",
+      "publishedYear": 1996,
+      "administration": "김영삼",
+      "brand": "문민정부",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "1995년도 주요 외교정책 목표",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "1996 외교백서 머리말_목차.pdf",
+        " 1996 외교백서 제1장.pdf",
+        " 1996 외교백서 제2장.pdf 외"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 1996,
+      "title": "1997 외교백서",
+      "publishedYear": 1997,
+      "administration": "김영삼",
+      "brand": "문민정부",
+      "section": {
+        "chapter": 2,
+        "section": 2,
+        "label": "1996년도 주요 외교시책",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "1997 외교백서 머리말_목차.pdf",
+        " 1997 외교백서 부록.pdf",
+        " 1997 외교백서 제1장.pdf 외"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 1997,
+      "title": "1998 외교백서",
+      "publishedYear": 1998,
+      "administration": "김영삼",
+      "brand": "문민정부",
+      "section": {
+        "chapter": 2,
+        "section": 2,
+        "label": "1997년도 주요 외교시책",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "1998 외교백서 머리말.doc",
+        " 1998 외교백서 제1장.doc",
+        " 1998 외교백서 제2장.doc 외"
+      ],
+      "note": "김영삼 정부 마지막 대상연도. IMF 외환위기가 터진 해"
+    },
+    {
+      "coverageYear": 1998,
+      "title": "1999 외교백서",
+      "publishedYear": 1999,
+      "administration": "김대중",
+      "brand": "국민의 정부",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "1998년도 외교정책 기조",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "1999 외교백서 제2장.doc"
+      ],
+      "note": "4대 기조. **한반도가 1번이 아니라 2번이다** — IMF 직후라 경제위기 극복이 앞에 온다"
+    },
+    {
+      "coverageYear": 1999,
+      "title": "2000 외교백서",
+      "publishedYear": 2000,
+      "administration": "김대중",
+      "brand": "국민의 정부",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "1999년도 외교정책 기조",
+        "page": null
+      },
+      "markStyle": "inline-lead",
+      "status": "verified",
+      "sourceFiles": [
+        "2000 외교백서 제2장.hwp"
+      ],
+      "note": "주요 외교목표를 먼저 서술하고 '주요외교정책 과제' 5개를 문장 속에 나열한다"
+    },
+    {
+      "coverageYear": 2000,
+      "title": "2001 외교백서",
+      "publishedYear": 2001,
+      "administration": "김대중",
+      "brand": "국민의 정부",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "2000년도 외교정책 기조",
+        "page": null
+      },
+      "markStyle": "prose",
+      "status": "verified",
+      "sourceFiles": [
+        "2001 외교백서 제2장.hwp"
+      ],
+      "note": "기조 절은 산문이고 '10가지 과제'라 하는데 나열된 구는 11개다. 번호는 제2절 시책(5개)에서 가져왔다 — 두 셈이 맞지 않는다"
+    },
+    {
+      "coverageYear": 2001,
+      "title": "2002 외교백서",
+      "publishedYear": 2002,
+      "administration": "김대중",
+      "brand": "국민의 정부",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "2001년도 외교정책 기조",
+        "page": null
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "2002 외교백서 제2장.hwp"
+      ],
+      "note": "첫째~여섯째 6개. 원문에 일곱째가 없음을 확인했다(2026-08-16)"
+    },
+    {
+      "coverageYear": 2002,
+      "title": "2003 외교백서",
+      "publishedYear": 2003,
+      "administration": "김대중",
+      "brand": "국민의 정부",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "2002년도 외교정책 기조",
+        "page": 129
+      },
+      "markStyle": "prose",
+      "status": "verified",
+      "sourceFiles": [
+        "2003 외교백서 제2장.hwp"
+      ],
+      "note": "기조 절이 통째로 산문이라 번호가 없다. 제2절 시책의 인쇄된 번호 6개를 쓴다. HWP 3.0 파서로 읽음"
+    },
+    {
+      "coverageYear": 2003,
+      "title": "2004 외교백서",
+      "publishedYear": 2004,
+      "administration": "노무현",
+      "brand": "평화번영정책",
+      "section": {
+        "chapter": 2,
+        "section": 1,
+        "label": "2003년도 외교정책 기조",
+        "page": 151
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "2004 외교백서 제2장.pdf"
+      ],
+      "note": "첫째~여덟째. 제2절 시책의 번호와 1:1로 대응한다"
+    },
+    {
+      "coverageYear": 2004,
+      "title": "2005 외교백서",
+      "publishedYear": 2005,
+      "administration": "노무현",
+      "brand": "평화번영정책",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "2004년도 외교정책의 기조",
+        "page": 24
+      },
+      "markStyle": "ordinal-word",
+      "status": "verified",
+      "sourceFiles": [
+        "2005 외교백서 제1장.pdf"
+      ],
+      "note": "첫째~아홉째. **MANIFEST는 본문 손상이라 했으나 제1장은 온전하다** — 발간사 대체가 필요 없다"
+    },
+    {
+      "coverageYear": 2005,
+      "title": "2006 외교백서",
+      "publishedYear": 2006,
+      "administration": "노무현",
+      "brand": "국민과 함께 세계로 미래로",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "2005년 외교정책 기조",
+        "page": 23
+      },
+      "markStyle": "bullet",
+      "status": "verified",
+      "sourceFiles": [
+        "2006 외교백서 제1장.pdf"
+      ],
+      "note": "▶ 로 4대 정책목표를 나열한 뒤 각각을 소제목으로 받는다. 별도로 '2대 혁신과제'(국민만족 영사서비스 체제 구축·선진외교를 위한 조직혁신)를 두는데 기조 항목과는 층이 다르다"
+    },
+    {
+      "coverageYear": 2006,
+      "title": "2007 외교백서",
+      "publishedYear": 2007,
+      "administration": "노무현",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "2006년 외교정책 기조",
+        "page": 23
+      },
+      "markStyle": "roman",
+      "status": "verified",
+      "sourceFiles": [
+        "2007 외교백서 제1장.pdf"
+      ],
+      "note": "정책목표 Ⅰ~Ⅴ 5개 전부. 각 목표 아래 ①~⑤ 세부과제는 한 단계 아래라 넣지 않는다"
+    },
+    {
+      "coverageYear": 2007,
+      "title": "2008 외교백서",
+      "publishedYear": 2008,
+      "administration": "노무현",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 7
+      },
+      "markStyle": "circled",
+      "status": "verified",
+      "sourceFiles": [
+        "2008 외교백서 제1장.pdf"
+      ],
+      "note": "① ~ ⑤ 5개 분야 전부. 세로쓰기 머리글이 문장을 파고들어 인용은 (…) 로 끊어 적었다"
+    },
+    {
+      "coverageYear": 2008,
+      "title": "2009 외교백서",
+      "publishedYear": 2009,
+      "administration": "이명박",
+      "brand": "성숙한 세계국가(Global Korea)",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 18
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2009 외교백서_제1장.pdf"
+      ],
+      "note": "창조적 실용외교 1~6번 전부. 20쪽 그림에도 여섯 개가 그려져 있다"
+    },
+    {
+      "coverageYear": 2009,
+      "title": "2010 외교백서",
+      "publishedYear": 2010,
+      "administration": "이명박",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 18
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2010 외교백서_제1장.pdf"
+      ],
+      "note": "「우선추진 외교과제」 3개와 「지속추진 외교과제」 5개로 2단 구성한 뒤 본문은 1~6번으로 받는다"
+    },
+    {
+      "coverageYear": 2010,
+      "title": "2011 외교백서",
+      "publishedYear": 2011,
+      "administration": "이명박",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2011 외교백서_제1장.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2011,
+      "title": "2012 외교백서",
+      "publishedYear": 2012,
+      "administration": "이명박",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2012 외교백서 01.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2012,
+      "title": "2013 외교백서",
+      "publishedYear": 2013,
+      "administration": "이명박",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2013 외교백서_제1장.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2013,
+      "title": "2014 외교백서",
+      "publishedYear": 2014,
+      "administration": "박근혜",
+      "brand": "국민과 함께 하는 신뢰외교",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 23
+      },
+      "markStyle": "bullet",
+      "status": "verified",
+      "sourceFiles": [
+        "2014 외교백서_제1장.pdf"
+      ],
+      "note": "6개 추진과제. 리드의 항목명과 뒤따르는 소제목이 조금씩 다르다"
+    },
+    {
+      "coverageYear": 2014,
+      "title": "2015 외교백서",
+      "publishedYear": 2015,
+      "administration": "박근혜",
+      "brand": "국민과 함께하는 신뢰외교",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "bullet",
+      "status": "verified",
+      "sourceFiles": [
+        "2015 외교백서(국문)-1장.pdf"
+      ],
+      "note": "5개로 줄었다. 2013년의 '북핵문제 진전을 위한 동력 강화'와 '동북아 평화협력 구상'이 '평화통일 신뢰외교'로 바뀐다. 정권은 그대로인데 항목이 재편됐다. **브랜드 띄어쓰기도 '함께 하는'→'함께하는'으로 달라진다**"
+    },
+    {
+      "coverageYear": 2015,
+      "title": "2016 외교백서",
+      "publishedYear": 2016,
+      "administration": "박근혜",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "bullet",
+      "status": "verified",
+      "sourceFiles": [
+        "2016 외교백서 1장.pdf"
+      ],
+      "note": "6개. **북핵이 2번** — 주변국 외교가 1번"
+    },
+    {
+      "coverageYear": 2016,
+      "title": "2017 외교백서",
+      "publishedYear": 2017,
+      "administration": "박근혜",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "제2~7장 배열",
+        "page": null
+      },
+      "markStyle": "heading",
+      "status": "verified",
+      "sourceFiles": [],
+      "note": "「외교정책 기조」 절이 없는 판이라 **장 배열이 그 해의 우선순위**다(제2~7장). extract.py 는 제1·2장만 읽어 대조용 글월에 제3~7장이 없다. 장 표지 쪽을 적어 사람이 확인할 수 있게 했다(flags=page-cited)"
+    },
+    {
+      "coverageYear": 2017,
+      "title": "2018 외교백서",
+      "publishedYear": 2018,
+      "administration": "문재인",
+      "brand": "국민의 나라, 정의로운 대한민국",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 18
+      },
+      "markStyle": "bullet",
+      "status": "verified",
+      "sourceFiles": [
+        "2018 외교백서 국문_1장.pdf"
+      ],
+      "note": "OCR 유래(▲가 '쇼'로 읽힘). **탄핵 직후라 '주변 4국과 정상외교 공백 복원'이 1번이고 한반도가 2번**"
+    },
+    {
+      "coverageYear": 2018,
+      "title": "2019 외교백서",
+      "publishedYear": 2019,
+      "administration": "문재인",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2019 외교백서 국문_제1장.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2019,
+      "title": "2020 외교백서",
+      "publishedYear": 2020,
+      "administration": "문재인",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2020 외교백서 국문_제1장.pdf"
+      ],
+      "note": "OCR 유래"
+    },
+    {
+      "coverageYear": 2020,
+      "title": "2021 외교백서",
+      "publishedYear": 2021,
+      "administration": "문재인",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2021 외교백서(국문).pdf"
+      ],
+      "note": "**코로나 해라 '우리 국민의 생명과 안전 보호'가 1번, 한반도가 2번**"
+    },
+    {
+      "coverageYear": 2021,
+      "title": "2021년도 국제정세와 외교활동",
+      "publishedYear": 2022,
+      "administration": "문재인",
+      "brand": null,
+      "section": {
+        "chapter": null,
+        "section": null,
+        "label": "제2~8장 배열",
+        "page": null
+      },
+      "markStyle": "heading",
+      "status": "verified",
+      "sourceFiles": [],
+      "note": "편제가 바뀌어 「외교정책 기조」 절이 없다. 대신 **장 배열이 그 해의 우선순위**다(제2~8장). 장 제목은 대조용 원문에 그대로 있어 전건 대조했다"
+    },
+    {
+      "coverageYear": 2022,
+      "title": "2022년도 국제정세와 외교활동",
+      "publishedYear": 2023,
+      "administration": "윤석열",
+      "brand": "글로벌 중추국가",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2022년도 국제정세와 외교활동(외교백서).pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2023,
+      "title": "2023년도 국제정세와 외교활동",
+      "publishedYear": 2024,
+      "administration": "윤석열",
+      "brand": "글로벌 중추국가",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 25
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2023년도 국제정세와 외교활동.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2024,
+      "title": "2024년도 국제정세와 외교활동",
+      "publishedYear": 2025,
+      "administration": "윤석열",
+      "brand": "글로벌 중추국가",
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": null
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2024년도 국제정세와 외교활동.pdf"
+      ],
+      "note": null
+    },
+    {
+      "coverageYear": 2025,
+      "title": "2025년도 국제정세와 외교활동",
+      "publishedYear": 2026,
+      "administration": "이재명",
+      "brand": null,
+      "section": {
+        "chapter": 1,
+        "section": 2,
+        "label": "외교정책 기조",
+        "page": 26
+      },
+      "markStyle": "number",
+      "status": "verified",
+      "sourceFiles": [
+        "2025년도 국제정세와 외교활동.pdf"
+      ],
+      "note": "**북핵이 4번.** 외부 충격 없이 내려간 첫 사례"
+    }
+  ],
+  "priorities": [
+    {
+      "id": "1989-1",
+      "coverageYear": 1989,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "한반도의 평화정착 및 통일을 위한 국제기반 구축",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 21
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1989-2",
+      "coverageYear": 1989,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "전통우방국과의 성숙한 동반자관계 확립",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 21
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1989-3",
+      "coverageYear": 1989,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "북방외교의 추진",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 22
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1989-4",
+      "coverageYear": 1989,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "실리 경제외교 강화",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "economy",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 23
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1989-5",
+      "coverageYear": 1989,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "국민외교 전개 및 재외국민 보호",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 23
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1989-6",
+      "coverageYear": 1989,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "외교체제의 재정비",
+      "quote": "제3절 1989년도 외교시책과 1990년대 외교방향 / 1. 1989년도 외교시책",
+      "stream": "capacity",
+      "source": {
+        "edition": "1990 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 24
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-1",
+      "coverageYear": 1990,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "남북한 평화정착외교 주력",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 18
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-2",
+      "coverageYear": 1990,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "정상외교 추진",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 19
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-3",
+      "coverageYear": 1990,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "북방외교의 지속적 추진",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 19
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-4",
+      "coverageYear": 1990,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "선진 한국을 향한 경제외교 전개",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "economy",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 20
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-5",
+      "coverageYear": 1990,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "범세계적 홍보문화활동 강화",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 20
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-6",
+      "coverageYear": 1990,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "해외동포 보호와 국민 해외진출 장려",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 21
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1990-7",
+      "coverageYear": 1990,
+      "ordinal": 7,
+      "ordinalSource": "시책절",
+      "title": "정보분석·판단 및 정책개발능력 제고",
+      "quote": "제3절 1990년도 외교시책과 2000년을 향한 기본 외교정책방향 / 1. 1990년도 외교시책",
+      "stream": "capacity",
+      "source": {
+        "edition": "1991 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 21
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-1",
+      "coverageYear": 1991,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "한·미 관계의 강화",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 16
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-2",
+      "coverageYear": 1991,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "북방외교의 내실화",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 17
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-3",
+      "coverageYear": 1991,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "유엔가입 실현",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "global-role",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 18
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-4",
+      "coverageYear": 1991,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "한·중 실질협력관계 발전",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 19
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-5",
+      "coverageYear": 1991,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "미래지향적 한·일 관계의 발전",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 19
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-6",
+      "coverageYear": 1991,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "통합구주와의 실질관계 심화",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "regional",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 20
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1991-7",
+      "coverageYear": 1991,
+      "ordinal": 7,
+      "ordinalSource": "시책절",
+      "title": "일반외교업무의 적극 추진과 국민적 지지 확대",
+      "quote": "제3절 1991년도 외교시책과 1990년대 중장기 외교정책 방향 / 1. 1991년도 주요 시책",
+      "stream": "capacity",
+      "source": {
+        "edition": "1992 외교백서",
+        "chapter": 1,
+        "section": 3,
+        "page": 21
+      },
+      "flags": [
+        "from-scan"
+      ]
+    },
+    {
+      "id": "1992-1",
+      "coverageYear": 1992,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "대우방 관계의 발전적 강화",
+      "quote": "이같은 외교정책 기조를 바탕으로 외무부는 1992년도에 몇가지 외교시책 을 중점적으로 추진하였는 바, 그 내용은 대우방 관계의 발전적 강화, 북방 외교의 마무리와 내실화, 통일촉진 외교의 전개, 경제통상외교 강화, 그리고 유엔외교 및 국제협력 강화 등이었다",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1993 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1992-2",
+      "coverageYear": 1992,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "북방 외교의 마무리와 내실화",
+      "quote": "이같은 외교정책 기조를 바탕으로 외무부는 1992년도에 몇가지 외교시책 을 중점적으로 추진하였는 바, 그 내용은 대우방 관계의 발전적 강화, 북방 외교의 마무리와 내실화, 통일촉진 외교의 전개, 경제통상외교 강화, 그리고 유엔외교 및 국제협력 강화 등이었다",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1993 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1992-3",
+      "coverageYear": 1992,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "통일촉진 외교의 전개",
+      "quote": "이같은 외교정책 기조를 바탕으로 외무부는 1992년도에 몇가지 외교시책 을 중점적으로 추진하였는 바, 그 내용은 대우방 관계의 발전적 강화, 북방 외교의 마무리와 내실화, 통일촉진 외교의 전개, 경제통상외교 강화, 그리고 유엔외교 및 국제협력 강화 등이었다",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1993 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1992-4",
+      "coverageYear": 1992,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "경제통상외교 강화",
+      "quote": "이같은 외교정책 기조를 바탕으로 외무부는 1992년도에 몇가지 외교시책 을 중점적으로 추진하였는 바, 그 내용은 대우방 관계의 발전적 강화, 북방 외교의 마무리와 내실화, 통일촉진 외교의 전개, 경제통상외교 강화, 그리고 유엔외교 및 국제협력 강화 등이었다",
+      "stream": "economy",
+      "source": {
+        "edition": "1993 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1992-5",
+      "coverageYear": 1992,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "유엔외교 및 국제협력 강화",
+      "quote": "이같은 외교정책 기조를 바탕으로 외무부는 1992년도에 몇가지 외교시책 을 중점적으로 추진하였는 바, 그 내용은 대우방 관계의 발전적 강화, 북방 외교의 마무리와 내실화, 통일촉진 외교의 전개, 경제통상외교 강화, 그리고 유엔외교 및 국제협력 강화 등이었다",
+      "stream": "global-role",
+      "source": {
+        "edition": "1993 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1993-1",
+      "coverageYear": 1993,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "평화정착과 통일외교 추진",
+      "quote": "제 2절 1993넌도 주요정책 목표 / 19 제 2 절 _19998년도 주요정책 목표 외무부는 3월 16일 대통령에 대한 연두 업무보고를 통해 신정부의 외교목 표를 '공고한 안보체제 유지`, '1990년대 중반 선진국 진입`， “20세기내 통 일달성 및 、경제ㆍ통일외교 강화'로 정하고 (1) 평화정착과 통일외교 추진, ㆍ (2) 선진경제 진입을 위한 경제실리 외교 강화, (3) 능동적인 아ㆍ태외교 전 개 (4) 국제화 시대에 부응한 국가위상 제고, (5) 재외국민 지원 및 문화외 교 확대를 주요 정책목표로 하기로 하였다, 외무부가 정한 19938년도 주요 정책목표의 요지는 다음과 같다. 1. 평화정착과 통일외교 추진 한반도 평화정착과 통일외교 추진을 위해서는 한-미 동맹관계를 기축으로 한 주변 4개국과의 능동적인 협조체제를 확보하고, 북한으로 하여금 평화공 존 체제를 받아들이도록 유도하며, 우리나라의 통일정책에 대한 국제적 지 지를 확보하는 것을 기본정책 목표로 추진키로 하였다. 특히 북한 핵문제에 대해서는 이를 남북한 관계에 있어서의 최우선 과제 로 하여, 이의 해결을 최우선적 외교과제로 하기로 하였다. 2. 선진경제 진입을 위한 경제 실리외교 강화 경제실리외교의 측면에서는 지역주의 추세에 적극 대처하여 우리의 수출 20 / 제 1장 새 정부의 기본 외교정책 시장을 확보하고, 우루과이 라운드 협상에 능동적으로 참가하며 0801) 가 입을 적극적으로 추진하여 우리 경제의 국제화와 선진화를 지원한다는 기본 방침을 정했다. 또한 통상의 확대ㆍ균형을 추구하고 가학 기술외교 노력을 강화하며, 특히 지구 환경 규제에 적극 대처, 그린라운드((}70) 출범에 대비한 적극적 환경 외교를 전개키로 하였다. 3. 능동적인 아-태 외교 전개 아-태 외교의 측면에서는 아태 경제협력체(4&1210))를 중심으로 한 아-태 지역협력에 적극 참가키로 하였다. &12100을 우리 아-태외교의 틀로 활용하 고, 아태 정상회의의 실현 가능성에 대비하며, ^&12000을 동아시아와 북미 를 잇는 개방적 지역경제협력체로 발전시키려는 것을 정책목표로 하였다. 이와 함께 동북아 주변국 및 아ㆍ태지역 국가와의 다자간 안보대화도 적극 추진키로 하였다. 4. 국제화 시대에 부응한 국가위상 제고 국가위상 제고를 위해서는 국력에 상응하는 역할을 수행하는 것이 기본이 라고 할 수 있다. 이를 위해서 군축ㆍ인권 등 범세계적 문제의 해결을 위한 국제적 노력에 적극 참여하고. 주요 국제문제에 대한 우리의 입장을 표명하 는 등 원칙에 입각한 외교를 추구해 나가기로 하였다. 특히 대외 경제협력 기금(01)01)) 및 한국 국제협력단(《010&)을 활용하 여 대개도국 외교를 경제실리 및 국제협력 차원에서 수행하기로 하였다. 이와 함께 소말리아 평화유지단 등 유엔의 평화유지활동(08[《())에 능력 범 위내에서 적극 참여하고, 유엔 안보리 비상임이사국 진출을 포함한 주요 국 제 2절 1993년도 주요정책 목표 / 21 제기구 이사국 진출도 추진키로 하였다. 5. 재외국민 지원 및 문화외교 확대",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1994 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1993-2",
+      "coverageYear": 1993,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "선진경제 진입을 위한 경제 실리외교 강화",
+      "quote": "제 2절 1993넌도 주요정책 목표 / 19 제 2 절 _19998년도 주요정책 목표 외무부는 3월 16일 대통령에 대한 연두 업무보고를 통해 신정부의 외교목 표를 '공고한 안보체제 유지`, '1990년대 중반 선진국 진입`， “20세기내 통 일달성 및 、경제ㆍ통일외교 강화'로 정하고 (1) 평화정착과 통일외교 추진, ㆍ (2) 선진경제 진입을 위한 경제실리 외교 강화, (3) 능동적인 아ㆍ태외교 전 개 (4) 국제화 시대에 부응한 국가위상 제고, (5) 재외국민 지원 및 문화외 교 확대를 주요 정책목표로 하기로 하였다, 외무부가 정한 19938년도 주요 정책목표의 요지는 다음과 같다. 1. 평화정착과 통일외교 추진 한반도 평화정착과 통일외교 추진을 위해서는 한-미 동맹관계를 기축으로 한 주변 4개국과의 능동적인 협조체제를 확보하고, 북한으로 하여금 평화공 존 체제를 받아들이도록 유도하며, 우리나라의 통일정책에 대한 국제적 지 지를 확보하는 것을 기본정책 목표로 추진키로 하였다. 특히 북한 핵문제에 대해서는 이를 남북한 관계에 있어서의 최우선 과제 로 하여, 이의 해결을 최우선적 외교과제로 하기로 하였다. 2. 선진경제 진입을 위한 경제 실리외교 강화 경제실리외교의 측면에서는 지역주의 추세에 적극 대처하여 우리의 수출 20 / 제 1장 새 정부의 기본 외교정책 시장을 확보하고, 우루과이 라운드 협상에 능동적으로 참가하며 0801) 가 입을 적극적으로 추진하여 우리 경제의 국제화와 선진화를 지원한다는 기본 방침을 정했다. 또한 통상의 확대ㆍ균형을 추구하고 가학 기술외교 노력을 강화하며, 특히 지구 환경 규제에 적극 대처, 그린라운드((}70) 출범에 대비한 적극적 환경 외교를 전개키로 하였다. 3. 능동적인 아-태 외교 전개 아-태 외교의 측면에서는 아태 경제협력체(4&1210))를 중심으로 한 아-태 지역협력에 적극 참가키로 하였다. &12100을 우리 아-태외교의 틀로 활용하 고, 아태 정상회의의 실현 가능성에 대비하며, ^&12000을 동아시아와 북미 를 잇는 개방적 지역경제협력체로 발전시키려는 것을 정책목표로 하였다. 이와 함께 동북아 주변국 및 아ㆍ태지역 국가와의 다자간 안보대화도 적극 추진키로 하였다. 4. 국제화 시대에 부응한 국가위상 제고 국가위상 제고를 위해서는 국력에 상응하는 역할을 수행하는 것이 기본이 라고 할 수 있다. 이를 위해서 군축ㆍ인권 등 범세계적 문제의 해결을 위한 국제적 노력에 적극 참여하고. 주요 국제문제에 대한 우리의 입장을 표명하 는 등 원칙에 입각한 외교를 추구해 나가기로 하였다. 특히 대외 경제협력 기금(01)01)) 및 한국 국제협력단(《010&)을 활용하 여 대개도국 외교를 경제실리 및 국제협력 차원에서 수행하기로 하였다. 이와 함께 소말리아 평화유지단 등 유엔의 평화유지활동(08[《())에 능력 범 위내에서 적극 참여하고, 유엔 안보리 비상임이사국 진출을 포함한 주요 국 제 2절 1993년도 주요정책 목표 / 21 제기구 이사국 진출도 추진키로 하였다. 5. 재외국민 지원 및 문화외교 확대",
+      "stream": "economy",
+      "source": {
+        "edition": "1994 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1993-3",
+      "coverageYear": 1993,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "능동적인 아-태 외교 전개",
+      "quote": "제 2절 1993넌도 주요정책 목표 / 19 제 2 절 _19998년도 주요정책 목표 외무부는 3월 16일 대통령에 대한 연두 업무보고를 통해 신정부의 외교목 표를 '공고한 안보체제 유지`, '1990년대 중반 선진국 진입`， “20세기내 통 일달성 및 、경제ㆍ통일외교 강화'로 정하고 (1) 평화정착과 통일외교 추진, ㆍ (2) 선진경제 진입을 위한 경제실리 외교 강화, (3) 능동적인 아ㆍ태외교 전 개 (4) 국제화 시대에 부응한 국가위상 제고, (5) 재외국민 지원 및 문화외 교 확대를 주요 정책목표로 하기로 하였다, 외무부가 정한 19938년도 주요 정책목표의 요지는 다음과 같다. 1. 평화정착과 통일외교 추진 한반도 평화정착과 통일외교 추진을 위해서는 한-미 동맹관계를 기축으로 한 주변 4개국과의 능동적인 협조체제를 확보하고, 북한으로 하여금 평화공 존 체제를 받아들이도록 유도하며, 우리나라의 통일정책에 대한 국제적 지 지를 확보하는 것을 기본정책 목표로 추진키로 하였다. 특히 북한 핵문제에 대해서는 이를 남북한 관계에 있어서의 최우선 과제 로 하여, 이의 해결을 최우선적 외교과제로 하기로 하였다. 2. 선진경제 진입을 위한 경제 실리외교 강화 경제실리외교의 측면에서는 지역주의 추세에 적극 대처하여 우리의 수출 20 / 제 1장 새 정부의 기본 외교정책 시장을 확보하고, 우루과이 라운드 협상에 능동적으로 참가하며 0801) 가 입을 적극적으로 추진하여 우리 경제의 국제화와 선진화를 지원한다는 기본 방침을 정했다. 또한 통상의 확대ㆍ균형을 추구하고 가학 기술외교 노력을 강화하며, 특히 지구 환경 규제에 적극 대처, 그린라운드((}70) 출범에 대비한 적극적 환경 외교를 전개키로 하였다. 3. 능동적인 아-태 외교 전개 아-태 외교의 측면에서는 아태 경제협력체(4&1210))를 중심으로 한 아-태 지역협력에 적극 참가키로 하였다. &12100을 우리 아-태외교의 틀로 활용하 고, 아태 정상회의의 실현 가능성에 대비하며, ^&12000을 동아시아와 북미 를 잇는 개방적 지역경제협력체로 발전시키려는 것을 정책목표로 하였다. 이와 함께 동북아 주변국 및 아ㆍ태지역 국가와의 다자간 안보대화도 적극 추진키로 하였다. 4. 국제화 시대에 부응한 국가위상 제고 국가위상 제고를 위해서는 국력에 상응하는 역할을 수행하는 것이 기본이 라고 할 수 있다. 이를 위해서 군축ㆍ인권 등 범세계적 문제의 해결을 위한 국제적 노력에 적극 참여하고. 주요 국제문제에 대한 우리의 입장을 표명하 는 등 원칙에 입각한 외교를 추구해 나가기로 하였다. 특히 대외 경제협력 기금(01)01)) 및 한국 국제협력단(《010&)을 활용하 여 대개도국 외교를 경제실리 및 국제협력 차원에서 수행하기로 하였다. 이와 함께 소말리아 평화유지단 등 유엔의 평화유지활동(08[《())에 능력 범 위내에서 적극 참여하고, 유엔 안보리 비상임이사국 진출을 포함한 주요 국 제 2절 1993년도 주요정책 목표 / 21 제기구 이사국 진출도 추진키로 하였다. 5. 재외국민 지원 및 문화외교 확대",
+      "stream": "regional",
+      "source": {
+        "edition": "1994 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1993-4",
+      "coverageYear": 1993,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "국제화 시대에 부응한 국가위상 제고",
+      "quote": "제 2절 1993넌도 주요정책 목표 / 19 제 2 절 _19998년도 주요정책 목표 외무부는 3월 16일 대통령에 대한 연두 업무보고를 통해 신정부의 외교목 표를 '공고한 안보체제 유지`, '1990년대 중반 선진국 진입`， “20세기내 통 일달성 및 、경제ㆍ통일외교 강화'로 정하고 (1) 평화정착과 통일외교 추진, ㆍ (2) 선진경제 진입을 위한 경제실리 외교 강화, (3) 능동적인 아ㆍ태외교 전 개 (4) 국제화 시대에 부응한 국가위상 제고, (5) 재외국민 지원 및 문화외 교 확대를 주요 정책목표로 하기로 하였다, 외무부가 정한 19938년도 주요 정책목표의 요지는 다음과 같다. 1. 평화정착과 통일외교 추진 한반도 평화정착과 통일외교 추진을 위해서는 한-미 동맹관계를 기축으로 한 주변 4개국과의 능동적인 협조체제를 확보하고, 북한으로 하여금 평화공 존 체제를 받아들이도록 유도하며, 우리나라의 통일정책에 대한 국제적 지 지를 확보하는 것을 기본정책 목표로 추진키로 하였다. 특히 북한 핵문제에 대해서는 이를 남북한 관계에 있어서의 최우선 과제 로 하여, 이의 해결을 최우선적 외교과제로 하기로 하였다. 2. 선진경제 진입을 위한 경제 실리외교 강화 경제실리외교의 측면에서는 지역주의 추세에 적극 대처하여 우리의 수출 20 / 제 1장 새 정부의 기본 외교정책 시장을 확보하고, 우루과이 라운드 협상에 능동적으로 참가하며 0801) 가 입을 적극적으로 추진하여 우리 경제의 국제화와 선진화를 지원한다는 기본 방침을 정했다. 또한 통상의 확대ㆍ균형을 추구하고 가학 기술외교 노력을 강화하며, 특히 지구 환경 규제에 적극 대처, 그린라운드((}70) 출범에 대비한 적극적 환경 외교를 전개키로 하였다. 3. 능동적인 아-태 외교 전개 아-태 외교의 측면에서는 아태 경제협력체(4&1210))를 중심으로 한 아-태 지역협력에 적극 참가키로 하였다. &12100을 우리 아-태외교의 틀로 활용하 고, 아태 정상회의의 실현 가능성에 대비하며, ^&12000을 동아시아와 북미 를 잇는 개방적 지역경제협력체로 발전시키려는 것을 정책목표로 하였다. 이와 함께 동북아 주변국 및 아ㆍ태지역 국가와의 다자간 안보대화도 적극 추진키로 하였다. 4. 국제화 시대에 부응한 국가위상 제고 국가위상 제고를 위해서는 국력에 상응하는 역할을 수행하는 것이 기본이 라고 할 수 있다. 이를 위해서 군축ㆍ인권 등 범세계적 문제의 해결을 위한 국제적 노력에 적극 참여하고. 주요 국제문제에 대한 우리의 입장을 표명하 는 등 원칙에 입각한 외교를 추구해 나가기로 하였다. 특히 대외 경제협력 기금(01)01)) 및 한국 국제협력단(《010&)을 활용하 여 대개도국 외교를 경제실리 및 국제협력 차원에서 수행하기로 하였다. 이와 함께 소말리아 평화유지단 등 유엔의 평화유지활동(08[《())에 능력 범 위내에서 적극 참여하고, 유엔 안보리 비상임이사국 진출을 포함한 주요 국 제 2절 1993년도 주요정책 목표 / 21 제기구 이사국 진출도 추진키로 하였다. 5. 재외국민 지원 및 문화외교 확대",
+      "stream": "global-role",
+      "source": {
+        "edition": "1994 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1993-5",
+      "coverageYear": 1993,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "재외국민 지원 및 문화외교 확대",
+      "quote": "제 2절 1993넌도 주요정책 목표 / 19 제 2 절 _19998년도 주요정책 목표 외무부는 3월 16일 대통령에 대한 연두 업무보고를 통해 신정부의 외교목 표를 '공고한 안보체제 유지`, '1990년대 중반 선진국 진입`， “20세기내 통 일달성 및 、경제ㆍ통일외교 강화'로 정하고 (1) 평화정착과 통일외교 추진, ㆍ (2) 선진경제 진입을 위한 경제실리 외교 강화, (3) 능동적인 아ㆍ태외교 전 개 (4) 국제화 시대에 부응한 국가위상 제고, (5) 재외국민 지원 및 문화외 교 확대를 주요 정책목표로 하기로 하였다, 외무부가 정한 19938년도 주요 정책목표의 요지는 다음과 같다. 1. 평화정착과 통일외교 추진 한반도 평화정착과 통일외교 추진을 위해서는 한-미 동맹관계를 기축으로 한 주변 4개국과의 능동적인 협조체제를 확보하고, 북한으로 하여금 평화공 존 체제를 받아들이도록 유도하며, 우리나라의 통일정책에 대한 국제적 지 지를 확보하는 것을 기본정책 목표로 추진키로 하였다. 특히 북한 핵문제에 대해서는 이를 남북한 관계에 있어서의 최우선 과제 로 하여, 이의 해결을 최우선적 외교과제로 하기로 하였다. 2. 선진경제 진입을 위한 경제 실리외교 강화 경제실리외교의 측면에서는 지역주의 추세에 적극 대처하여 우리의 수출 20 / 제 1장 새 정부의 기본 외교정책 시장을 확보하고, 우루과이 라운드 협상에 능동적으로 참가하며 0801) 가 입을 적극적으로 추진하여 우리 경제의 국제화와 선진화를 지원한다는 기본 방침을 정했다. 또한 통상의 확대ㆍ균형을 추구하고 가학 기술외교 노력을 강화하며, 특히 지구 환경 규제에 적극 대처, 그린라운드((}70) 출범에 대비한 적극적 환경 외교를 전개키로 하였다. 3. 능동적인 아-태 외교 전개 아-태 외교의 측면에서는 아태 경제협력체(4&1210))를 중심으로 한 아-태 지역협력에 적극 참가키로 하였다. &12100을 우리 아-태외교의 틀로 활용하 고, 아태 정상회의의 실현 가능성에 대비하며, ^&12000을 동아시아와 북미 를 잇는 개방적 지역경제협력체로 발전시키려는 것을 정책목표로 하였다. 이와 함께 동북아 주변국 및 아ㆍ태지역 국가와의 다자간 안보대화도 적극 추진키로 하였다. 4. 국제화 시대에 부응한 국가위상 제고 국가위상 제고를 위해서는 국력에 상응하는 역할을 수행하는 것이 기본이 라고 할 수 있다. 이를 위해서 군축ㆍ인권 등 범세계적 문제의 해결을 위한 국제적 노력에 적극 참여하고. 주요 국제문제에 대한 우리의 입장을 표명하 는 등 원칙에 입각한 외교를 추구해 나가기로 하였다. 특히 대외 경제협력 기금(01)01)) 및 한국 국제협력단(《010&)을 활용하 여 대개도국 외교를 경제실리 및 국제협력 차원에서 수행하기로 하였다. 이와 함께 소말리아 평화유지단 등 유엔의 평화유지활동(08[《())에 능력 범 위내에서 적극 참여하고, 유엔 안보리 비상임이사국 진출을 포함한 주요 국 제 2절 1993년도 주요정책 목표 / 21 제기구 이사국 진출도 추진키로 하였다. 5. 재외국민 지원 및 문화외교 확대",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1994 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1994-1",
+      "coverageYear": 1994,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "핵 문제 해결과 평화정착 모색",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-2",
+      "coverageYear": 1994,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "새로운 경제환경 에 능동적 대처",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "economy",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-3",
+      "coverageYear": 1994,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "아ㆍ뿌 협력심화",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "regional",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-4",
+      "coverageYear": 1994,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "유엔 등 국제기구 외교 강화",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "global-role",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-5",
+      "coverageYear": 1994,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "문화외교의 내실화",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-6",
+      "coverageYear": 1994,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "재외한인지원",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-7",
+      "coverageYear": 1994,
+      "ordinal": 7,
+      "ordinalSource": "시책절",
+      "title": "세계화 지원과 외교의 국제 경 쟁력 강화",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "regional",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1994-8",
+      "coverageYear": 1994,
+      "ordinal": 8,
+      "ordinalSource": "시책절",
+      "title": "정상외교 추진",
+      "quote": "정부는 94년도에 신외교의 5대 기조와 다섯가지 외교목표를 구현하기 위한 주요시책으로서 “핵 문제 해결과 평화정착 모색”, “새로운 경제환경 에 능동적 대처”, “아ㆍ뿌 협력심화”, 유엔 등 국제기구 외교 강화\", \"문화외교의 내실화”, “재외한인지원”, “세계화 지원과 외교의 국제 경 쟁력 강화” 및 “정상외교 추진” 등 8가지를 설정하고, 이를 적극 추진하 였다. 16 / 제 1장 1994년도 외교정책기조와 목표 제 2 절 _1994년도 주요. 외교정책 목표",
+      "stream": "neighbors",
+      "source": {
+        "edition": "1995 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-1",
+      "coverageYear": 1995,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "한반도 평화정착과 통일기반 조성",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-2",
+      "coverageYear": 1995,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "경제ㆍ통상외교 강화",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "economy",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-3",
+      "coverageYear": 1995,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "아시아ㆍ 태평양 지역협력 심화",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "regional",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-4",
+      "coverageYear": 1995,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "능동적인 다자외교 전개",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "global-role",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-5",
+      "coverageYear": 1995,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1995-6",
+      "coverageYear": 1995,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "외교수행체제의 변화와 개혁",
+      "quote": "이와같은 신외교 정책과 외교목표를 구현하기 위한 주요 시책으로서 '한반도 평화정착과 통일기반 조성', '경제ㆍ통상외교 강화, '아시아ㆍ 태평양 지역협력 심화', '능동적인 다자외교 전개', '문화교류 및 홍보활 옹 확대; 재외국민 보호 및 지원 강화', 그리고 '외교수행체제의 변화와 개혁\" 등을 설정하고 이를 적극적으로 추진하였다. 24 / 제 1장 우리 외교정책의 기조와 목표 제 2 절 _1995년도 주요. 외교정책 목표 . 1. 한반도 평화정착과 통일기반 조성",
+      "stream": "capacity",
+      "source": {
+        "edition": "1996 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1996-1",
+      "coverageYear": 1996,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "세계화 외교",
+      "quote": "또한 이러한 신외교의 5대 기조를 구현하기 위해 정부는 1996넌도 주 요 외교시책으로서 “세계화 외교', '안보ㆍ통일 외교', 、경제ㆍ통상 외 교', '재외동포정책' 등을 설정하고 이를 적극 추진하였다. 108 / 제2장 우리 외교정책의 기조와 시책 제 2 절 _ 1996년도 주요 외교시책",
+      "stream": "regional",
+      "source": {
+        "edition": "1997 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1996-2",
+      "coverageYear": 1996,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "안보ㆍ통일 외교",
+      "quote": "또한 이러한 신외교의 5대 기조를 구현하기 위해 정부는 1996넌도 주 요 외교시책으로서 “세계화 외교', '안보ㆍ통일 외교', 、경제ㆍ통상 외 교', '재외동포정책' 등을 설정하고 이를 적극 추진하였다. 108 / 제2장 우리 외교정책의 기조와 시책 제 2 절 _ 1996년도 주요 외교시책",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1997 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1996-3",
+      "coverageYear": 1996,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "경제ㆍ통상 외 교",
+      "quote": "또한 이러한 신외교의 5대 기조를 구현하기 위해 정부는 1996넌도 주 요 외교시책으로서 “세계화 외교', '안보ㆍ통일 외교', 、경제ㆍ통상 외 교', '재외동포정책' 등을 설정하고 이를 적극 추진하였다. 108 / 제2장 우리 외교정책의 기조와 시책 제 2 절 _ 1996년도 주요 외교시책",
+      "stream": "economy",
+      "source": {
+        "edition": "1997 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1996-4",
+      "coverageYear": 1996,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "재외동포정책",
+      "quote": "또한 이러한 신외교의 5대 기조를 구현하기 위해 정부는 1996넌도 주 요 외교시책으로서 “세계화 외교', '안보ㆍ통일 외교', 、경제ㆍ통상 외 교', '재외동포정책' 등을 설정하고 이를 적극 추진하였다. 108 / 제2장 우리 외교정책의 기조와 시책 제 2 절 _ 1996년도 주요 외교시책",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1997 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1997-1",
+      "coverageYear": 1997,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "세계화 외교",
+      "quote": "제 2 절 1997년도 주요 외교시책 1. 세계화 외교 2. 안보 통일외교 3. 경제 통상외교 4. 재외동포 보호 육성 1. 세계화 외교 상호 의존성 증대와 함께 적자생존의 무한경쟁이 더욱 치열해지고 있는 국제환경속에서 우리의 국익을 보호하고 증진하기 위하여 정부는 1997년도에도 세계화 외교를 지속적으로 추진하였다. 김영삼 대통령은 1월에 일본(벳푸)을 실무 방문한데 이어, 6월 뉴욕에서 개최된 유엔 환경특별총회에 참석하였으며, 이 기회에 멕시코를 공식 방문하였다. 이어 11월에는 카나다 벤쿠버에서 개최된 제 5차 아시아 태평양 경제협력체(APEC) 정상회의에 참석하였으며, 12월 말레이시아 쿠알라룸푸르에서 개최된 ASEAN 창설 30주년 정상회의에는 김영삼 대통령을 대신하여 고건 국무총리가 참석하였다. 1997년에는 Reina 온두라스 대통령 등 7개국 국가원수와 Chretien 카나다 총리를 비롯한 5개국 총리가 방한하였다. 특히 1997년에는 Reina 온두라스 대통령(3월 19일∼21일), Isaias 에리트리아 대통령(4월 2일∼5일), Lukashenka 벨라루스 대통령(4월 21일∼23일), Akayev 키르기즈 대통령(6월 3일∼6일), Nakamura 팔라우 대통령(6월 15일∼17일), Compaore 부르키나파소 대통령(9월 2일∼5일), Kabua 마샬군도공화국 대통령(10월 15일∼18일) 등 많은 개발도상국 정상들이 우리나라를 방문하여 우리나라와 개도국간의 관계를 강화하고 우리 외교의 다변화에도 기여하였다. 정부는 또한 세계화 추진의 일환으로 유엔을 중심으로 한 국제기구 외교를 강화하였다. 탈냉전시대에 들어와 군축, 환경, 인권, 마약 등 범세계적 문제들이 부각되고 있는 가운데 유엔의 역할에 대한 기대가 커짐에 따라, 우리 나라는 대유엔 외교에 있어서 우리의 국익을 최대한 확보하고 아울러 국제사회에서 우리의 위치에 상응하는 역할을 수행한다는 목표하에 유엔 활동에 적극 참여하였다. 한편 1996년 OECD 가입을 계기로 우리 경제의 선진화 및 세계화가 가속화되는 계기를 맞이하였다. 이에 따라 우리 나라는 1997년 11월을 기점으로 여태까지 속해 왔던 개도국간 경제문제 협의체인 77그룹을 떠나 유엔에서 선진국간 경제문제 협의체인 Vinci그룹에 가입하였다. OECD 가입후 처음으로 1997년 5월 OECD 각료이사회에 외무부장관 등 3부 장관이 참석하였으며 OECD 각종 위원회 및 작업반회의 참석 등을 통하여 우리 나라의 경제운용을 OECD의 규범에 맞추어 나가는 작업을 시작하였다. 1997년에도 우리 나라는 아시아, 태평양 제국과의 정치적, 경제적 유대관계를 긴밀히 하고 역내 경제통합 추진노력에 적극적으로 동참한다는 취지에서 APEC의 각종 실무 및 고위급회의에 참석하였다. 그리고 1997년 11월 카나다 벤쿠버에서 개최된 APEC 정상회의에 김영삼 대통령이 참석하여 미국 클린턴 대통령을 비롯한 역내 여러 국가 정상들과 회담을 가짐으로써 우의를 돈독히 하였고 \"역내 정보 인프라\" 설치 문제 등에 주도적인 기여를 하였다. 1997년은 군축분야에서 국제적으로 활발한 논의가 전개되었는데 1993년에 채택된 화학무기금지협약(CWC)이 1997년 4월 발효하는 즉시 우리 나라는 비준서를 기탁함으로써 동 협약의 원당사국으로 참여하였다. 또한 5월에 화학무기금지기구(OPCW)가 공식출범하자 우리 나라는 아주지역 집행이사국으로 선임되어 동 기구의 활동에 주도적으로 참여하게 되었다. 그리고 국제여론의 지지에 힘입어 추진되던 대인지뢰 전면금지운동은 1997년 12월 마침내 \"대인지뢰금지협약(일명 오타와 협약)\" 의 채택을 가능하게 하였다. 우리 나라는 동 협약채택과정에 지속적으로 참여하여 왔으나 우리의 특수한 안보상황을 감안, 동 협약에 서명을 하지는 않았다. 한편 환경분야에서는 1992년 리우 환경정상회의 이후 5년만에 지구환경문제를 재점검하는 유엔환경특총에 김영삼 대통령이 참석하여 환경문제 해결노력에 동참하려는 우리 정부의 의지를 표시하였고, 97년 12월 토쿄 기후변화협약 채택과정에도 계속 참여하여 환경분야의 국제규범작성 노력에 기여하였다. 그 밖에 우리 나라는 1997년 4월 서울에서 제 98차 IPU총회를 개최하였는데 이 회의는 전세계 각국의 국회의원 및 수행원 약 1,200명이 참석한 대규모 회의로서 세계 주요현안에 대한 의회차원의 공동대응방안을 논의하였다. 또한 우리 나라가 최초로 유치한 국제기구로서 국제백신연구소(IVI)가 10월 국립 서울대학교내에서 발족되었다. 우리 나라는 1997년중 각종 국제기구 회의활동에서 우리의 신장된 국력을 반영하듯이 각종 기구의 이사국으로 선출되는 빈도가 많아졌는데, 예를 들면 UNDP, IAEA, FAO 및 IMO등에 이사국으로 선출되어 동 기구활동에 더욱 적극적으로 참여하게 되었다. 1997년 10월 동남아에서 시작된 금융위기가 우리 나라에 파급효과를 미침으로써 외환위기가 유발되었고, 우리 나라는 이를 극복하기 위하여 국제통화기금(IMF)과 긴밀히 협력하여 우리 경제의 구조조정 계획의 대강을 마련하는 등 경제위기 극복을 위한 다자 양자 차원의 경제협력 외교가 년말에 집중적으로 추진되었다. 문화외교는 세계화 외교 추진의 중요한 부분을 차지하고 있다. 정부는 세계화되고 다원화되어 가는 새로운 국제환경 속에서 국가간의 문화교류의 중요성이 더욱 증대되고 있음에 비추어 각국과의 문화협정 체결, 문화공동위원회 설치 및 청소년 교류 등 정부차원에서의 문화외교 활동을 한층 강화하는 동시에, 민간 문화학술단체가 수행하는 문화교류 활동도 적극 지원하였다. 이와함께 해외 한국학진흥, 해외 한국박물관내 한국실 설치를 지원하고 있으며, 특히 1995년부터 재외공관을 우리나라의 우수하고 독창적인 전통문화의 소개장소로 활용하는 문화전시장화 사업을 계속 추진하고 있다. 정부는 스포츠외교를 한층 강화하여 우리나라 축구대표단의 1998년 프랑스 월드컵 축구대회 본선진출과 지방자치단체의 무주 동계아시아경기대회 및 부산 동아시아경기대회 개최를 적극 지원하였다. 또한, 2002년 월드컵 축구대회의 한 일 공동개최가 세계 스포츠계에서 한국의 위상을 드높이고 세계인의 제전인 월드컵을 통해 인류의 화합과 평화 증진은 물론 미래지향적인 한 일관계 발전에도 기여할 수 있다고 보고 한 일 FIFA간의 원활한 협조를 지원함은 물론 98년 프랑스 월드컵 축구대회의 준비 경험을 전수받기 위한 노력을 꾸준히 전개하였다. 또한 후진국에 대한 체육협력을 증진하기 위하여 국제적 경쟁력을 보유한 여러 종목의 체육지도자 파견 및 외국인 코치 초청연수 등 스포츠를 통한 이해 및 협력 증진과 국위선양을 위하여 노력하고 있다. 지방자치제의 전면 실시로 본격적인 지방화시대가 도래함에 따라 외무부는 재외공관과의 긴밀한 협조하에 지방자치단체의 대외교류활동을 적극 지원하여 왔으며, 이러한 지원활동을 체계적으로 수행하기 위하여 서울, 부산, 대구, 대전, 인천, 경기 등 6개 지역에 국제관계자문대사를 파견하고 있다. 또한 외교안보연구원에 공무원 의전교육, 국제회의 전문요원 과정, 대외경제통상 과정 등을 설치하여 중앙 및 지방정부, 정부투자기관 임직원의 세계화 의식을 함양하고 각종 국제협상 무대에서의 협상 능력 및 대외경제환경 변화에 대한 능동적인 대처능력 배양에도 기여하였다. 한편, 외무부는 세계화 추진의 최첨단 신경조직으로서 외교행정의 전산화를 통하여 21세기 정보화 사회에 대비한 외교정보의 종합적 관리, 재외공관과의 외교정보망 구축으로 선진외교 지원체제를 구축하고 있다. 또한, 외교정책 자문위원회를 효과적으로 활용하고 정부 주요정책에 대한 홍보를 강화하여 외교정책에 대한 국민적 합의 도출에 노력함으로써 국민적 지지를 바탕으로 한 세계화 외교를 전개하였다. 한편, 공개행정 의지를 구현하고 국민의 알 권리를 충족시키기 위하여 중앙행정기관으로서는 처음으로 생산 또는 접수된 후 30년이 경과한 외교문서를 1994년부터 연례적으로 일반에게 공개하여 왔다. 그에 따라 그간 4회에 걸쳐 1948년 정부수립이후 1966년도까지의 외교문서를 공개하였으며, 1967년도 생산 접수된 외교문서의 공개작업을 추진하고 있다. 2. 안보 통일외교",
+      "stream": "regional",
+      "source": {
+        "edition": "1998 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1997-2",
+      "coverageYear": 1997,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "안보 통일외교",
+      "quote": "제 2 절 1997년도 주요 외교시책 1. 세계화 외교 2. 안보 통일외교 3. 경제 통상외교 4. 재외동포 보호 육성 1. 세계화 외교 상호 의존성 증대와 함께 적자생존의 무한경쟁이 더욱 치열해지고 있는 국제환경속에서 우리의 국익을 보호하고 증진하기 위하여 정부는 1997년도에도 세계화 외교를 지속적으로 추진하였다. 김영삼 대통령은 1월에 일본(벳푸)을 실무 방문한데 이어, 6월 뉴욕에서 개최된 유엔 환경특별총회에 참석하였으며, 이 기회에 멕시코를 공식 방문하였다. 이어 11월에는 카나다 벤쿠버에서 개최된 제 5차 아시아 태평양 경제협력체(APEC) 정상회의에 참석하였으며, 12월 말레이시아 쿠알라룸푸르에서 개최된 ASEAN 창설 30주년 정상회의에는 김영삼 대통령을 대신하여 고건 국무총리가 참석하였다. 1997년에는 Reina 온두라스 대통령 등 7개국 국가원수와 Chretien 카나다 총리를 비롯한 5개국 총리가 방한하였다. 특히 1997년에는 Reina 온두라스 대통령(3월 19일∼21일), Isaias 에리트리아 대통령(4월 2일∼5일), Lukashenka 벨라루스 대통령(4월 21일∼23일), Akayev 키르기즈 대통령(6월 3일∼6일), Nakamura 팔라우 대통령(6월 15일∼17일), Compaore 부르키나파소 대통령(9월 2일∼5일), Kabua 마샬군도공화국 대통령(10월 15일∼18일) 등 많은 개발도상국 정상들이 우리나라를 방문하여 우리나라와 개도국간의 관계를 강화하고 우리 외교의 다변화에도 기여하였다. 정부는 또한 세계화 추진의 일환으로 유엔을 중심으로 한 국제기구 외교를 강화하였다. 탈냉전시대에 들어와 군축, 환경, 인권, 마약 등 범세계적 문제들이 부각되고 있는 가운데 유엔의 역할에 대한 기대가 커짐에 따라, 우리 나라는 대유엔 외교에 있어서 우리의 국익을 최대한 확보하고 아울러 국제사회에서 우리의 위치에 상응하는 역할을 수행한다는 목표하에 유엔 활동에 적극 참여하였다. 한편 1996년 OECD 가입을 계기로 우리 경제의 선진화 및 세계화가 가속화되는 계기를 맞이하였다. 이에 따라 우리 나라는 1997년 11월을 기점으로 여태까지 속해 왔던 개도국간 경제문제 협의체인 77그룹을 떠나 유엔에서 선진국간 경제문제 협의체인 Vinci그룹에 가입하였다. OECD 가입후 처음으로 1997년 5월 OECD 각료이사회에 외무부장관 등 3부 장관이 참석하였으며 OECD 각종 위원회 및 작업반회의 참석 등을 통하여 우리 나라의 경제운용을 OECD의 규범에 맞추어 나가는 작업을 시작하였다. 1997년에도 우리 나라는 아시아, 태평양 제국과의 정치적, 경제적 유대관계를 긴밀히 하고 역내 경제통합 추진노력에 적극적으로 동참한다는 취지에서 APEC의 각종 실무 및 고위급회의에 참석하였다. 그리고 1997년 11월 카나다 벤쿠버에서 개최된 APEC 정상회의에 김영삼 대통령이 참석하여 미국 클린턴 대통령을 비롯한 역내 여러 국가 정상들과 회담을 가짐으로써 우의를 돈독히 하였고 \"역내 정보 인프라\" 설치 문제 등에 주도적인 기여를 하였다. 1997년은 군축분야에서 국제적으로 활발한 논의가 전개되었는데 1993년에 채택된 화학무기금지협약(CWC)이 1997년 4월 발효하는 즉시 우리 나라는 비준서를 기탁함으로써 동 협약의 원당사국으로 참여하였다. 또한 5월에 화학무기금지기구(OPCW)가 공식출범하자 우리 나라는 아주지역 집행이사국으로 선임되어 동 기구의 활동에 주도적으로 참여하게 되었다. 그리고 국제여론의 지지에 힘입어 추진되던 대인지뢰 전면금지운동은 1997년 12월 마침내 \"대인지뢰금지협약(일명 오타와 협약)\" 의 채택을 가능하게 하였다. 우리 나라는 동 협약채택과정에 지속적으로 참여하여 왔으나 우리의 특수한 안보상황을 감안, 동 협약에 서명을 하지는 않았다. 한편 환경분야에서는 1992년 리우 환경정상회의 이후 5년만에 지구환경문제를 재점검하는 유엔환경특총에 김영삼 대통령이 참석하여 환경문제 해결노력에 동참하려는 우리 정부의 의지를 표시하였고, 97년 12월 토쿄 기후변화협약 채택과정에도 계속 참여하여 환경분야의 국제규범작성 노력에 기여하였다. 그 밖에 우리 나라는 1997년 4월 서울에서 제 98차 IPU총회를 개최하였는데 이 회의는 전세계 각국의 국회의원 및 수행원 약 1,200명이 참석한 대규모 회의로서 세계 주요현안에 대한 의회차원의 공동대응방안을 논의하였다. 또한 우리 나라가 최초로 유치한 국제기구로서 국제백신연구소(IVI)가 10월 국립 서울대학교내에서 발족되었다. 우리 나라는 1997년중 각종 국제기구 회의활동에서 우리의 신장된 국력을 반영하듯이 각종 기구의 이사국으로 선출되는 빈도가 많아졌는데, 예를 들면 UNDP, IAEA, FAO 및 IMO등에 이사국으로 선출되어 동 기구활동에 더욱 적극적으로 참여하게 되었다. 1997년 10월 동남아에서 시작된 금융위기가 우리 나라에 파급효과를 미침으로써 외환위기가 유발되었고, 우리 나라는 이를 극복하기 위하여 국제통화기금(IMF)과 긴밀히 협력하여 우리 경제의 구조조정 계획의 대강을 마련하는 등 경제위기 극복을 위한 다자 양자 차원의 경제협력 외교가 년말에 집중적으로 추진되었다. 문화외교는 세계화 외교 추진의 중요한 부분을 차지하고 있다. 정부는 세계화되고 다원화되어 가는 새로운 국제환경 속에서 국가간의 문화교류의 중요성이 더욱 증대되고 있음에 비추어 각국과의 문화협정 체결, 문화공동위원회 설치 및 청소년 교류 등 정부차원에서의 문화외교 활동을 한층 강화하는 동시에, 민간 문화학술단체가 수행하는 문화교류 활동도 적극 지원하였다. 이와함께 해외 한국학진흥, 해외 한국박물관내 한국실 설치를 지원하고 있으며, 특히 1995년부터 재외공관을 우리나라의 우수하고 독창적인 전통문화의 소개장소로 활용하는 문화전시장화 사업을 계속 추진하고 있다. 정부는 스포츠외교를 한층 강화하여 우리나라 축구대표단의 1998년 프랑스 월드컵 축구대회 본선진출과 지방자치단체의 무주 동계아시아경기대회 및 부산 동아시아경기대회 개최를 적극 지원하였다. 또한, 2002년 월드컵 축구대회의 한 일 공동개최가 세계 스포츠계에서 한국의 위상을 드높이고 세계인의 제전인 월드컵을 통해 인류의 화합과 평화 증진은 물론 미래지향적인 한 일관계 발전에도 기여할 수 있다고 보고 한 일 FIFA간의 원활한 협조를 지원함은 물론 98년 프랑스 월드컵 축구대회의 준비 경험을 전수받기 위한 노력을 꾸준히 전개하였다. 또한 후진국에 대한 체육협력을 증진하기 위하여 국제적 경쟁력을 보유한 여러 종목의 체육지도자 파견 및 외국인 코치 초청연수 등 스포츠를 통한 이해 및 협력 증진과 국위선양을 위하여 노력하고 있다. 지방자치제의 전면 실시로 본격적인 지방화시대가 도래함에 따라 외무부는 재외공관과의 긴밀한 협조하에 지방자치단체의 대외교류활동을 적극 지원하여 왔으며, 이러한 지원활동을 체계적으로 수행하기 위하여 서울, 부산, 대구, 대전, 인천, 경기 등 6개 지역에 국제관계자문대사를 파견하고 있다. 또한 외교안보연구원에 공무원 의전교육, 국제회의 전문요원 과정, 대외경제통상 과정 등을 설치하여 중앙 및 지방정부, 정부투자기관 임직원의 세계화 의식을 함양하고 각종 국제협상 무대에서의 협상 능력 및 대외경제환경 변화에 대한 능동적인 대처능력 배양에도 기여하였다. 한편, 외무부는 세계화 추진의 최첨단 신경조직으로서 외교행정의 전산화를 통하여 21세기 정보화 사회에 대비한 외교정보의 종합적 관리, 재외공관과의 외교정보망 구축으로 선진외교 지원체제를 구축하고 있다. 또한, 외교정책 자문위원회를 효과적으로 활용하고 정부 주요정책에 대한 홍보를 강화하여 외교정책에 대한 국민적 합의 도출에 노력함으로써 국민적 지지를 바탕으로 한 세계화 외교를 전개하였다. 한편, 공개행정 의지를 구현하고 국민의 알 권리를 충족시키기 위하여 중앙행정기관으로서는 처음으로 생산 또는 접수된 후 30년이 경과한 외교문서를 1994년부터 연례적으로 일반에게 공개하여 왔다. 그에 따라 그간 4회에 걸쳐 1948년 정부수립이후 1966년도까지의 외교문서를 공개하였으며, 1967년도 생산 접수된 외교문서의 공개작업을 추진하고 있다. 2. 안보 통일외교",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1998 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1997-3",
+      "coverageYear": 1997,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "경제 통상외교",
+      "quote": "제 2 절 1997년도 주요 외교시책 1. 세계화 외교 2. 안보 통일외교 3. 경제 통상외교 4. 재외동포 보호 육성 1. 세계화 외교 상호 의존성 증대와 함께 적자생존의 무한경쟁이 더욱 치열해지고 있는 국제환경속에서 우리의 국익을 보호하고 증진하기 위하여 정부는 1997년도에도 세계화 외교를 지속적으로 추진하였다. 김영삼 대통령은 1월에 일본(벳푸)을 실무 방문한데 이어, 6월 뉴욕에서 개최된 유엔 환경특별총회에 참석하였으며, 이 기회에 멕시코를 공식 방문하였다. 이어 11월에는 카나다 벤쿠버에서 개최된 제 5차 아시아 태평양 경제협력체(APEC) 정상회의에 참석하였으며, 12월 말레이시아 쿠알라룸푸르에서 개최된 ASEAN 창설 30주년 정상회의에는 김영삼 대통령을 대신하여 고건 국무총리가 참석하였다. 1997년에는 Reina 온두라스 대통령 등 7개국 국가원수와 Chretien 카나다 총리를 비롯한 5개국 총리가 방한하였다. 특히 1997년에는 Reina 온두라스 대통령(3월 19일∼21일), Isaias 에리트리아 대통령(4월 2일∼5일), Lukashenka 벨라루스 대통령(4월 21일∼23일), Akayev 키르기즈 대통령(6월 3일∼6일), Nakamura 팔라우 대통령(6월 15일∼17일), Compaore 부르키나파소 대통령(9월 2일∼5일), Kabua 마샬군도공화국 대통령(10월 15일∼18일) 등 많은 개발도상국 정상들이 우리나라를 방문하여 우리나라와 개도국간의 관계를 강화하고 우리 외교의 다변화에도 기여하였다. 정부는 또한 세계화 추진의 일환으로 유엔을 중심으로 한 국제기구 외교를 강화하였다. 탈냉전시대에 들어와 군축, 환경, 인권, 마약 등 범세계적 문제들이 부각되고 있는 가운데 유엔의 역할에 대한 기대가 커짐에 따라, 우리 나라는 대유엔 외교에 있어서 우리의 국익을 최대한 확보하고 아울러 국제사회에서 우리의 위치에 상응하는 역할을 수행한다는 목표하에 유엔 활동에 적극 참여하였다. 한편 1996년 OECD 가입을 계기로 우리 경제의 선진화 및 세계화가 가속화되는 계기를 맞이하였다. 이에 따라 우리 나라는 1997년 11월을 기점으로 여태까지 속해 왔던 개도국간 경제문제 협의체인 77그룹을 떠나 유엔에서 선진국간 경제문제 협의체인 Vinci그룹에 가입하였다. OECD 가입후 처음으로 1997년 5월 OECD 각료이사회에 외무부장관 등 3부 장관이 참석하였으며 OECD 각종 위원회 및 작업반회의 참석 등을 통하여 우리 나라의 경제운용을 OECD의 규범에 맞추어 나가는 작업을 시작하였다. 1997년에도 우리 나라는 아시아, 태평양 제국과의 정치적, 경제적 유대관계를 긴밀히 하고 역내 경제통합 추진노력에 적극적으로 동참한다는 취지에서 APEC의 각종 실무 및 고위급회의에 참석하였다. 그리고 1997년 11월 카나다 벤쿠버에서 개최된 APEC 정상회의에 김영삼 대통령이 참석하여 미국 클린턴 대통령을 비롯한 역내 여러 국가 정상들과 회담을 가짐으로써 우의를 돈독히 하였고 \"역내 정보 인프라\" 설치 문제 등에 주도적인 기여를 하였다. 1997년은 군축분야에서 국제적으로 활발한 논의가 전개되었는데 1993년에 채택된 화학무기금지협약(CWC)이 1997년 4월 발효하는 즉시 우리 나라는 비준서를 기탁함으로써 동 협약의 원당사국으로 참여하였다. 또한 5월에 화학무기금지기구(OPCW)가 공식출범하자 우리 나라는 아주지역 집행이사국으로 선임되어 동 기구의 활동에 주도적으로 참여하게 되었다. 그리고 국제여론의 지지에 힘입어 추진되던 대인지뢰 전면금지운동은 1997년 12월 마침내 \"대인지뢰금지협약(일명 오타와 협약)\" 의 채택을 가능하게 하였다. 우리 나라는 동 협약채택과정에 지속적으로 참여하여 왔으나 우리의 특수한 안보상황을 감안, 동 협약에 서명을 하지는 않았다. 한편 환경분야에서는 1992년 리우 환경정상회의 이후 5년만에 지구환경문제를 재점검하는 유엔환경특총에 김영삼 대통령이 참석하여 환경문제 해결노력에 동참하려는 우리 정부의 의지를 표시하였고, 97년 12월 토쿄 기후변화협약 채택과정에도 계속 참여하여 환경분야의 국제규범작성 노력에 기여하였다. 그 밖에 우리 나라는 1997년 4월 서울에서 제 98차 IPU총회를 개최하였는데 이 회의는 전세계 각국의 국회의원 및 수행원 약 1,200명이 참석한 대규모 회의로서 세계 주요현안에 대한 의회차원의 공동대응방안을 논의하였다. 또한 우리 나라가 최초로 유치한 국제기구로서 국제백신연구소(IVI)가 10월 국립 서울대학교내에서 발족되었다. 우리 나라는 1997년중 각종 국제기구 회의활동에서 우리의 신장된 국력을 반영하듯이 각종 기구의 이사국으로 선출되는 빈도가 많아졌는데, 예를 들면 UNDP, IAEA, FAO 및 IMO등에 이사국으로 선출되어 동 기구활동에 더욱 적극적으로 참여하게 되었다. 1997년 10월 동남아에서 시작된 금융위기가 우리 나라에 파급효과를 미침으로써 외환위기가 유발되었고, 우리 나라는 이를 극복하기 위하여 국제통화기금(IMF)과 긴밀히 협력하여 우리 경제의 구조조정 계획의 대강을 마련하는 등 경제위기 극복을 위한 다자 양자 차원의 경제협력 외교가 년말에 집중적으로 추진되었다. 문화외교는 세계화 외교 추진의 중요한 부분을 차지하고 있다. 정부는 세계화되고 다원화되어 가는 새로운 국제환경 속에서 국가간의 문화교류의 중요성이 더욱 증대되고 있음에 비추어 각국과의 문화협정 체결, 문화공동위원회 설치 및 청소년 교류 등 정부차원에서의 문화외교 활동을 한층 강화하는 동시에, 민간 문화학술단체가 수행하는 문화교류 활동도 적극 지원하였다. 이와함께 해외 한국학진흥, 해외 한국박물관내 한국실 설치를 지원하고 있으며, 특히 1995년부터 재외공관을 우리나라의 우수하고 독창적인 전통문화의 소개장소로 활용하는 문화전시장화 사업을 계속 추진하고 있다. 정부는 스포츠외교를 한층 강화하여 우리나라 축구대표단의 1998년 프랑스 월드컵 축구대회 본선진출과 지방자치단체의 무주 동계아시아경기대회 및 부산 동아시아경기대회 개최를 적극 지원하였다. 또한, 2002년 월드컵 축구대회의 한 일 공동개최가 세계 스포츠계에서 한국의 위상을 드높이고 세계인의 제전인 월드컵을 통해 인류의 화합과 평화 증진은 물론 미래지향적인 한 일관계 발전에도 기여할 수 있다고 보고 한 일 FIFA간의 원활한 협조를 지원함은 물론 98년 프랑스 월드컵 축구대회의 준비 경험을 전수받기 위한 노력을 꾸준히 전개하였다. 또한 후진국에 대한 체육협력을 증진하기 위하여 국제적 경쟁력을 보유한 여러 종목의 체육지도자 파견 및 외국인 코치 초청연수 등 스포츠를 통한 이해 및 협력 증진과 국위선양을 위하여 노력하고 있다. 지방자치제의 전면 실시로 본격적인 지방화시대가 도래함에 따라 외무부는 재외공관과의 긴밀한 협조하에 지방자치단체의 대외교류활동을 적극 지원하여 왔으며, 이러한 지원활동을 체계적으로 수행하기 위하여 서울, 부산, 대구, 대전, 인천, 경기 등 6개 지역에 국제관계자문대사를 파견하고 있다. 또한 외교안보연구원에 공무원 의전교육, 국제회의 전문요원 과정, 대외경제통상 과정 등을 설치하여 중앙 및 지방정부, 정부투자기관 임직원의 세계화 의식을 함양하고 각종 국제협상 무대에서의 협상 능력 및 대외경제환경 변화에 대한 능동적인 대처능력 배양에도 기여하였다. 한편, 외무부는 세계화 추진의 최첨단 신경조직으로서 외교행정의 전산화를 통하여 21세기 정보화 사회에 대비한 외교정보의 종합적 관리, 재외공관과의 외교정보망 구축으로 선진외교 지원체제를 구축하고 있다. 또한, 외교정책 자문위원회를 효과적으로 활용하고 정부 주요정책에 대한 홍보를 강화하여 외교정책에 대한 국민적 합의 도출에 노력함으로써 국민적 지지를 바탕으로 한 세계화 외교를 전개하였다. 한편, 공개행정 의지를 구현하고 국민의 알 권리를 충족시키기 위하여 중앙행정기관으로서는 처음으로 생산 또는 접수된 후 30년이 경과한 외교문서를 1994년부터 연례적으로 일반에게 공개하여 왔다. 그에 따라 그간 4회에 걸쳐 1948년 정부수립이후 1966년도까지의 외교문서를 공개하였으며, 1967년도 생산 접수된 외교문서의 공개작업을 추진하고 있다. 2. 안보 통일외교",
+      "stream": "economy",
+      "source": {
+        "edition": "1998 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1997-4",
+      "coverageYear": 1997,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "재외동포 보호 육성",
+      "quote": "제 2 절 1997년도 주요 외교시책 1. 세계화 외교 2. 안보 통일외교 3. 경제 통상외교 4. 재외동포 보호 육성 1. 세계화 외교 상호 의존성 증대와 함께 적자생존의 무한경쟁이 더욱 치열해지고 있는 국제환경속에서 우리의 국익을 보호하고 증진하기 위하여 정부는 1997년도에도 세계화 외교를 지속적으로 추진하였다. 김영삼 대통령은 1월에 일본(벳푸)을 실무 방문한데 이어, 6월 뉴욕에서 개최된 유엔 환경특별총회에 참석하였으며, 이 기회에 멕시코를 공식 방문하였다. 이어 11월에는 카나다 벤쿠버에서 개최된 제 5차 아시아 태평양 경제협력체(APEC) 정상회의에 참석하였으며, 12월 말레이시아 쿠알라룸푸르에서 개최된 ASEAN 창설 30주년 정상회의에는 김영삼 대통령을 대신하여 고건 국무총리가 참석하였다. 1997년에는 Reina 온두라스 대통령 등 7개국 국가원수와 Chretien 카나다 총리를 비롯한 5개국 총리가 방한하였다. 특히 1997년에는 Reina 온두라스 대통령(3월 19일∼21일), Isaias 에리트리아 대통령(4월 2일∼5일), Lukashenka 벨라루스 대통령(4월 21일∼23일), Akayev 키르기즈 대통령(6월 3일∼6일), Nakamura 팔라우 대통령(6월 15일∼17일), Compaore 부르키나파소 대통령(9월 2일∼5일), Kabua 마샬군도공화국 대통령(10월 15일∼18일) 등 많은 개발도상국 정상들이 우리나라를 방문하여 우리나라와 개도국간의 관계를 강화하고 우리 외교의 다변화에도 기여하였다. 정부는 또한 세계화 추진의 일환으로 유엔을 중심으로 한 국제기구 외교를 강화하였다. 탈냉전시대에 들어와 군축, 환경, 인권, 마약 등 범세계적 문제들이 부각되고 있는 가운데 유엔의 역할에 대한 기대가 커짐에 따라, 우리 나라는 대유엔 외교에 있어서 우리의 국익을 최대한 확보하고 아울러 국제사회에서 우리의 위치에 상응하는 역할을 수행한다는 목표하에 유엔 활동에 적극 참여하였다. 한편 1996년 OECD 가입을 계기로 우리 경제의 선진화 및 세계화가 가속화되는 계기를 맞이하였다. 이에 따라 우리 나라는 1997년 11월을 기점으로 여태까지 속해 왔던 개도국간 경제문제 협의체인 77그룹을 떠나 유엔에서 선진국간 경제문제 협의체인 Vinci그룹에 가입하였다. OECD 가입후 처음으로 1997년 5월 OECD 각료이사회에 외무부장관 등 3부 장관이 참석하였으며 OECD 각종 위원회 및 작업반회의 참석 등을 통하여 우리 나라의 경제운용을 OECD의 규범에 맞추어 나가는 작업을 시작하였다. 1997년에도 우리 나라는 아시아, 태평양 제국과의 정치적, 경제적 유대관계를 긴밀히 하고 역내 경제통합 추진노력에 적극적으로 동참한다는 취지에서 APEC의 각종 실무 및 고위급회의에 참석하였다. 그리고 1997년 11월 카나다 벤쿠버에서 개최된 APEC 정상회의에 김영삼 대통령이 참석하여 미국 클린턴 대통령을 비롯한 역내 여러 국가 정상들과 회담을 가짐으로써 우의를 돈독히 하였고 \"역내 정보 인프라\" 설치 문제 등에 주도적인 기여를 하였다. 1997년은 군축분야에서 국제적으로 활발한 논의가 전개되었는데 1993년에 채택된 화학무기금지협약(CWC)이 1997년 4월 발효하는 즉시 우리 나라는 비준서를 기탁함으로써 동 협약의 원당사국으로 참여하였다. 또한 5월에 화학무기금지기구(OPCW)가 공식출범하자 우리 나라는 아주지역 집행이사국으로 선임되어 동 기구의 활동에 주도적으로 참여하게 되었다. 그리고 국제여론의 지지에 힘입어 추진되던 대인지뢰 전면금지운동은 1997년 12월 마침내 \"대인지뢰금지협약(일명 오타와 협약)\" 의 채택을 가능하게 하였다. 우리 나라는 동 협약채택과정에 지속적으로 참여하여 왔으나 우리의 특수한 안보상황을 감안, 동 협약에 서명을 하지는 않았다. 한편 환경분야에서는 1992년 리우 환경정상회의 이후 5년만에 지구환경문제를 재점검하는 유엔환경특총에 김영삼 대통령이 참석하여 환경문제 해결노력에 동참하려는 우리 정부의 의지를 표시하였고, 97년 12월 토쿄 기후변화협약 채택과정에도 계속 참여하여 환경분야의 국제규범작성 노력에 기여하였다. 그 밖에 우리 나라는 1997년 4월 서울에서 제 98차 IPU총회를 개최하였는데 이 회의는 전세계 각국의 국회의원 및 수행원 약 1,200명이 참석한 대규모 회의로서 세계 주요현안에 대한 의회차원의 공동대응방안을 논의하였다. 또한 우리 나라가 최초로 유치한 국제기구로서 국제백신연구소(IVI)가 10월 국립 서울대학교내에서 발족되었다. 우리 나라는 1997년중 각종 국제기구 회의활동에서 우리의 신장된 국력을 반영하듯이 각종 기구의 이사국으로 선출되는 빈도가 많아졌는데, 예를 들면 UNDP, IAEA, FAO 및 IMO등에 이사국으로 선출되어 동 기구활동에 더욱 적극적으로 참여하게 되었다. 1997년 10월 동남아에서 시작된 금융위기가 우리 나라에 파급효과를 미침으로써 외환위기가 유발되었고, 우리 나라는 이를 극복하기 위하여 국제통화기금(IMF)과 긴밀히 협력하여 우리 경제의 구조조정 계획의 대강을 마련하는 등 경제위기 극복을 위한 다자 양자 차원의 경제협력 외교가 년말에 집중적으로 추진되었다. 문화외교는 세계화 외교 추진의 중요한 부분을 차지하고 있다. 정부는 세계화되고 다원화되어 가는 새로운 국제환경 속에서 국가간의 문화교류의 중요성이 더욱 증대되고 있음에 비추어 각국과의 문화협정 체결, 문화공동위원회 설치 및 청소년 교류 등 정부차원에서의 문화외교 활동을 한층 강화하는 동시에, 민간 문화학술단체가 수행하는 문화교류 활동도 적극 지원하였다. 이와함께 해외 한국학진흥, 해외 한국박물관내 한국실 설치를 지원하고 있으며, 특히 1995년부터 재외공관을 우리나라의 우수하고 독창적인 전통문화의 소개장소로 활용하는 문화전시장화 사업을 계속 추진하고 있다. 정부는 스포츠외교를 한층 강화하여 우리나라 축구대표단의 1998년 프랑스 월드컵 축구대회 본선진출과 지방자치단체의 무주 동계아시아경기대회 및 부산 동아시아경기대회 개최를 적극 지원하였다. 또한, 2002년 월드컵 축구대회의 한 일 공동개최가 세계 스포츠계에서 한국의 위상을 드높이고 세계인의 제전인 월드컵을 통해 인류의 화합과 평화 증진은 물론 미래지향적인 한 일관계 발전에도 기여할 수 있다고 보고 한 일 FIFA간의 원활한 협조를 지원함은 물론 98년 프랑스 월드컵 축구대회의 준비 경험을 전수받기 위한 노력을 꾸준히 전개하였다. 또한 후진국에 대한 체육협력을 증진하기 위하여 국제적 경쟁력을 보유한 여러 종목의 체육지도자 파견 및 외국인 코치 초청연수 등 스포츠를 통한 이해 및 협력 증진과 국위선양을 위하여 노력하고 있다. 지방자치제의 전면 실시로 본격적인 지방화시대가 도래함에 따라 외무부는 재외공관과의 긴밀한 협조하에 지방자치단체의 대외교류활동을 적극 지원하여 왔으며, 이러한 지원활동을 체계적으로 수행하기 위하여 서울, 부산, 대구, 대전, 인천, 경기 등 6개 지역에 국제관계자문대사를 파견하고 있다. 또한 외교안보연구원에 공무원 의전교육, 국제회의 전문요원 과정, 대외경제통상 과정 등을 설치하여 중앙 및 지방정부, 정부투자기관 임직원의 세계화 의식을 함양하고 각종 국제협상 무대에서의 협상 능력 및 대외경제환경 변화에 대한 능동적인 대처능력 배양에도 기여하였다. 한편, 외무부는 세계화 추진의 최첨단 신경조직으로서 외교행정의 전산화를 통하여 21세기 정보화 사회에 대비한 외교정보의 종합적 관리, 재외공관과의 외교정보망 구축으로 선진외교 지원체제를 구축하고 있다. 또한, 외교정책 자문위원회를 효과적으로 활용하고 정부 주요정책에 대한 홍보를 강화하여 외교정책에 대한 국민적 합의 도출에 노력함으로써 국민적 지지를 바탕으로 한 세계화 외교를 전개하였다. 한편, 공개행정 의지를 구현하고 국민의 알 권리를 충족시키기 위하여 중앙행정기관으로서는 처음으로 생산 또는 접수된 후 30년이 경과한 외교문서를 1994년부터 연례적으로 일반에게 공개하여 왔다. 그에 따라 그간 4회에 걸쳐 1948년 정부수립이후 1966년도까지의 외교문서를 공개하였으며, 1967년도 생산 접수된 외교문서의 공개작업을 추진하고 있다. 2. 안보 통일외교",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1998 외교백서",
+        "chapter": null,
+        "section": null,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "1998-1",
+      "coverageYear": 1998,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "경제위기 극복 및 재도약 기틀 마련",
+      "quote": "1998년의 우리 외교는 국정 최대의 현안이었던 '경제위기 극복 및 재도약 기틀 마련'을 비롯하여 '한반도 평화정착 및 포괄적 안보체제 구축', '문화외교 활성화로 국가이미지 제고', '재외동포의 권익보호 및 자조노력 지원'의 4대 기조를 설정하고 이를 적극 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "1999 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1998-2",
+      "coverageYear": 1998,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "한반도 평화정착 및 포괄적 안보체제 구축",
+      "quote": "1998년의 우리 외교는 국정 최대의 현안이었던 '경제위기 극복 및 재도약 기틀 마련'을 비롯하여 '한반도 평화정착 및 포괄적 안보체제 구축', '문화외교 활성화로 국가이미지 제고', '재외동포의 권익보호 및 자조노력 지원'의 4대 기조를 설정하고 이를 적극 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "1999 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1998-3",
+      "coverageYear": 1998,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "문화외교 활성화로 국가이미지 제고",
+      "quote": "1998년의 우리 외교는 국정 최대의 현안이었던 '경제위기 극복 및 재도약 기틀 마련'을 비롯하여 '한반도 평화정착 및 포괄적 안보체제 구축', '문화외교 활성화로 국가이미지 제고', '재외동포의 권익보호 및 자조노력 지원'의 4대 기조를 설정하고 이를 적극 추진하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "1999 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1998-4",
+      "coverageYear": 1998,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "재외동포의 권익보호 및 자조노력 지원",
+      "quote": "1998년의 우리 외교는 국정 최대의 현안이었던 '경제위기 극복 및 재도약 기틀 마련'을 비롯하여 '한반도 평화정착 및 포괄적 안보체제 구축', '문화외교 활성화로 국가이미지 제고', '재외동포의 권익보호 및 자조노력 지원'의 4대 기조를 설정하고 이를 적극 추진하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "1999 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1999-1",
+      "coverageYear": 1999,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "한반도 평화와 안정 정착을 위한 외교",
+      "quote": "1999년도 주요외교정책 과제로서 '한반도 평화와 안정 정착을 위한 외교', '경제재도약 및 시장경제 정착을 위한 외교', '인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교', '국가이미지 제고를 위한 문화외교', '재외동포의 권익보호 및 자조노력 지원' 등을 설정하고 이를 적극 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2000 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1999-2",
+      "coverageYear": 1999,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "경제재도약 및 시장경제 정착을 위한 외교",
+      "quote": "1999년도 주요외교정책 과제로서 '한반도 평화와 안정 정착을 위한 외교', '경제재도약 및 시장경제 정착을 위한 외교', '인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교', '국가이미지 제고를 위한 문화외교', '재외동포의 권익보호 및 자조노력 지원' 등을 설정하고 이를 적극 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2000 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1999-3",
+      "coverageYear": 1999,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교",
+      "quote": "1999년도 주요외교정책 과제로서 '한반도 평화와 안정 정착을 위한 외교', '경제재도약 및 시장경제 정착을 위한 외교', '인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교', '국가이미지 제고를 위한 문화외교', '재외동포의 권익보호 및 자조노력 지원' 등을 설정하고 이를 적극 추진하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2000 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1999-4",
+      "coverageYear": 1999,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국가이미지 제고를 위한 문화외교",
+      "quote": "1999년도 주요외교정책 과제로서 '한반도 평화와 안정 정착을 위한 외교', '경제재도약 및 시장경제 정착을 위한 외교', '인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교', '국가이미지 제고를 위한 문화외교', '재외동포의 권익보호 및 자조노력 지원' 등을 설정하고 이를 적극 추진하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2000 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "1999-5",
+      "coverageYear": 1999,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "재외동포의 권익보호 및 자조노력 지원",
+      "quote": "1999년도 주요외교정책 과제로서 '한반도 평화와 안정 정착을 위한 외교', '경제재도약 및 시장경제 정착을 위한 외교', '인류 보편적 가치 신장 및 범세계적 문제해결에 기여하는 외교', '국가이미지 제고를 위한 문화외교', '재외동포의 권익보호 및 자조노력 지원' 등을 설정하고 이를 적극 추진하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2000 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2000-1",
+      "coverageYear": 2000,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "한반도 냉전 종식과 평화공존 외교",
+      "quote": "우리 정부는 2000년도에도 대북 화해 협력정책의 기본틀 하에서 한반도 냉전종식과 평화공존 외교를 주요 외교시책의 하나로 설정하고 아래 세가지 방향에서 이를 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2001 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2000-2",
+      "coverageYear": 2000,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "개방 경제에 입각한 통상외교 내실화",
+      "quote": "정부는 외환위기의 극복과 경제재도약에서 얻은 자신감과 그간 축적된 통상외교역량을 바탕으로 세계화 개방화시대에 부합하는 '개방된 통상국가의 지향'이라는 목표 하에 양자 다자 및 지역차원에서 활발한 대외경제 통상외교를 전개하고 수출증대 및 투자유치 확대를 위한 각종 세일즈외교 활동을 강화하는 등 통상외교의 내실화에 주력하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2001 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2000-3",
+      "coverageYear": 2000,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "인류보편의 가치신장 및 범세계적 문제해결에 기여하는 외교",
+      "quote": "우리나라는 '국민의 정부' 출범이후 민주주의와 시장경제, 인권 등 인류보편의 가치를 신장하고 국제평화와 안전, 군축 및 국제조직범죄 등을 비롯한 범세계적 문제 해결에 대한 기여를 외교 중점시책으로 설정하고 이를 적극 추진하여 왔다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2001 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2000-4",
+      "coverageYear": 2000,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "문화의 세기를 맞아 문화외교의 활성화",
+      "quote": "문화의 세기 21세기 개막과 더불어 세계 각 국은 세계화와 정보혁명의 물결속에서 자국문화의 정체성 확보와 더불어 세계문화의 다양성 확보는 세계평화와 우호의 초석이 되고 있음을 깊이 인식하게 되었다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2001 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2000-5",
+      "coverageYear": 2000,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "재외동포의 권익보호 및 자조 노력 지원",
+      "quote": "구소련 및 중국과의 수교에 따른 동포사회의 확대와 일본 및 미국의 재외동포사회가 세대교체를 겪는 시기를 맞아 재외동포사회의 변화에 보다 적극적으로 대응하면서 21세기 무한경쟁시대에 대처하기 위하여 재외동포정책 수립 및 시행에 있어 우리 정부의 보다 세심한 접근이 요망되고 있다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2001 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2001-1",
+      "coverageYear": 2001,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "대북 화해·협력 정책에 대한 국제사회의 지지를 확보",
+      "quote": "첫째, 우리의 대북 화해·협력 정책에 대한 국제사회의 지지를 확보하여 한반도에서 평화체제의 기반을 구축하기 위한 외교적 노력을 전개하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2001-2",
+      "coverageYear": 2001,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한반도 주변 4국 등 주요국과의 실질협력관계를 심화·발전",
+      "quote": "둘째, 한반도 주변 4국 등 주요국과의 실질협력관계를 심화·발전시키기 위해 노력하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2001-3",
+      "coverageYear": 2001,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "지속적 경제발전을 뒷받침하는 경제·통상외교를 강화",
+      "quote": "셋째, 지속적 경제발전을 뒷받침하는 경제·통상외교를 강화하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2001-4",
+      "coverageYear": 2001,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "지역협력 활동을 한층 강화",
+      "quote": "넷째, 지역협력 활동을 한층 강화하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2001-5",
+      "coverageYear": 2001,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "유엔 등 국제기구에 대한 외교강화와 아울러 인류보편적 가치 신장 및 범세계적 문제 해결에 적극 기여",
+      "quote": "다섯째, 유엔 등 국제기구에 대한 외교강화와 아울러 인류보편적 가치 신장 및 범세계적 문제 해결에 적극 기여하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2001-6",
+      "coverageYear": 2001,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "국제 문화·체육 교류의 확대·심화",
+      "quote": "여섯째, 국제 문화·체육 교류의 확대·심화를 위해 노력하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2002 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": null
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2002-1",
+      "coverageYear": 2002,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "한반도 평화공존 기반 구축 외교",
+      "quote": "1. 한반도 평화공존 기반 구축 외교",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 130
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2002-2",
+      "coverageYear": 2002,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "일류경제 경쟁력 실현을 위한 경제·통상 외교",
+      "quote": "2. 일류경제 경쟁력 실현을 위한 경제·통상 외교",
+      "stream": "economy",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 131
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2002-3",
+      "coverageYear": 2002,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "다자협력 및 민주주의 인권신장을 위한 외교",
+      "quote": "3. 다자협력 및 민주주의 인권신장을 위한 외교",
+      "stream": "global-role",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 135
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2002-4",
+      "coverageYear": 2002,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "문화외교의 적극 추진",
+      "quote": "문화의 세기 21세기의 개막과 더불어 세계 각국은 세계화와 정보혁명의 물결속에서 자국문화의 정체성 확보와 더불어 세계문화의 다양성 확보가 세계평화와 발전의 초석이 되고 있음을 깊이 인식하게 되었다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 137
+      },
+      "flags": []
+    },
+    {
+      "id": "2002-5",
+      "coverageYear": 2002,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "영사업무 강화와 재외동포 권익신장",
+      "quote": "5. 영사업무 강화와 재외동포 권익신장",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 139
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2002-6",
+      "coverageYear": 2002,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "외교역량 강화",
+      "quote": "6. 외교역량 강화",
+      "stream": "capacity",
+      "source": {
+        "edition": "2003 외교백서",
+        "chapter": 2,
+        "section": 2,
+        "page": 141
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2003-1",
+      "coverageYear": 2003,
+      "ordinal": 1,
+      "ordinalSource": "시책절",
+      "title": "북한핵문제의 평화적 해결 및 한반도 평화체제 구축을 위한 대외환경 조성",
+      "quote": "첫째, 북한핵문제의 평화적 해결을 위해 최선의 노력을 경주하고, 한반도 평화체제 구축을 위한 대외환경을 조성하는 데 노력하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-2",
+      "coverageYear": 2003,
+      "ordinal": 2,
+      "ordinalSource": "시책절",
+      "title": "이라크 전후대책의 전개",
+      "quote": "둘째, 이라크 전후대책을 적극적으로 전개하고 이라크 전후 복구 및 안정화에 기여하였다.",
+      "stream": "iraq",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-3",
+      "coverageYear": 2003,
+      "ordinal": 3,
+      "ordinalSource": "시책절",
+      "title": "평화번영의 동북아시대를 실현하기 위한 외교적 기반 확충",
+      "quote": "셋째, 동북아 경제중심을 실현하기 위한 외교적 기반을 확충하는 데 노력하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-4",
+      "coverageYear": 2003,
+      "ordinal": 4,
+      "ordinalSource": "시책절",
+      "title": "일류경제 경쟁력 실현을 위한 경제·통상 외교",
+      "quote": "넷째, 개방화가 심화되고 있는 경제환경에 적극적으로 대응하는 경제통상외교를 전개하여 우리 경제가 지속적으로 발전하는 데 기여할 수 있도록 노력하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-5",
+      "coverageYear": 2003,
+      "ordinal": 5,
+      "ordinalSource": "시책절",
+      "title": "다자외교에서의 위상 제고 및 인류보편적 가치 신장 노력",
+      "quote": "다섯째, 테러 등 범세계적 문제의 해결에 기여하기 위해 노력하는 한편, 다자외교에서의 위상을 제고하고, 인권, 민주주의 등 인류보편적 가치를 신장하기 위한 국제사회의 노력에 적극 동참하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-6",
+      "coverageYear": 2003,
+      "ordinal": 6,
+      "ordinalSource": "시책절",
+      "title": "영사업무 강화와 재외동포 권익 신장",
+      "quote": "여섯째, 해외여행자 및 체류자 등 재외국민을 보호하고, 재외동포(…)가 거주국의 모범시민으로서 성장할 수 있도록 육성하는 데 노력하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": [
+        "page-break"
+      ]
+    },
+    {
+      "id": "2003-7",
+      "coverageYear": 2003,
+      "ordinal": 7,
+      "ordinalSource": "시책절",
+      "title": "문화외교 활동 강화",
+      "quote": "일곱째, 문화국가로서의 대외적 이미지를 고양시키기 위해 각종 문화·체육외교를 통해 우리 문화에 대한 국제적 인식을 제고시켰다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2003-8",
+      "coverageYear": 2003,
+      "ordinal": 8,
+      "ordinalSource": "시책절",
+      "title": "외교·통상 역량 강화",
+      "quote": "여덟째, 참여정부의 국정과제 추진과 외교환경 변화에 효율적으로 대응하기 위하여 외교·통상역량을 강화하는 데 힘을 기울였다.",
+      "stream": "capacity",
+      "source": {
+        "edition": "2004 외교백서",
+        "chapter": 2,
+        "section": 1,
+        "page": 151
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-1",
+      "coverageYear": 2004,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "북한핵문제를 6자회담을 통해 평화적으로 해결할 수 있는 기초를 마련",
+      "quote": "첫째, 한반도와 동북아 지역의 평화와 안정에 최대 위협요인인 북한핵문제를 6자회담을 통해 평화적으로 해결할 수 있는 기초를 마련하기 위해 활발한 외교노력을 경주하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-2",
+      "coverageYear": 2004,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한·미동맹의 발전적인 재조정을 모색",
+      "quote": "둘째, 우리나라의 국력이 신장되고 국민들의 주권의식이 성숙되는 가운데 그간 한반도와 동북아의 평화와 번영에 초석이 되어온 한·미동맹의 발전적인 재조정을 모색하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-3",
+      "coverageYear": 2004,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "한반도에 평화체제를 구축하기 위한 대외환경을 조성",
+      "quote": "셋째, 한반도에 평화체제를 구축하기 위한 대외환경을 조성하는 데 외교적 노력을 경주하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-4",
+      "coverageYear": 2004,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "동북아 경제중심 실현을 위한 외교적 기반 확충",
+      "quote": "넷째, 동북아 경제중심 실현을 위한 외교적 기반 확충에 노력하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-5",
+      "coverageYear": 2004,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "전방위 정상외교를 추진",
+      "quote": "다섯째, 우리의 국익신장과 외교지평을 확대하기 위해 2004년 중 3개 대륙, 12개 국가를 방문하는 전방위 정상외교를 추진하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-6",
+      "coverageYear": 2004,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "우리 정부의 이라크 파병 성과를 거양하기 위한 외교적 노력",
+      "quote": "여섯째, 우리 정부의 이라크 파병 성과를 거양하기 위한 외교적 노력을 경주하였다.",
+      "stream": "iraq",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-7",
+      "coverageYear": 2004,
+      "ordinal": 7,
+      "ordinalSource": "기조절",
+      "title": "미래지향적 글로벌외교를 전개",
+      "quote": "일곱째, 미래지향적 글로벌외교를 전개하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-8",
+      "coverageYear": 2004,
+      "ordinal": 8,
+      "ordinalSource": "기조절",
+      "title": "선진개방경제 실현을 위한 경제·통상외교를 적극적으로 추진",
+      "quote": "여덟째, 선진개방경제 실현을 위한 경제·통상외교를 적극적으로 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2004-9",
+      "coverageYear": 2004,
+      "ordinal": 9,
+      "ordinalSource": "기조절",
+      "title": "우리 국민들의 일자리 창출을 지원하기 위한 노력을 전개",
+      "quote": "아홉째, 우리 국민들의 일자리 창출을 지원하기 위한 노력을 전개하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2005 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": []
+    },
+    {
+      "id": "2005-1",
+      "coverageYear": 2005,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "동북아시대를 위한 균형적 실용외교",
+      "quote": "북핵문제의 평화적 해결과 한반도 평화체제 구축을 기초로 평화와 번영의 동북아시대를 구현하고, 이를 실현하는 데 적합한 대외환경을 조성하기 위해 균형적 실용외교를 적극 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2006 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2005-2",
+      "coverageYear": 2005,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "세계로 나아가는 선진외교",
+      "quote": "이를 실현하기 위해 다음과 같은 4대 정책목표를 설정했다. ▶동북아시대를 위한 균형적 실용외교 ▶세계로 나아가는 선진외교 ▶선진통상국가 구현을 위한 경제외교 ▶국민과 함께하는 열린외교",
+      "stream": "regional",
+      "source": {
+        "edition": "2006 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2005-3",
+      "coverageYear": 2005,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "선진통상국가 구현을 위한 경제외교",
+      "quote": "세계는 현재 개방화와 자유무역협정(FTA)이 확산되는 추세이다. 이에 대응하여 안정적인 해외시장을 확보하고, 개방을 통한 우리 경제의 경쟁력 강화를 위해 동시다발적인 FTA를 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2006 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2005-4",
+      "coverageYear": 2005,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국민과 함께하는 열린외교",
+      "quote": "주요 외교정책을 홍보하여 국민들의 이해와 지지를 확보하는 한편, 외교정책 수립 및 시행 과정에서 국민의 의견을 반영하기 위해 국민과의 쌍방향 의견수렴을 대폭 강화하고, 지방 및 시민단체(NGO)와의 정책교류를 확대하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2006 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2006-1",
+      "coverageYear": 2006,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "동북아평화번영을 위한 균형적 실용외교",
+      "quote": "한반도 및 동북아의 평화와 번영을 구현하는 데 핵심 변수인 북핵문제의 평화적 해결을 통해 한반도 평화체제를 구축하고 역내 국가 간의 협력을 증진하기 위해 우리의 역할을 적극적으로 강화해 나갈 필요가 있다는 측면에서 '동북아평화번영을 위한 균형적 실용외교'를 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2007 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": []
+    },
+    {
+      "id": "2006-2",
+      "coverageYear": 2006,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "세계로 나아가는 다변화외교",
+      "quote": "세계로 나아가는 다변화외교",
+      "stream": "regional",
+      "source": {
+        "edition": "2007 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2006-3",
+      "coverageYear": 2006,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "국력에 걸맞은 선진외교",
+      "quote": "정책목표Ⅲ국력에 걸맞은 선진외교",
+      "stream": "global-role",
+      "source": {
+        "edition": "2007 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2006-4",
+      "coverageYear": 2006,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "선진통상국가 구현을 위한 경제외교",
+      "quote": "정책목표Ⅳ선진통상국가 구현을 위한 경제외교",
+      "stream": "economy",
+      "source": {
+        "edition": "2007 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2006-5",
+      "coverageYear": 2006,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "국민과 함께하는 열린외교",
+      "quote": "외교정책에 대한 국민적 이해와 지지를 확보하고, 해외여행객 1,200만명 시대를 맞아 국민의 해외활동 편의 증진을 위한 노력을 지속적으로 강화해 나가기 위해 '국민과 함께 열린외교'를 추진하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2007 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": []
+    },
+    {
+      "id": "2007-1",
+      "coverageYear": 2007,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "동북아평화·번영추구",
+      "quote": "2007년은 참여정부 마지막 해로서, ①한반도와 동북아 평화·번영 추구",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 7
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2007-2",
+      "coverageYear": 2007,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "국제협력증진및국가이미지제고",
+      "quote": "국제사회의 우리나라에 대한 기대에 부응하면서, 우리의 경제규모에 상응하는 국제적 기여를 확대하기 위해 노력하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 7
+      },
+      "flags": []
+    },
+    {
+      "id": "2007-3",
+      "coverageYear": 2007,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "경제·통상외교 강화",
+      "quote": "③경제·통상외교강화",
+      "stream": "economy",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 7
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2007-4",
+      "coverageYear": 2007,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "재외국민 보호, 영사서비스 강화 및 국민의 지지 확보",
+      "quote": "2007년은 참여정부 마지막 해로서, ① 한반도와 동북아 평화·번영 추구 ② 국제협력 (…) 증진 및 국가이미지 제고 ③ 경제·통상 외교 강화 ④ 재외국민 보호, 영사서비스 강화 (…) 및 외교정책에 대한 국민의 지지 확보 ⑤ 외교역량 강화 등 5개 분야에 중점을 두고 외교 (…) 정책을 추진하였다",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2007-5",
+      "coverageYear": 2007,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "외교통상부 역량 강화",
+      "quote": "2007년은 참여정부 마지막 해로서, ① 한반도와 동북아 평화·번영 추구 ② 국제협력 (…) 증진 및 국가이미지 제고 ③ 경제·통상 외교 강화 ④ 재외국민 보호, 영사서비스 강화 (…) 및 외교정책에 대한 국민의 지지 확보 ⑤ 외교역량 강화 등 5개 분야에 중점을 두고 외교 (…) 정책을 추진하였다",
+      "stream": "capacity",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2008-1",
+      "coverageYear": 2008,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "한반도의 평화와 안정 유지",
+      "quote": "한반도의 평화와 안정을 보다 굳건히 하기 위해 주변국과 협력을 강화하고 북핵문제의 해결과 상생과 공영의 대북정책을 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2008-2",
+      "coverageYear": 2008,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "글로벌 네트워크 구축",
+      "quote": "외교의 지평을 동북아뿐만 아니라 동남아·서남아·중앙아 등 범아시아, 중동, 중남미, 아프리카까지 전방위로 확대하여, 글로벌 협력 네트워크를 구축하기 위해 노력하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2008-3",
+      "coverageYear": 2008,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "신성장동력 창출에 대한 기여",
+      "quote": "우리 경제 선진화와 지속적 성장동력 창출을 지원하기 위한 외교적 노력도 경주하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "partial"
+      ]
+    },
+    {
+      "id": "2008-4",
+      "coverageYear": 2008,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국제 사회 내 역할과 위상 제고",
+      "quote": "국제 사회 내 역할과 위상 제고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2008-5",
+      "coverageYear": 2008,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "영사 서비스 확충",
+      "quote": "영사 서비스 확충",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2008-6",
+      "coverageYear": 2008,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "외교 역량 강화",
+      "quote": "외교 역량 강화",
+      "stream": "capacity",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": []
+    },
+    {
+      "id": "2009-1",
+      "coverageYear": 2009,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "한반도의 평화와 안정 공고화",
+      "quote": "2008년에 격상, 강화된 주변 4국과의 관계를 보다 튼튼히 하여 한반도의 평화와 안정을 공고히 하고 북핵문제 해결을 위해 6자회담의 조속한 재개를 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": []
+    },
+    {
+      "id": "2009-2",
+      "coverageYear": 2009,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "경제살리기 외교 강화",
+      "quote": "세계 경제위기에 대응하기 위한 경제·통상외교에 주력하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2009-3",
+      "coverageYear": 2009,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "신아시아 외교 추진",
+      "quote": "우리 외교의 외연을 확대하기 위한 글로벌 네트워크 구축의 일환으로 신아시아외교를 중점 추진하여 동남아, 중앙아, 서남아 지역을 포함한 인근 아시아 우방국들과의 실질적인 협력관계를 강화하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2009-4",
+      "coverageYear": 2009,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국제사회 내 역할과 위상 제고",
+      "quote": "4. 국제사회 내 역할과 위상 제고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2009-5",
+      "coverageYear": 2009,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "대국민 생활공감 서비스 향상",
+      "quote": "우리 국민의 해외진출 반경 확대와 재외국민 안전·보호 수요 증대에 효과적으로 대응하기 위해 영사서비스 제도의 개선을 지속적으로 추진하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2009-6",
+      "coverageYear": 2009,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "외교역량 강화",
+      "quote": "6. 외교역량 강화",
+      "stream": "capacity",
+      "source": {
+        "edition": "2010 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2010-1",
+      "coverageYear": 2010,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "한반도 안보 공고화",
+      "quote": "1. 한반도 안보 공고화",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2010-2",
+      "coverageYear": 2010,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "정상외교 지평 확대를 통한 글로벌 네트워크 구축",
+      "quote": "정상외교를 통해 주변 4국과의 관계를 강화하고 신아시아 외교를 본격 추진한 데 이어 아중동·중남미·EU 지역으로 우리의 외교지평을 확대·심화하고자 노력하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2010-3",
+      "coverageYear": 2010,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "서울 G20 정상회의의 성공적 개최",
+      "quote": "우리 정부는 2010년 G20 정상회의 서울 개최가 확정된 이후 대통령 직속의 G20 준비위원회를 구성하여 회의 준비를 위한 범정부적 역량을 결집하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2010-4",
+      "coverageYear": 2010,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "경제·통상외교 강화",
+      "quote": "4. 경제·통상외교 강화",
+      "stream": "economy",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2010-5",
+      "coverageYear": 2010,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "국제사회내 역할과 위상 제고",
+      "quote": "우리의 높아진 국제적 위상에 걸맞은 기여외교 수행을 위한 노력도 지속적으로 경주하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2010-6",
+      "coverageYear": 2010,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "영사서비스 확충 및 국민과의 소통 강화",
+      "quote": "우리 국민의 해외활동 안전과 편익 증진을 위해 영사콜센터, 신속대응팀제도 등을 지속 운영하는 한편, 해외안전여행 대학생 서포터즈 발족·해외안전여행홈페이지를 통한 정보 집중 전파에 주력하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2010-7",
+      "coverageYear": 2010,
+      "ordinal": 7,
+      "ordinalSource": "기조절",
+      "title": "외교역량 강화",
+      "quote": "끊임없이 변화하는 외교환경과 우리나라의 국력신장에 따라 급증하고 있는 업무수요에 능동적으로 대응하고자 외교통상부는 직원들의 외교역량 강화와 외교 인프라 강화를 동시에 추진하였다.",
+      "stream": "capacity",
+      "source": {
+        "edition": "2011 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2011-1",
+      "coverageYear": 2011,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "안보를 튼튼히 하는 외교",
+      "quote": "우리의 안보를 튼튼히 하기 위해 주변국과 긴밀한 공조를 통하여, 북한의 도발을 억제하고, 북한의 태도 변화를 유도하기 위한 외교적 노력을 경주하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2011-2",
+      "coverageYear": 2011,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "국격을 높이는 외교",
+      "quote": "지난해에는 ASEAN+3 정상회담, 중앙아시아 정상순방 등을 통해 신아시아외교를 지속 공고화하였으며, EU와는 고위정치대화 개설, FTA 발효, 정상 유럽순방 등으로, 전략적 동반자관계를 내실화하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": []
+    },
+    {
+      "id": "2011-3",
+      "coverageYear": 2011,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "선진경제를 실현하는 외교",
+      "quote": "신흥시장 진출 확대를 위하여, 비즈니스 외교의 확대, 통상투자사절단 파견 및 재외공관의 우리 농식품 홍보사업을 폭넓게 전개하였으며, 주요 수입규제조치에 대한 적극적 대응 노력을 경주하여 관세부담액을 경감시켰다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": []
+    },
+    {
+      "id": "2011-4",
+      "coverageYear": 2011,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국민을 섬기는 외교",
+      "quote": "4. 국민을 섬기는 외교",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2011-5",
+      "coverageYear": 2011,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "공공외교 및 민간부문과의 협력 확대",
+      "quote": "재외공관과 우리 기업, NGO 등 민·관이 함께하는 문화외교를 통해 국격을 높이고 세계와 소통하기 위한 활동을 적극 전개하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2011-6",
+      "coverageYear": 2011,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "21세기형 선진외교체제 구축",
+      "quote": "개방과 공정의 외교통상부로 거듭나기 위해 21세기형 선진외교체제를 구축하는 노력을 경주하였다.",
+      "stream": "capacity",
+      "source": {
+        "edition": "2012 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2012-1",
+      "coverageYear": 2012,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "국민이 신뢰할 수 있는 안보외교",
+      "quote": "정부는 한반도 정세의 안정적 관리를 최우선 정책목표로 설정하고, 주변 주요국 및 국제사회와의 긴밀한 공조하에 북한 비핵화의 실질적 진전 확보, 북한 도발 억제 및 북한 정권의 진정한 태도변화 유도를 위한 노력을 적극 경주하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2013 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2012-2",
+      "coverageYear": 2012,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "세계공영에 기여하는 외교",
+      "quote": "정부는 2010년 서울 G20 정상회의 및 2011년 부산 세계개발원조총회의 성공적 개최에 이어 2012년에도 글로벌 현안에 대한 관리 및 해결과정에 주도적으로 참여함으로써 세계 평화와 발전에 기여하고, 국제사회 내 우리나라의 위상과 역할을 더욱 높였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2013 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": []
+    },
+    {
+      "id": "2012-3",
+      "coverageYear": 2012,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "미래성장동력을 확보하는 외교",
+      "quote": "정부는 세계금융위기, 유로존 위기 등으로 인한 세계적 경기 둔화에 능동적으로 대응하고 미래성장동력을 확보하기 위하여 FTA를 통한 일자리 창출, 녹색성장 외교 추진기반 마련, 우리기업의 신흥시장 진출 지원 확대, 자원부국들과의 에너지·자원 협력 강화 등 전방위적 노력을 기울였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2013 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": []
+    },
+    {
+      "id": "2012-4",
+      "coverageYear": 2012,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국민에게 봉사하는 외교",
+      "quote": "정부는 우리 국민들의 해외진출 지원과 재외동포들의 권익 증진을 위해 노력을 기울이는 한편, 뉴미디어 활용을 통해 국민과의 소통을 강화하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2013 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2013-1",
+      "coverageYear": 2013,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "북핵문제 진전을 위한 동력 강화",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2013-2",
+      "coverageYear": 2013,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2013-3",
+      "coverageYear": 2013,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "동북아 평화협력 구상과 유라시아 협력 확대",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "regional",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2013-4",
+      "coverageYear": 2013,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "세계평화와 발전에 기여하는 책임 있는 중견국 실현",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2013-5",
+      "coverageYear": 2013,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "재외국민 안전·권익 보호와 공공외교 확대",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2013-6",
+      "coverageYear": 2013,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "경제외교를 통한 경제부흥 선도",
+      "quote": "신정부는 '국민과 함께 하는 신뢰외교' 기조하에 ▲북핵문제 진전을 위한 동력 강화 ▲한미동맹과 한중 동반자 관계의 조화·발전 및 한일관계 안정화 ▲동북아 평화협력 구상과 유라시아 협력 확대 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대 ▲경제외교를 통한 경제부흥 선도 등 6개 추진과제를 설정하고",
+      "stream": "economy",
+      "source": {
+        "edition": "2014 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2014-1",
+      "coverageYear": 2014,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "평화통일 신뢰외교",
+      "quote": "'국민과 함께하는 신뢰외교' 기조 아래 ▲평화통일 신뢰외교 ▲한·미 동맹과 한·중 전략적 협력동반자 관계의 조화 및 발전 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2015 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2014-2",
+      "coverageYear": 2014,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한·미 동맹과 한·중 전략적 협력동반자 관계의 조화 및 발전",
+      "quote": "'국민과 함께하는 신뢰외교' 기조 아래 ▲평화통일 신뢰외교 ▲한·미 동맹과 한·중 전략적 협력동반자 관계의 조화 및 발전 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2015 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2014-3",
+      "coverageYear": 2014,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "세계평화와 발전에 기여하는 책임 있는 중견국 실현",
+      "quote": "'국민과 함께하는 신뢰외교' 기조 아래 ▲평화통일 신뢰외교 ▲한·미 동맹과 한·중 전략적 협력동반자 관계의 조화 및 발전 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대",
+      "stream": "global-role",
+      "source": {
+        "edition": "2015 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2014-4",
+      "coverageYear": 2014,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "재외국민 안전·권익 보호와 공공외교 확대",
+      "quote": "'국민과 함께하는 신뢰외교' 기조 아래 ▲평화통일 신뢰외교 ▲한·미 동맹과 한·중 전략적 협력동반자 관계의 조화 및 발전 ▲세계평화와 발전에 기여하는 책임 있는 중견국 실현 ▲재외국민 안전·권익 보호와 공공외교 확대",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2015 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2014-5",
+      "coverageYear": 2014,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "경제외교를 통한 경제부흥 선도",
+      "quote": "▲경제외교를 통한 경제부흥 선도 등 5개 추진 과제를 설정하고 다음과 같은 외교정책을 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2015 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-1",
+      "coverageYear": 2015,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "전략적 로드맵에 따른 주변국 외교",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-2",
+      "coverageYear": 2015,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "북핵 등 북한 문제 진전을 위한 동력 강화",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-3",
+      "coverageYear": 2015,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "능동적 다자외교 전개 및 글로벌 네트워크 확대",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-4",
+      "coverageYear": 2015,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "성장동력 부여 및 일자리 창출을 위한 경제외교",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-5",
+      "coverageYear": 2015,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "선진형 재외국민 안전시스템 구축",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2015-6",
+      "coverageYear": 2015,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "공공외교의 새로운 지평 개척",
+      "quote": "우리 정부는 ▲전략적 로드맵에 따른 주변국 외교 ▲북핵 등 북한 문제 진전을 위한 동력 강화 ▲능동적 다자외교 전개 및 글로벌 네트워크 확대 ▲성장동력 부여 및 일자리 창출을 위한 경제외교 ▲선진형 재외국민 안전시스템 구축 ▲공공외교의 새로운 지평 개척 등의 기조 아래 다음과 같은 외교정책을 추진했다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2016 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": [
+        "lead-only"
+      ]
+    },
+    {
+      "id": "2016-1",
+      "coverageYear": 2016,
+      "ordinal": 1,
+      "ordinalSource": "장 배열",
+      "title": "한반도 평화와 안정 유지",
+      "quote": "제2장 한반도 평화와 안정 유지",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 2,
+        "section": null,
+        "page": 24
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-2",
+      "coverageYear": 2016,
+      "ordinal": 2,
+      "ordinalSource": "장 배열",
+      "title": "글로벌 네트워크 확대",
+      "quote": "제3장 글로벌 네트워크 확대",
+      "stream": "regional",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 3,
+        "section": null,
+        "page": 60
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-3",
+      "coverageYear": 2016,
+      "ordinal": 3,
+      "ordinalSource": "장 배열",
+      "title": "경제협력 역량 강화",
+      "quote": "제4장 경제협력 역량 강화",
+      "stream": "economy",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 4,
+        "section": null,
+        "page": 105
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-4",
+      "coverageYear": 2016,
+      "ordinal": 4,
+      "ordinalSource": "장 배열",
+      "title": "국제사회 내 역할 확대 및 위상 제고",
+      "quote": "제5장 국제사회 내 역할 확대 및 위상 제고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 5,
+        "section": null,
+        "page": 142
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-5",
+      "coverageYear": 2016,
+      "ordinal": 5,
+      "ordinalSource": "장 배열",
+      "title": "대국민 서비스 확충",
+      "quote": "제6장 대국민 서비스 확충",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 6,
+        "section": null,
+        "page": 170
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2016-6",
+      "coverageYear": 2016,
+      "ordinal": 6,
+      "ordinalSource": "장 배열",
+      "title": "효과적인 선진외교 수행 체제 구축",
+      "quote": "제7장 효과적인 선진외교 수행 체제 구축",
+      "stream": "capacity",
+      "source": {
+        "edition": "2017 외교백서",
+        "chapter": 7,
+        "section": null,
+        "page": 200
+      },
+      "flags": [
+        "page-cited"
+      ]
+    },
+    {
+      "id": "2017-1",
+      "coverageYear": 2017,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "주변 4국과 정상외교 공백 복원",
+      "quote": "우리 정부는 쇼주변 4국과 정상외교 공백 복원 쇼한반도 평화와 안정을 위한 동력 확보 쇼신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대 쇼국제사회 내 역할 확대 및 위상 제고 쇼국민과 함께하는 외교라는 주요 기조 아래 외교정책을 추진하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2018 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "lead-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2017-2",
+      "coverageYear": 2017,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한반도 평화와 안정을 위한 동력 확보",
+      "quote": "우리 정부는 쇼주변 4국과 정상외교 공백 복원 쇼한반도 평화와 안정을 위한 동력 확보 쇼신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대 쇼국제사회 내 역할 확대 및 위상 제고 쇼국민과 함께하는 외교라는 주요 기조 아래 외교정책을 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2018 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "lead-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2017-3",
+      "coverageYear": 2017,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대",
+      "quote": "우리 정부는 쇼주변 4국과 정상외교 공백 복원 쇼한반도 평화와 안정을 위한 동력 확보 쇼신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대 쇼국제사회 내 역할 확대 및 위상 제고 쇼국민과 함께하는 외교라는 주요 기조 아래 외교정책을 추진하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2018 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "lead-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2017-4",
+      "coverageYear": 2017,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국제사회 내 역할 확대 및 위상 제고",
+      "quote": "우리 정부는 쇼주변 4국과 정상외교 공백 복원 쇼한반도 평화와 안정을 위한 동력 확보 쇼신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대 쇼국제사회 내 역할 확대 및 위상 제고 쇼국민과 함께하는 외교라는 주요 기조 아래 외교정책을 추진하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2018 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "lead-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2017-5",
+      "coverageYear": 2017,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "국민과 함께하는 외교",
+      "quote": "우리 정부는 쇼주변 4국과 정상외교 공백 복원 쇼한반도 평화와 안정을 위한 동력 확보 쇼신남방·신북방정책 등 외교 다변화 추진을 통한 외교지평 확대 쇼국제사회 내 역할 확대 및 위상 제고 쇼국민과 함께하는 외교라는 주요 기조 아래 외교정책을 추진하였다.",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2018 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 18
+      },
+      "flags": [
+        "lead-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2018-1",
+      "coverageYear": 2018,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "한반도 평화프로세스 진전",
+      "quote": "2017년까지 북한의 핵실험과 탄도미사일 발사 등 도발이 계속됐으나 2018년 우리 정부의 주도적인 노력하에 평창동계올림픽을 기점으로 한반도 정세가 크게 진전돼 한반도의 완전한 비핵화와 항구적 평화정착을 위한 역사적 전기가 마련됐다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2019 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2018-2",
+      "coverageYear": 2018,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "주변 4국과 협력외교 강화",
+      "quote": "문재인 정부는 2017년 5월 출범 직후 탄핵 정국에 따른 정상외교 공백을 신속히 복원했으며 2018년에는 미국, 일본, 중국, 러시아 등 주변 4국과 활발하게 진행된 정상외교를 통해 협력관계를 강화했다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2019 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": []
+    },
+    {
+      "id": "2018-3",
+      "coverageYear": 2018,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "외교 다변화",
+      "quote": "한반도와 동북아의 안보 상황이 급박하게 돌아가는 환경 속에서도 우리 정부는 외교 활동의 지역적 범주를 동북아에 국한하지 않고 여타 지역으로 확대하기 위한 노력을 지속했다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2019 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2018-4",
+      "coverageYear": 2018,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국민과 함께하는 외교 실현",
+      "quote": "우리 정부는 외교정책의 궁극적 목표가 국익이어야 하며 국익과 국민은 불가분의 관계라는 인식하에 우리 국민 보호와 국민과 소통 강화에 힘을 쏟았다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2019 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2019-1",
+      "coverageYear": 2019,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "실질적인 비핵화 진전",
+      "quote": "실질적인 비핵화 진전",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2020 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": [
+        "heading-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2019-2",
+      "coverageYear": 2019,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "주변 4국과의 당당한 협력외교",
+      "quote": "주변 4국과의 당당한 협력외교",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2020 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": [
+        "heading-only",
+        "ocr"
+      ]
+    },
+    {
+      "id": "2019-3",
+      "coverageYear": 2019,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "외교 다변화 본격 구현",
+      "quote": "우리 외교 공간 확대 및 협력국가 다변화를 위한 노력도 지속됐다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2020 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": [
+        "ocr"
+      ]
+    },
+    {
+      "id": "2019-4",
+      "coverageYear": 2019,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국민의 삶에 기여하는 외교 실현",
+      "quote": "우리 정부는 국민·국익 중심의 외교를 실현하기 위해 국민의 안전과 보호, 국민과 소통 강화를 위해 다양한 노력을 기울였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2020 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "ocr"
+      ]
+    },
+    {
+      "id": "2020-1",
+      "coverageYear": 2020,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "우리 국민의 생명과 안전 보호",
+      "quote": "지역별 공관장회의를 수시로 개최하고, 우리 국민 안전을 최우선으로 해 주재국 정부와 긴밀히 소통하며 우리 국민 보호를 위해 최선을 다해 줄 것을 당부했다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2021 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 35
+      },
+      "flags": []
+    },
+    {
+      "id": "2020-2",
+      "coverageYear": 2020,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한반도의 완전한 비핵화 및 항구적 평화정착 달성",
+      "quote": "코로나19로 인해 북한이 국경을 봉쇄하고, 대면 협의 등 주요국과의 적극적인 외교활동이 제한되면서 우리의 한반도 평화프로세스 추진 노력도 영향을 받았다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2021 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2020-3",
+      "coverageYear": 2020,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "주변 4국과 역내 협력 증진",
+      "quote": "정부는 코로나19 확산 등 어려운 여건에서도 대면·비대면 외교를 통해 주변 4국과 전략적 소통을 유지하며 코로나19 대응 및 보건·방역, 경제협력 등 관련 협력을 강화했다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2021 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 23
+      },
+      "flags": []
+    },
+    {
+      "id": "2020-4",
+      "coverageYear": 2020,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "우리 외교의 지평을 넓히는 외교 다변화",
+      "quote": "문재인 정부 출범 이후부터 중점적으로 추진해 온 외교 다변화 노력은 코로나19 상황에서도 가시적인 성과를 거두며 협력 수준의 고도화를 달성했다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2021 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 24
+      },
+      "flags": []
+    },
+    {
+      "id": "2020-5",
+      "coverageYear": 2020,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "국제사회의 연대와 협력을 결집하는 선도적 다자 외교",
+      "quote": "우리 정부는 인류 공통의 과제인 코로나19에 맞서 국제사회의 연대와 협력이 결집될 수 있도록 선도적인 다자 외교를 적극 전개했다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2021 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-1",
+      "coverageYear": 2021,
+      "ordinal": 1,
+      "ordinalSource": "장 배열",
+      "title": "코로나19 극복을 위한 외교",
+      "quote": "제2장 코로나19 극복을 위한 외교",
+      "stream": "global-role",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 2,
+        "section": null,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-2",
+      "coverageYear": 2021,
+      "ordinal": 2,
+      "ordinalSource": "장 배열",
+      "title": "한반도 평화와 역내 협력",
+      "quote": "제3장 한반도 평화와 역내 협력",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 3,
+        "section": null,
+        "page": 34
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-3",
+      "coverageYear": 2021,
+      "ordinal": 3,
+      "ordinalSource": "장 배열",
+      "title": "지역 외교",
+      "quote": "제4장 지역 외교",
+      "stream": "regional",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 4,
+        "section": null,
+        "page": 60
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-4",
+      "coverageYear": 2021,
+      "ordinal": 4,
+      "ordinalSource": "장 배열",
+      "title": "경제-안보-기술 융합외교",
+      "quote": "제5장 경제-안보-기술 융합외교",
+      "stream": "economy",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 5,
+        "section": null,
+        "page": 114
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-5",
+      "coverageYear": 2021,
+      "ordinal": 5,
+      "ordinalSource": "장 배열",
+      "title": "다자외교 및 개발협력",
+      "quote": "제6장 다자외교 및 개발협력",
+      "stream": "global-role",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 6,
+        "section": null,
+        "page": 146
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-6",
+      "coverageYear": 2021,
+      "ordinal": 6,
+      "ordinalSource": "장 배열",
+      "title": "국민과 함께하는 외교",
+      "quote": "제7장 국민과 함께하는 외교",
+      "stream": "public-diplomacy",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 7,
+        "section": null,
+        "page": 180
+      },
+      "flags": []
+    },
+    {
+      "id": "2021-7",
+      "coverageYear": 2021,
+      "ordinal": 7,
+      "ordinalSource": "장 배열",
+      "title": "외교역량 강화 노력",
+      "quote": "제8장 외교역량 강화 노력",
+      "stream": "capacity",
+      "source": {
+        "edition": "2022 외교백서",
+        "chapter": 8,
+        "section": null,
+        "page": 218
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-1",
+      "coverageYear": 2022,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "북한 비핵화 및 북한인권 개선 추진",
+      "quote": "윤석열 정부는 원칙에 따라 일관성 있게 북한 비핵화를 추진하기 위해 정부 출범 직후부터 비핵화 로드맵 성안에 착수하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-2",
+      "coverageYear": 2022,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "공동 가치·이익 기반 동맹 및 주변국 외교 전개",
+      "quote": "윤석열 정부는 출범 직후 활발한 정상외교 및 전략적 소통을 통해 역대 최고 수준의 한·미관계 구축, 신뢰회복을 통한 한·일관계 복원 여건 조성, 한·미·일 협력 강화 모멘텀 형성, 새로운 한·중 협력 시대 구축을 위한 공감대 마련, 국제규범에 기반한 한·러관계의 안정적 관리를 위한 노력을 경주했다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-3",
+      "coverageYear": 2022,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "외교지평 확대 및 지역별 파트너십 강화",
+      "quote": "정부는 외교활동의 지역적 범주를 동북아에 국한하지 않고 외교 외연 확장과 다변화를 지향하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-4",
+      "coverageYear": 2022,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국제연대와 협력을 통한 글로벌 중추국가 역할 강화",
+      "quote": "윤석열 대통령은 2022년 9월 제77차 유엔총회 일반토의 기조연설을 통해 자유, 인권, 법치의 보편적 가치와 규범을 기반으로 한 국제질서의 수호를 위해 국가 간 협력과 국제 연대를 선도해 나가겠다는 의지를 표명하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-5",
+      "coverageYear": 2022,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "경제안보·세일즈 외교 및 과학기술외교 전개",
+      "quote": "정부는 지정학적 갈등, 우크라이나 사태, 공급망, 기후변화, 디지털 전환 등 역내 공동 과제에 대응하고, 역내 공급망 안정화 및 다변화를 위한 국제 논의에 적극 참여했다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2022-6",
+      "coverageYear": 2022,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "재외국민보호 역량 및 재외동포 권익 신장",
+      "quote": "정부는 재외국민보호 역량 강화를 위해 인력과 예산을 확충하고 재외공관의 재외국민 보호 대응 태세를 강화하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2022년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-1",
+      "coverageYear": 2023,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "북핵·북한 문제 관련 국제공조 강화",
+      "quote": "1. 북핵·북한 문제 관련 국제공조 강화",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2023-2",
+      "coverageYear": 2023,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "주변국 관계의 전략적 관리",
+      "quote": "윤석열 정부는 한·미 글로벌 포괄적 전략동맹의 강화, 한·일관계의 복원, 상호존중·호혜·공동이익에 기반한 한중관계 발전, 러시아와의 관계 관리 등을 위한 노력을 경주하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-3",
+      "coverageYear": 2023,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "인도·태평양 지역의 자유·평화·번영에 기여",
+      "quote": "2023년은 우리 외교 최초의 포괄적 지역전략인 인도-태평양 전략을 구체적으로 이행하는 원년이었다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 26
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-4",
+      "coverageYear": 2023,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "함께 번영하는 지역별 협력 네트워크 심화",
+      "quote": "2023년은 자유, 민주주의, 인권 등 가치를 공유하는 우방국인 유럽국가들과 파트너십 및 실질협력을 강화하는 이정표를 세운 해였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-5",
+      "coverageYear": 2023,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "능동적 경제안보·과학기술·세일즈 외교",
+      "quote": "정부는 글로벌 복합위기 시대 경제는 안보, 안보는 곧 경제라는 인식하에 불확실성을 줄이고, 대외 리스크에 대한 대응력과 회복력을 높이며, 경제도약의 기회를 창출할 수 있도록 능동적인 경제안보와 에너지자원·과학기술 외교를 추진하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-6",
+      "coverageYear": 2023,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "다자무대에서 글로벌 중추국가 외교 적극 실천",
+      "quote": "정부는 최초의 포괄적 지역전략인 「자유, 평화, 번영의 인도-태평양 전략」을 통해 글로벌 중추국가로서의 기여 의지를 구체적으로 실천하기 위한 방안을 제시하였고, 규범 기반(…)국제질서 수호를 위해 우리의 국력과 위상에 걸맞은 역할을 하기 위한 노력을 꾸준히 경주하였다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2023-7",
+      "coverageYear": 2023,
+      "ordinal": 7,
+      "ordinalSource": "기조절",
+      "title": "글로벌 한민족 네트워크 강화",
+      "quote": "정부는 해외안전상황실·영사콜센터 운영을 통해 189개 재외공관과 함께 24시간 재외(…)국민 보호시스템을 가동하면서 관계기관·민간 등과의 재외국민 보호 협업체계 강화를 통해 해외 사건사고 및 위난상황 대응 체계 고도화 노력을 지속하였다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2023년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2024-1",
+      "coverageYear": 2024,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "북핵·북한 문제 관련 국제공조 강화",
+      "quote": "북한이 핵·미사일 고도화를 지속하며 국제사회의 평화와 안정을 위협하는 상황 하에서, 우리 정부는 억제(deterrence), 단념(dissuasion), 대화·외교(dialogue/diplomacy)의 '3D 접근'을 통해 북한이 위협과 도발을 중단하고 비핵화의 길로 복귀하도록 유도하기 위한 전략적 환경 조성 노력을 일관되게 추진하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2024-2",
+      "coverageYear": 2024,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "한미동맹의 흔들림 없는 발전과 한일 파트너십의 심화",
+      "quote": "우리 외교·안보 정책의 핵심축인 한미동맹을 글로벌 포괄 전략동맹으로 강화하고, 안보, 경제, 첨단산업, 과학기술, 문화 등 모든 분야에서 양국간 협력을 심화·확대하기 위한 노력을 지속하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2024-3",
+      "coverageYear": 2024,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "중·러 등 여타 주변국 관계의 전략적 관리",
+      "quote": "3. 중·러 등 여타 주변국 관계의 전략적 관리",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2024-4",
+      "coverageYear": 2024,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "유사입장국과의 다층적 네트워크 확대·심화",
+      "quote": "나날이 심화되고 있는 강대국 간 전략경쟁과 국제질서의 불확실성 속에서 규범에 기반한 국제질서의 안정 및 강화를 위해 인태지역은 물론 NATO, EU, G7 등 유사입장국들과의 다층적인 소다자 네트워크를 확대·심화하였다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2024-5",
+      "coverageYear": 2024,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "글로벌 사우스와의 협력 증진",
+      "quote": "글로벌 사우스는 세계 인구의 절대다수를 차지할 뿐만 아니라 인구구조가 상대적으로 젊고, 경제성장률이 세계 평균보다 높으며, 핵심 자원을 풍부하게 보유하고 있어 국제사회에서 그 영향력이 갈수록 커지고 있다.",
+      "stream": "regional",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2024-6",
+      "coverageYear": 2024,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "경제·안보 융합 시대에 걸맞은 경제외교 추진",
+      "quote": "미·중 전략경쟁 등으로 인해 경제와 안보의 경계가 허물어지고 있는 새로운 지정학적 환경 속에서 외교부는 안보와 경제, 기술을 모두 다루는 유일한 부처로서 공급망 다변화와 안정화, 그리고 원전·방산·인프라 수출·수주 확대를 위한 경제안보 외교와 세일즈 외교를 대폭 강화하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2024년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-1",
+      "coverageYear": 2025,
+      "ordinal": 1,
+      "ordinalSource": "기조절",
+      "title": "국익 중심 실용외교 기반 구축",
+      "quote": "이러한 기조 하에서 정부는 첫째, 국익 기반의 전략적 파트너십을 확대해왔다.",
+      "stream": "capacity",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 22
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-2",
+      "coverageYear": 2025,
+      "ordinal": 2,
+      "ordinalSource": "기조절",
+      "title": "주변국 관계의 신속한 안정화",
+      "quote": "2025년은 한·미 양국의 신 정부가 출범한 해로, 우리 정부는 한미동맹을 미래형 포괄적 전략동맹으로 격상시켜 나가기 위해 그 어느 때보다 활발한 고위급 교류를 전개하였다.",
+      "stream": "neighbors",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-3",
+      "coverageYear": 2025,
+      "ordinal": 3,
+      "ordinalSource": "기조절",
+      "title": "외교다변화를 통한 전략적 지평 확장",
+      "quote": "3. 외교다변화를 통한 전략적 지평 확장",
+      "stream": "regional",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 25
+      },
+      "flags": [
+        "heading-only"
+      ]
+    },
+    {
+      "id": "2025-4",
+      "coverageYear": 2025,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "북핵문제 해결과 한반도 평화체제를 향한 실질적 진전",
+      "quote": "이재명 대통령은 한반도의 지속가능한 평화를 위해 2025년 8·15 경축사 계기 북한의 체제를 존중하고, 어떠한 형태의 흡수통일도 추구하지 않으며, 일체의 적대행위를 할 뜻이 없음을 천명하였다.",
+      "stream": "peninsula",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": null
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-5",
+      "coverageYear": 2025,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "경제외교 및 과학기술 역량 강화",
+      "quote": "기존의 국제 경제질서가 흔들리고 글로벌 공급망이 재편되는 상황에서 외교부는 대외 충격에 대한 효과적 대응 기반을 마련하고, 기업 체감형 경제외교를 구현하기 위해 노력하였다.",
+      "stream": "economy",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 26
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-6",
+      "coverageYear": 2025,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "글로벌 책임강국 실현을 통한 국격 제고",
+      "quote": "정부는 2025년 G7 정상회의, 유엔총회, ASEAN 정상회의, G20 정상회의 참석과 APEC 정상회의의 성공적 개최 등 주요 다자회의 일정을 통해 국제사회에서 우리의 위상을 더욱 높여나갔다.",
+      "stream": "global-role",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 26
+      },
+      "flags": []
+    },
+    {
+      "id": "2025-7",
+      "coverageYear": 2025,
+      "ordinal": 7,
+      "ordinalSource": "기조절",
+      "title": "촘촘한 재외국민 보호 및 권익 증진",
+      "quote": "해외위난 상황이 보다 복잡하고 다양해진 상황 속에서 정부는 재외국민의 생명과 재산을 보호하기 위하여 다양한 노력을 기울이고 있다.",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2025년도 국제정세와 외교활동",
+        "chapter": 1,
+        "section": 2,
+        "page": 27
+      },
+      "flags": []
+    }
+  ],
+  "streams": [
+    {
+      "id": "peninsula",
+      "label": "한반도·북핵",
+      "note": "북한 비핵화, 남북관계, 한반도 평화체제",
+      "members": [
+        "1989-1",
+        "1989-3",
+        "1990-1",
+        "1990-3",
+        "1991-2",
+        "1992-2",
+        "1992-3",
+        "1993-1",
+        "1994-1",
+        "1995-1",
+        "1996-2",
+        "1997-2",
+        "1998-2",
+        "1999-1",
+        "2000-1",
+        "2001-1",
+        "2002-1",
+        "2003-1",
+        "2004-1",
+        "2004-3",
+        "2005-1",
+        "2006-1",
+        "2007-1",
+        "2008-1",
+        "2009-1",
+        "2010-1",
+        "2011-1",
+        "2012-1",
+        "2013-1",
+        "2014-1",
+        "2015-2",
+        "2016-1",
+        "2017-2",
+        "2018-1",
+        "2019-1",
+        "2020-2",
+        "2021-2",
+        "2022-1",
+        "2023-1",
+        "2024-1",
+        "2025-4"
+      ]
+    },
+    {
+      "id": "neighbors",
+      "label": "주변국·동맹",
+      "note": "한미·한일·한중·한러 등 4강 관계",
+      "members": [
+        "1989-2",
+        "1990-2",
+        "1991-1",
+        "1991-4",
+        "1991-5",
+        "1992-1",
+        "1994-8",
+        "2001-2",
+        "2004-2",
+        "2013-2",
+        "2014-2",
+        "2015-1",
+        "2017-1",
+        "2018-2",
+        "2019-2",
+        "2020-3",
+        "2022-2",
+        "2023-2",
+        "2024-2",
+        "2024-3",
+        "2025-2"
+      ]
+    },
+    {
+      "id": "regional",
+      "label": "지역 다변화",
+      "note": "아세안·유럽·중남미·아중동 등 지평 확대",
+      "members": [
+        "1991-6",
+        "1993-3",
+        "1994-3",
+        "1994-7",
+        "1995-3",
+        "1996-1",
+        "1997-1",
+        "2001-4",
+        "2003-3",
+        "2004-4",
+        "2004-5",
+        "2005-2",
+        "2006-2",
+        "2008-2",
+        "2009-3",
+        "2010-2",
+        "2013-3",
+        "2016-2",
+        "2017-3",
+        "2018-3",
+        "2019-3",
+        "2020-4",
+        "2021-3",
+        "2022-3",
+        "2023-3",
+        "2023-4",
+        "2024-4",
+        "2024-5",
+        "2025-3"
+      ]
+    },
+    {
+      "id": "economy",
+      "label": "경제·통상",
+      "note": "통상외교, FTA, 자원·에너지, 경제안보",
+      "members": [
+        "1989-4",
+        "1990-4",
+        "1992-4",
+        "1993-2",
+        "1994-2",
+        "1995-2",
+        "1996-3",
+        "1997-3",
+        "1998-1",
+        "1999-2",
+        "2000-2",
+        "2001-3",
+        "2002-2",
+        "2003-4",
+        "2004-8",
+        "2004-9",
+        "2005-3",
+        "2006-4",
+        "2007-3",
+        "2008-3",
+        "2009-2",
+        "2010-4",
+        "2011-3",
+        "2012-3",
+        "2013-6",
+        "2014-5",
+        "2015-4",
+        "2016-3",
+        "2021-4",
+        "2022-5",
+        "2023-5",
+        "2024-6",
+        "2025-5"
+      ]
+    },
+    {
+      "id": "global-role",
+      "label": "국제기구·국격",
+      "note": "유엔·다자외교, 개발협력, 보편가치",
+      "members": [
+        "1991-3",
+        "1992-5",
+        "1993-4",
+        "1994-4",
+        "1995-4",
+        "1999-3",
+        "2000-3",
+        "2001-5",
+        "2002-3",
+        "2003-5",
+        "2004-7",
+        "2006-3",
+        "2007-2",
+        "2008-4",
+        "2009-4",
+        "2010-3",
+        "2010-5",
+        "2011-2",
+        "2012-2",
+        "2013-4",
+        "2014-3",
+        "2015-3",
+        "2016-4",
+        "2017-4",
+        "2020-5",
+        "2021-1",
+        "2021-5",
+        "2022-4",
+        "2023-6",
+        "2025-6"
+      ]
+    },
+    {
+      "id": "overseas-koreans",
+      "label": "재외국민",
+      "note": "재외국민 보호, 재외동포, 영사",
+      "members": [
+        "1989-5",
+        "1990-6",
+        "1993-5",
+        "1994-6",
+        "1995-5",
+        "1996-4",
+        "1997-4",
+        "1998-4",
+        "1999-5",
+        "2000-5",
+        "2002-5",
+        "2003-6",
+        "2007-4",
+        "2008-5",
+        "2009-5",
+        "2010-6",
+        "2011-4",
+        "2012-4",
+        "2013-5",
+        "2014-4",
+        "2015-5",
+        "2016-5",
+        "2018-4",
+        "2019-4",
+        "2020-1",
+        "2022-6",
+        "2023-7",
+        "2025-7"
+      ]
+    },
+    {
+      "id": "public-diplomacy",
+      "label": "공공외교",
+      "note": "문화외교, 국가이미지, 대국민 소통",
+      "members": [
+        "1990-5",
+        "1994-5",
+        "1998-3",
+        "1999-4",
+        "2000-4",
+        "2001-6",
+        "2002-4",
+        "2003-7",
+        "2005-4",
+        "2006-5",
+        "2011-5",
+        "2015-6",
+        "2017-5",
+        "2021-6"
+      ]
+    },
+    {
+      "id": "capacity",
+      "label": "외교역량",
+      "note": "조직·인사·제도 등 외교부 자체 역량",
+      "members": [
+        "1989-6",
+        "1990-7",
+        "1991-7",
+        "1995-6",
+        "2002-6",
+        "2003-8",
+        "2007-5",
+        "2008-6",
+        "2009-6",
+        "2010-7",
+        "2011-6",
+        "2016-6",
+        "2021-7",
+        "2025-1"
+      ]
+    },
+    {
+      "id": "iraq",
+      "label": "이라크",
+      "note": "2003~2004년에만 나타난 한시적 항목",
+      "members": [
+        "2003-2",
+        "2004-6"
+      ]
+    }
+  ],
+  "links": [],
+  "transitions": [
+    {
+      "coverageYear": 1989,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노태우",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1990,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노태우",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1991,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노태우",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1992,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노태우",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1993,
+      "type": "opposition",
+      "outgoing": "노태우",
+      "incoming": "김영삼",
+      "date": "1993-02-25",
+      "note": "문민정부 출범. 32년 만의 민간인 대통령"
+    },
+    {
+      "coverageYear": 1994,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김영삼",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1995,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김영삼",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1996,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김영삼",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1997,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김영삼",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 1998,
+      "type": "opposition",
+      "outgoing": "김영삼",
+      "incoming": "김대중",
+      "date": "1998-02-25",
+      "note": "헌정 사상 첫 여야 정권교체. IMF 외환위기 직후"
+    },
+    {
+      "coverageYear": 1999,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김대중",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2000,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김대중",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2001,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김대중",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2002,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "김대중",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2003,
+      "type": "same-bloc",
+      "outgoing": "김대중",
+      "incoming": "노무현",
+      "date": "2003-02-25",
+      "note": null
+    },
+    {
+      "coverageYear": 2004,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노무현",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2005,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노무현",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2006,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노무현",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2007,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "노무현",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2008,
+      "type": "opposition",
+      "outgoing": "노무현",
+      "incoming": "이명박",
+      "date": "2008-02-25",
+      "note": null
+    },
+    {
+      "coverageYear": 2009,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "이명박",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2010,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "이명박",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2011,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "이명박",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2012,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "이명박",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2013,
+      "type": "same-bloc",
+      "outgoing": "이명박",
+      "incoming": "박근혜",
+      "date": "2013-02-25",
+      "note": null
+    },
+    {
+      "coverageYear": 2014,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "박근혜",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2015,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "박근혜",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2016,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "박근혜",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2017,
+      "type": "impeachment",
+      "outgoing": "박근혜",
+      "incoming": "문재인",
+      "date": "2017-05-10",
+      "note": "탄핵으로 인수위 없이 출범"
+    },
+    {
+      "coverageYear": 2018,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "문재인",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2019,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "문재인",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2020,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "문재인",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2021,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "문재인",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2022,
+      "type": "opposition",
+      "outgoing": "문재인",
+      "incoming": "윤석열",
+      "date": "2022-05-10",
+      "note": null
+    },
+    {
+      "coverageYear": 2023,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "윤석열",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2024,
+      "type": "steady",
+      "outgoing": null,
+      "incoming": "윤석열",
+      "date": null,
+      "note": null
+    },
+    {
+      "coverageYear": 2025,
+      "type": "impeachment",
+      "outgoing": "윤석열",
+      "incoming": "이재명",
+      "date": "2025-06-04",
+      "note": "탄핵으로 인수위 없이 출범"
+    }
+  ]
+}
