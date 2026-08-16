@@ -73,11 +73,18 @@ _TAIL = {
 # 두 벌을 쓴다. 하나로 합치면 되돌이(backtracking)가 폭발한다(2026-08-15 교훈).
 #   ① 붙여 쓴 것    '신남방정책'
 #   ② 한 칸 띄운 것 '담대한 구상'  ← 이걸 놓쳐 윤석열 정부 대북정책이 통째로 빠졌다
+# 이름 뒤에 붙을 수 있는 조사. 패턴이 이것까지 먹어야 이름을 놓치지 않는다.
+_JOSA_TAIL = (r"(?:으로써|으로서|이라는|이라고|에서는|에게서|으로|에서|에게|까지|부터|"
+              r"라는|라고|보다|처럼|이나|만은|과의|와의|의|을|를|에|와|과|은|는|이|가|도|만|나)")
 _PAT = {}
 for _kind, _tail in _TAIL.items():
+    # 조사가 붙어도 잡아야 한다. '(?![가-힣])' 만 두면 '평화번영정책과' 처럼
+    # 조사가 이어지는 자리에서 통째로 놓친다 — 2026-08-16 에 노무현 정부
+    # 평화번영정책(50회)이 이 때문에 하나도 안 잡혔다. 조사를 **함께 먹고**
+    # 나중에 strip_josa 로 뗀다.
     _PAT[_kind] = (
-        re.compile(rf"(?<![가-힣])([가-힣A-Za-z0-9·]{{2,12}}?(?:{_tail}))(?![가-힣])"),
-        re.compile(rf"(?<![가-힣])([가-힣]{{2,6}}\s(?:{_tail}))(?![가-힣])"),
+        re.compile(rf"(?<![가-힣])([가-힣A-Za-z0-9·]{{2,12}}?(?:{_tail}){_JOSA_TAIL}?)(?![가-힣])"),
+        re.compile(rf"(?<![가-힣])([가-힣]{{2,6}}\s(?:{_tail}){_JOSA_TAIL}?)(?![가-힣])"),
     )
 
 # 조사를 뗀다. 안 떼면 '신남방정책'과 '신남방정책을'이 따로 세어져 절반을 잃는다
@@ -88,7 +95,7 @@ _JOSA = re.compile(r"(?:을|를|의|에|와|과|은|는|이|가|으로|로|에�
 # 영문 병기 — '확산방지구상(Proliferation Security Initiative)' 처럼.
 # 진짜 정책 이름에만 따라붙는다. 정권 편중도로 못 잡는 것을 이게 건진다.
 # 나라 이름처럼 보이지만 아닌 것. 지역 이름·복합어에 갇힌 글자다.
-_REGION_NOISE = re.compile(r"인도[-‐‑–—ㆍ·]?\s?태평양|인태")
+_REGION_NOISE = re.compile(r"인도[-‐‑–—ㆍ·]?\s?태평양")
 
 _ENG = re.compile(r"[（(]\s*[A-Za-z][A-Za-z0-9 ,.\-&/']{4,60}[)）]")
 
@@ -161,7 +168,8 @@ def find_named(text: str, kind: str) -> set[str]:
             if len(w) < 4 or _NOT_HEAD.search(w):
                 continue
             out.add(w)
-    return out
+    # 긴 이름 안에 든 짧은 이름은 버린다 ('신북방정책' 속의 '북방정책')
+    return {w for w in out if not any(w != o and w in o for o in out)}
 
 
 def canon_name(w: str) -> str:
@@ -253,7 +261,11 @@ def main() -> None:
             # '인도-태평양'은 지역 이름이지 인도(India)가 아니다. 먼저 지운다.
             # 2026-08-16 표본에서 '인도—인태전략', '영국—인도' 같은 헛 관계가
             # 전부 여기서 나왔다.
-            rest = _REGION_NOISE.sub(" ", text)
+            # '인도-태평양'은 지역 이름이지 인도(India)가 아니다. 표기를 '인태' 하나로
+            # 모아 둔다 — 나라 찾기에서도 빠지고, '인도-태평양 전략'과 '인태전략'이
+            # 한 이름으로 합쳐진다.
+            text = _REGION_NOISE.sub("인태", text)
+            rest = text
             # 찾은 이름은 지우면서 간다 — '인도네시아' 한 번에 '인도'까지 세지 않게
             for alias, canon in country_alias:
                 if alias in rest:
