@@ -403,9 +403,21 @@ _TITLE_TAIL = re.compile(r"[\s.·…‥]*\d{1,4}\s*$")
 _TITLE_OCR_TAIL = re.compile(r"[a-zA-Z]{4,}[^가-힣一-鿿]*$")
 
 
+# 제목 안에 또 다른 장·절 표시가 올 수 없다. 나오면 거기서 자른다.
+# 스캔본은 쪽 머리글을 지우면서 두 제목이 한 줄로 붙는 일이 있다
+#   '제1절 국제 정세 개관 / 제2절 외교정책 기조 및 추진 경과 _'   (2017년)
+_TITLE_CUT = re.compile(r"[\s/|｜]*(?:제|第)\s*\d{1,2}\s*(?:장|절|章|節)")
+# 스캔본 꼬리. '_ 6?', '_', '?' 같은 것들이 붙는다.
+_TITLE_SCAN_TAIL = re.compile(r"[\s_~^]*\d{0,4}\s*[?？]?\s*$")
+
+
 def _clean_title(t: str) -> str | None:
     """제목 앞뒤에 붙은 장식·쪽번호를 떼어낸다."""
     t = _TITLE_HEAD.sub("", t or "")
+    cut = _TITLE_CUT.search(t)
+    if cut:
+        t = t[:cut.start()]
+    t = _TITLE_SCAN_TAIL.sub("", t)
     t = _TITLE_TAIL.sub("", t)
     t = _TITLE_OCR_TAIL.sub("", t)
     t = re.sub(r"\s{2,}", " ", t).strip(" .·…‥、,")
