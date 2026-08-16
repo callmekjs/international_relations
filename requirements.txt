@@ -2,3 +2,4 @@ pdfplumber==0.11.10
 PyMuPDF==1.26.7
 olefile==0.47
 hanja==0.13.3
+anthropic==0.122.0
