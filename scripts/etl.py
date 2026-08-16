@@ -81,8 +81,15 @@ _RE_CHAPTER = (
 )
 
 # 본문에서 장·절이 바뀌는 자리. 공백이 사라진 추출본도 잡히게 열어둔다.
-_MARK_CHAPTER = re.compile(r"제\s*(\d{1,2})\s*장\s*([^\n]{0,40})")
-_MARK_SECTION = re.compile(r"제\s*(\d{1,2})\s*절\s*([^\n]{0,40})")
+#
+# **한글과 한자를 함께 받는다.** 1989~1992년 백서는 국한문 혼용이라 제목이
+# `第1章`·`第1節` 로 적혀 있다(네 해에 451줄). 한글만 찾던 탓에 그 네 해의
+# 목차가 통째로 비어 있었다(2026-08-16 실측).
+#
+# 앞에 붙는 장식(`⊙`, `|`)도 넘긴다 — 2009년 목차가 `⊙ 제1절 …` 이다.
+_ORNAMENT = r"[\s⊙◦●○▪■·ㅣ|｜─\-_]*"
+_MARK_CHAPTER = re.compile(_ORNAMENT + r"(?:제|第)\s*(\d{1,2})\s*(?:장|章)\s*([^\n]{0,60})")
+_MARK_SECTION = re.compile(_ORNAMENT + r"(?:제|第)\s*(\d{1,2})\s*(?:절|節|勵)\s*([^\n]{0,60})")
 
 # 문단으로 인정할 최소 길이. 이보다 짧으면 제목·쪽번호 잔해일 가능성이 높다.
 MIN_PARA_CHARS = 25   # 문장 단위라 문단보다 짧다
@@ -276,15 +283,57 @@ def split_sentences_with_pos(text: str) -> list[tuple[int, str]]:
 HEADING_MAX_LINE = 50
 
 
-def _heading(line: str, pat: re.Pattern) -> tuple[int, str] | None:
-    """그 줄이 **제목 줄 자체**인가. 본문에 '제2장' 이라는 말이 나온 것과 다르다."""
-    s = line.strip()
+# 제목이 다음 줄에 있을 때, 그 줄이 제목일 수 있는 최대 길이.
+# 제목은 짧다. 이보다 길면 제목이 아니라 본문이 이어진 것이다.
+TITLE_NEXTLINE_MAX = 42
+# 문장으로 끝나면 제목이 아니다. 제목에는 마침표를 찍지 않는다.
+_TITLE_NOT_END = re.compile(r"(다|음|임|함)\s*[.]\s*$|[.?!]\s*$")
+
+_PATS = {"장": _MARK_CHAPTER, "절": _MARK_SECTION}
+
+
+def _looks_like_title(s: str) -> bool:
+    """다음 줄을 제목으로 데려올 수 있는가."""
+    s = s.strip()
+    if not s or len(s) > TITLE_NEXTLINE_MAX:
+        return False
+    if _TITLE_NOT_END.search(s):
+        return False
+    # 다음 줄이 또 장·절 표시면 앞 표시는 제목이 없는 것이다
+    if _MARK_CHAPTER.match(s) or _MARK_SECTION.match(s):
+        return False
+    return bool(re.search(r"[가-힣一-鿿]", s))
+
+
+def read_heading(lines: list[str], i: int, kind: str) -> tuple[int, str | None] | None:
+    """`lines[i]` 가 **제목 줄 자체**인가. 맞으면 (번호, 제목).
+
+    본문에 '제2장' 이라는 말이 나온 것과 다르다 — 줄 **머리**에 있어야 한다.
+
+    **제목이 다음 줄에 있는 판이 많다.** 2003년과 2009~2025년에 걸쳐 507줄이
+    이 모양이다(2026-08-16 실측).
+
+        제1절            ← 이 줄
+        국제 정세 개관    ← 제목은 여기
+
+    한 줄만 보던 탓에 제목을 못 찾았을 뿐 아니라, 앞서 잡아둔 제목까지
+    `없음`으로 덮어썼다. 그래서 2009~2012년은 절 번호는 98% 붙어 있는데
+    절 제목은 0% 라는 모양이 나왔다."""
+    s = lines[i].strip()
     if not s or len(s) > HEADING_MAX_LINE:
         return None
-    m = pat.match(s)          # 줄 **머리**에 있어야 한다
+    m = _PATS[kind].match(s)          # 줄 **머리**에 있어야 한다
     if not m:
         return None
-    return int(m.group(1)), (m.group(2) or "").strip()
+    title = _clean_title(m.group(2))
+    if title is None:
+        for nxt in lines[i + 1:i + 3]:      # 빈 줄 하나까지는 건너뛴다
+            if not nxt.strip():
+                continue
+            if _looks_like_title(nxt):
+                title = _clean_title(nxt)
+            break
+    return int(m.group(1)), title
 
 
 def hard_split(blob: str) -> list[str]:
@@ -313,30 +362,68 @@ def hard_split(blob: str) -> list[str]:
     return out
 
 
-def trace_line(line: str, cur: dict, lock_chapter: bool) -> dict:
-    """줄 하나를 보고 장·절을 갱신한다. 제목 줄일 때만 바뀐다."""
+def trace_line(lines: list[str], i: int, cur: dict, lock_chapter: bool) -> dict:
+    """`lines[i]` 를 보고 장·절을 갱신한다. 제목 줄일 때만 바뀐다.
+
+    줄 하나가 아니라 **줄 목록과 자리**를 받는 이유는, 제목이 다음 줄에
+    있는 판이 있기 때문이다(`read_heading` 참고)."""
     if not lock_chapter:
-        h = _heading(line, _MARK_CHAPTER)
+        h = read_heading(lines, i, "장")
         if h:
             # **같은 장이면 절을 건드리지 않는다.** 쪽마다 반복되는 머리글
             # ('제1장 2020년 국제 정세 및 외교정책 기조')이 매번 절을 지워서
             # 2020년 절 결측이 45%였다. 장이 실제로 바뀔 때만 절을 초기화한다.
             if h[0] == cur.get("chapter"):
                 return cur
-            return {**cur, "chapter": h[0], "chapterTitle": _clean_title(h[1]),
+            return {**cur, "chapter": h[0], "chapterTitle": h[1],
                     "section": None, "sectionTitle": None}
-    h = _heading(line, _MARK_SECTION)
+    h = read_heading(lines, i, "절")
     if h:
-        return {**cur, "section": h[0], "sectionTitle": _clean_title(h[1])}
+        # **제목을 못 읽었다고 앞서 잡은 제목을 지우지 않는다.**
+        # 같은 절이면 그대로 두고, 절이 바뀌었으면 번호만 새로 쓴다.
+        # 이 한 줄이 2009~2012년 절 제목 결측 100% 의 원인이었다.
+        if h[1] is None and h[0] == cur.get("section"):
+            return cur
+        return {**cur, "section": h[0],
+                "sectionTitle": h[1] if h[1] is not None else None}
     return cur
 
 
+# 제목 앞뒤에 붙는 것들. 판마다 다르고, 스캔본은 OCR 이 장식을 더 만든다.
+#   '| 국제 정세 개관'          2019년 쪽 머리글 기호
+#   '_2025년 국제정세…'         2025년 (장 번호와 제목을 밑줄로 이음)
+#   '。 東北亞 및 韓半島 情勢'    1990년 (한자판 장식점)
+#   '”世界의 主要情勢'           1990년 (OCR 이 만든 따옴표)
+_TITLE_HEAD = re.compile(r'^[|｜:：\-—_\s。、·．.”"\'`]+')
+#   '신아시아 협력외교·54'       2009년 (쪽번호를 · 로 붙임)
+#   '국제협력 및 연대 추진   045' 2020년
+#   '國際機構 活動 07'           1990년
+_TITLE_TAIL = re.compile(r"[\s.·…‥]*\d{1,4}\s*$")
+# OCR 이 점선을 글자로 잘못 읽은 꼬리. '協力eeaeeeeasaes..。 27' 같은 것.
+_TITLE_OCR_TAIL = re.compile(r"[a-zA-Z]{4,}[^가-힣一-鿿]*$")
+
+
+# 제목 안에 또 다른 장·절 표시가 올 수 없다. 나오면 거기서 자른다.
+# 스캔본은 쪽 머리글을 지우면서 두 제목이 한 줄로 붙는 일이 있다
+#   '제1절 국제 정세 개관 / 제2절 외교정책 기조 및 추진 경과 _'   (2017년)
+_TITLE_CUT = re.compile(r"[\s/|｜]*(?:제|第)\s*\d{1,2}\s*(?:장|절|章|節)")
+# 스캔본 꼬리. '_ 6?', '_', '?' 같은 것들이 붙는다.
+_TITLE_SCAN_TAIL = re.compile(r"[\s_~^]*\d{0,4}\s*[?？]?\s*$")
+
+
 def _clean_title(t: str) -> str | None:
-    """제목 뒤에 붙은 쪽번호와 구분 기호를 떼어낸다.
-    '| 국제 정세 개관', '국제협력 및 연대 추진   045' 같은 것들이 온다."""
-    t = re.sub(r"^[|｜:：\-—\s]+", "", t or "")
-    t = re.sub(r"\s*\d{1,3}\s*$", "", t)
-    t = re.sub(r"\s{2,}", " ", t).strip()
+    """제목 앞뒤에 붙은 장식·쪽번호를 떼어낸다."""
+    t = _TITLE_HEAD.sub("", t or "")
+    cut = _TITLE_CUT.search(t)
+    if cut:
+        t = t[:cut.start()]
+    t = _TITLE_SCAN_TAIL.sub("", t)
+    t = _TITLE_TAIL.sub("", t)
+    t = _TITLE_OCR_TAIL.sub("", t)
+    t = re.sub(r"\s{2,}", " ", t).strip(" .·…‥、,")
+    # 글자가 하나도 안 남으면 제목이 아니다
+    if not re.search(r"[가-힣一-鿿A-Za-z]", t):
+        return None
     return t or None
 
 
@@ -353,15 +440,9 @@ def trace_structure(text: str, cur: dict, lock_chapter: bool) -> dict:
       2) 단일 파일이라 파일명이 안 알려줄 때만 본문에서 찾되, 그 줄이
          **제목 줄 자체**일 때만 인정한다(짧고, 줄 머리에 있어야 한다).
     """
-    for line in text.splitlines():
-        if not lock_chapter:
-            h = _heading(line, _MARK_CHAPTER)
-            if h:
-                cur = {**cur, "chapter": h[0], "chapterTitle": h[1] or None,
-                       "section": None, "sectionTitle": None}
-        h = _heading(line, _MARK_SECTION)
-        if h:
-            cur = {**cur, "section": h[0], "sectionTitle": h[1] or None}
+    lines = text.splitlines()
+    for i in range(len(lines)):
+        cur = trace_line(lines, i, cur, lock_chapter)
     return cur
 
 
@@ -461,8 +542,9 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
             #   1) 한 쪽 안에서 절이 바뀌면 그 쪽 전체가 한쪽 절로 몰린다
             #   2) HWP·DOC 는 파일 하나가 통째로 '1쪽' 이라 파일 전체가 한 값을 받는다
             #      (2002년 절 결측 27.7%, 2020년 45.2% 의 원인이었다)
-            for line in p["text"].splitlines():
-                cur = trace_line(line, cur, lock_chapter=(chapter is not None))
+            page_lines = p["text"].splitlines()
+            for li, line in enumerate(page_lines):
+                cur = trace_line(page_lines, li, cur, lock_chapter=(chapter is not None))
                 piece = line.strip()
                 if not piece:
                     continue
