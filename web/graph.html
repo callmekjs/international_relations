@@ -48,7 +48,7 @@ h1{font-size:18px;line-height:1.25;margin:0;letter-spacing:-.01em;text-wrap:bala
 .chip .n{color:var(--ink-3);font-size:10px;font-variant-numeric:tabular-nums}
 .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
 .seg{display:flex;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden}
-.seg button{flex:1;padding:5px 4px;border:0;background:none;color:var(--ink-2);font:inherit;
+.seg button{flex:1;padding:6px 8px;text-align:left;border:0;background:none;color:var(--ink-2);font:inherit;
   font-size:11px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--ground);color:var(--ink);font-weight:700}
 .seg button:focus-visible{outline:2px solid var(--ink-2);outline-offset:-2px}
@@ -96,6 +96,17 @@ canvas:active{cursor:grabbing}
   <div>
     <h1 class="serif">외교백서 지식그래프</h1>
     <div class="sub" id="scope"></div>
+  </div>
+
+  <div class="grp">
+    <div class="lbl">무엇을 볼까</div>
+    <div class="seg" id="view" style="flex-direction:column">
+      <button type="button" data-v="country" aria-pressed="true">🌍 나라 중심</button>
+      <button type="button" data-v="policy"  aria-pressed="false">📋 정책 중심</button>
+      <button type="button" data-v="event"   aria-pressed="false">⚡ 사건 중심</button>
+      <button type="button" data-v="all"     aria-pressed="false">전부 한 판에</button>
+    </div>
+    <div class="sub" id="viewNote" style="margin:0"></div>
   </div>
 
   <div class="grp"><div class="lbl">점의 종류</div><div class="chips" id="kinds"></div></div>
@@ -153,6 +164,23 @@ const links = DATA.links.map(l => ({...l, s:byId.get(l.source), t:byId.get(l.tar
 const on = Object.fromEntries(Object.keys(KIND).map(k => [k, true]));
 const relOn = Object.fromEntries([...RELS, "언급"].map(r => [r, true]));
 let year = null, admin = null, sel = null, hover = null, query = "", metric = "weight";
+let view = "country";
+
+// 보기마다 '무엇이 주인공인가'가 다르다. 한 판에 다 올리면 나라—나라 선이
+// 454개라 나머지 95개를 덮어버린다(2026-08-16 실측).
+//   나라 중심  나라·기구끼리 — 30년 외교 지형
+//   정책 중심  정책이 주인공, 그 정책이 닿은 나라만 곁들인다
+//   사건 중심  사건이 주인공, 그 사건에 얽힌 나라만
+const VIEW = {
+  country: {kinds:["country","org"], hub:null,
+            note:"나라와 국제기구끼리만 봅니다. 30년 외교 지형이 드러납니다."},
+  policy:  {kinds:["country","org","policy"], hub:"policy",
+            note:"정책이 주인공입니다. 그 정책이 닿은 나라만 함께 보입니다."},
+  event:   {kinds:["country","org","event","treaty"], hub:"event",
+            note:"사건·조약이 주인공입니다. 얽힌 나라만 함께 보입니다."},
+  all:     {kinds:["country","org","policy","event","treaty"], hub:null,
+            note:"다섯 종류를 한 판에 올립니다. 나라 선이 많아 복잡합니다."},
+};
 
 /* ── 조작판 ── */
 const mk = (host, key, color, label, count, toggle) => {
@@ -199,6 +227,14 @@ yr.oninput = () => {
   setScope(); layout();
 };
 document.getElementById("q").oninput = e => { query = e.target.value.trim(); draw(); };
+document.getElementById("view").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  view = b.dataset.v;
+  document.getElementById("view").querySelectorAll("button")
+    .forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.getElementById("viewNote").textContent = VIEW[view].note;
+  layout();
+};
 document.getElementById("metric").onclick = e => {
   const b = e.target.closest("button"); if (!b) return;
   metric = b.dataset.m;
@@ -228,11 +264,17 @@ function cnt(o) {
 }
 let shown = [], shownL = [], alpha = 1;
 function layout() {
-  shown = nodes.filter(n => on[n.kind] && cnt(n) > 0);
-  const S = new Set(shown.map(n => n.id));
+  const V = VIEW[view];
+  shown = nodes.filter(n => on[n.kind] && V.kinds.includes(n.kind) && cnt(n) > 0);
+  let S = new Set(shown.map(n => n.id));
   shownL = links.filter(l => S.has(l.s.id) && S.has(l.t.id) &&
                              relOn[l.rel || "언급"] && cnt(l) > 0);
-  shown = shown.filter(n => shownL.some(l => l.s === n || l.t === n) || shownL.length === 0);
+  if (V.hub) {
+    // 주인공에 닿은 선만 남긴다. 나라—나라 선을 빼야 정책·사건이 보인다.
+    shownL = shownL.filter(l => l.s.kind === V.hub || l.t.kind === V.hub ||
+                                (V.hub === "event" && (l.s.kind === "treaty" || l.t.kind === "treaty")));
+  }
+  shown = shown.filter(n => shownL.some(l => l.s === n || l.t === n));
   shown.forEach(n => { if (!n.placed) { n.x = (Math.random()-.5)*520; n.y = (Math.random()-.5)*520; n.placed = 1; } });
   document.getElementById("badge").textContent =
     `점 ${shown.length} · 선 ${shownL.length} · 종류 붙은 선 ${shownL.filter(l => l.rel).length}`;
@@ -369,6 +411,7 @@ document.getElementById("note").innerHTML =
    아는 사실 18건 채점 <b>17건 통과</b>.<br>
    나머지는 나열 문장이라 관계로 보지 않았습니다.`;
 
+document.getElementById("viewNote").textContent = VIEW[view].note;
 resize(); setScope(); layout();
 select(byId.get("북한") || nodes[0]);
 </script>
