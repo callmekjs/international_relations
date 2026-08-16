@@ -104,7 +104,13 @@ _REL = {
 _REL_PAT = {k: re.compile(v) for k, v in _REL.items()}
 
 MIN_YEARS = 2
+# 관계로 인정할 최소 동시 등장 횟수. **종류마다 다르다.**
+# 나라끼리는 원래 자주 함께 나오므로 8회쯤은 흔하다. 그러나 정책·사건·조약은
+# 언급 자체가 드물어서(인태전략 32회) 8회를 요구하면 선이 하나도 안 남는다.
+# 2026-08-16 에 실제로 93개 점 중 18개가 선을 잃고 화면에서 사라졌다.
 MIN_EDGE = 8
+MIN_EDGE_RARE = 3
+_DENSE = {"country", "org"}
 MIN_MENTIONS = {"country": 25, "org": 25, "policy": 10, "event": 12, "treaty": 15}
 TOP_PER_KIND = {"country": 45, "org": 12, "policy": 40, "event": 40, "treaty": 30}
 # 진짜 이름인지 가르는 문턱. 2026-08-16 실측으로 정했다.
@@ -358,7 +364,10 @@ def main() -> None:
     total_of = {n["id"]: n["total"] for n in nodes}
     links = []
     for (a, b), w in edges.items():
-        if w < MIN_EDGE or a not in kept or b not in kept:
+        if a not in kept or b not in kept:
+            continue
+        bar = MIN_EDGE if (kept[a] in _DENSE and kept[b] in _DENSE) else MIN_EDGE_RARE
+        if w < bar:
             continue
         # 관계 강도 두 가지.
         #   weight  그냥 몇 번 함께 나왔나 — 흔한 것끼리 무조건 커진다
