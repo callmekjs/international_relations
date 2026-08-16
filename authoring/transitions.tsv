@@ -7,6 +7,7 @@
 # type: steady(교체 없음) | same-bloc(같은 계열) | opposition(여야 교체) | impeachment(탄핵)
 #
 coverageYear	type	outgoing	incoming	date	note
+1993	opposition	노태우	김영삼	1993-02-25	문민정부 출범. 32년 만의 민간인 대통령
 1998	opposition	김영삼	김대중	1998-02-25	헌정 사상 첫 여야 정권교체. IMF 외환위기 직후
 2003	same-bloc	김대중	노무현	2003-02-25
 2008	opposition	노무현	이명박	2008-02-25
