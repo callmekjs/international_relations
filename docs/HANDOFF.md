@@ -11,9 +11,20 @@
 
 | | 기능 | 상태 | 화면 |
 |---|---|---|---|
+| 0 | **본 사이트** — 「외교의 순서」 정책 우선순위 아카이브 | ✅ | `web-demo/` (Next.js) |
 | 1 | **지식그래프** — 나라·정책·사건이 어떻게 이어지나 | ✅ | `web/graph-demo.html` |
 | 2 | **정권별 외교정책의 변화** — 세 장면 | ✅ | `web/shift-demo.html` |
 | + | **목차 색인** — 37개년 장·절을 낱말로 찾기 | ✅ | `web/toc-demo.html` |
+
+**층이 둘이라는 것을 잊지 말 것.** 고친 것이 사이트까지 왔는지 확인해야 끝이다.
+
+```
+원본 → ETL → corpus/ ─┬─→ 지식그래프·색인·변화량  (web/*.html)
+                      └─→ (사람이 authoring/ 에 적음) → data.json → web-demo
+```
+
+사이트 띄우기: `npm run dev --prefix web-demo` → http://localhost:3000
+(`.claude/launch.json` 에 등록해 두었다)
 
 ---
 
@@ -29,6 +40,8 @@ ETL        37개년 · 레코드 124,101 (문장 64,550 · 표줄 59,551) · 오
            표본 20개 원문 대조 정확도 95% · 아는 사실 채점 18/18 (100%)
 변화량     이웃한 해 34쌍 · 같은 정권 0.2026 · 교체 0.2653 → 1.31배
 정답지     138/139 (99%)
+사이트     발간분 37개년 · 우선순위 174개 · 정권 이음매 8건
+           원문 대조 28/37 (1989~1991 은 스캔 인식이 깨져 blocked)
 RAGAs      물음 552개 · 답 5개 시험 완료 · 552개 전체는 미실행
 에러 노트   36건
 ```
@@ -126,6 +139,12 @@ python scripts/mine_entities.py                  개체·관계 → web/graph-da
 python scripts/audit_graph.py --facts            아는 사실로 그래프 채점
 python scripts/build_toc.py                      색인 화면
 python scripts/build_shift.py                    기능 2 화면
+
+python scripts/extract.py --from 1989 --to 1997   본 사이트용 원문 뽑기
+python scripts/harvest_priorities.py             우선순위 초안 (원문에서만)
+python scripts/verify.py                         적은 것이 원문에 있는지 대조
+python scripts/build.py                          → data.json (사이트가 읽는 것)
+npm run dev --prefix web-demo                    사이트 띄우기
 bash scripts/watchdog.sh &                       밤샘 작업 감시견
 ```
 
@@ -165,6 +184,7 @@ pipeline.html                    여정 그림
 | 35 | 30% 감소를 OCR 탓으로 오진 | 표본 하나로 비율을 말하지 않는다 |
 | 36 | 기관 이름·규칙 차례가 주제를 오분류 | 분류율은 정확도가 아니다 |
 | 37 | 관계 종류가 8%뿐 — 결함 넷이 겹침 | "못 한다·안 한다·섞여 있다" 는 다르다 |
+| 38 | 화면에 아홉 해가 없었다 | 고친 것이 **사람 눈에 닿는 자리**까지 왔는지 봐야 끝이다 |
 
 전문은 `docs/에러노트.md`.
 
