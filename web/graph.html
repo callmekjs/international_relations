@@ -368,7 +368,10 @@ function draw() {
     ctx.strokeStyle = l.rel ? cssv("--" + l.rel) : (hot ? cssv("--edge-hot") : cssv("--edge"));
     ctx.globalAlpha = sel && !hot ? .16 : (l.rel ? .75 : 1);
     ctx.lineWidth = thick(l) * Math.min(k, 1.6);
+    // 섞인 관계는 점선으로. 확정과 같은 실선으로 그으면 아는 척이 된다.
+    ctx.setLineDash(l.relMixed ? [4, 4] : []);
     ctx.beginPath(); ctx.moveTo(sx(l.s), sy(l.s)); ctx.lineTo(sx(l.t), sy(l.t)); ctx.stroke();
+    ctx.setLineDash([]);
   }
   ctx.globalAlpha = 1;
   const hit = query ? nodes.filter(n => n.id.includes(query)).map(n => n.id) : null;
@@ -410,7 +413,8 @@ function select(n) {
   const d = document.getElementById("detail");
   if (!n) { d.innerHTML = `<p class="empty">점을 고르면 여기에 자세히 나옵니다.</p>`; return; }
   const rel = shownL.filter(l => l.s===n || l.t===n)
-    .map(l => ({o: l.s===n ? l.t : l.s, w: cnt(l), rel: l.rel, sample: l.sample}))
+    .map(l => ({o: l.s===n ? l.t : l.s, w: cnt(l), rel: l.rel, sample: l.sample,
+                mixed: l.relMixed, top2: l.relTop2 || []}))
     .filter(r => r.w > 0).sort((a,b) => b.w - a.w).slice(0, 14);
   const max = rel.length ? rel[0].w : 1;
   const src = year || admin ? n.byYear : n.rateByYear;
@@ -441,7 +445,8 @@ function select(n) {
     <div><div class="lbl" style="margin-bottom:5px">이어진 것 ${rel.length}</div>
       <div class="rel">${rel.map(r => `<button type="button" data-id="${r.o.id}">
         <span class="dot" style="background:var(${KIND[r.o.kind].css})"></span>${r.o.id}
-        ${r.rel ? `<span class="kind" style="color:var(--${r.rel})">${r.rel}</span>` : ""}
+        ${r.rel ? `<span class="kind" style="color:var(--${r.rel})">${
+          r.mixed ? r.top2.map(t => t.kind).join("·") + " 섞임" : r.rel}</span>` : ""}
         <span class="w">${r.w}</span></button>`).join("")}</div></div>`;
   renderDocs(n);
   d.querySelectorAll("[data-id]").forEach(b => b.onclick = () => select(byId.get(b.dataset.id)));
@@ -488,11 +493,14 @@ function renderDocs(n) {
 
 document.getElementById("note").innerHTML =
   `백서 문장 <b>${DATA.meta.sentences.toLocaleString()}개</b>에서 뽑았습니다.<br>
-   선은 <b>한 문장 안에 함께 나온 것</b>이고, 그중 관계 종류가 붙은 것은
-   <b>${links.filter(l => l.rel).length}개</b>입니다.<br><br>
-   표본 15개를 원문과 대조한 결과 <b>정확도 87%</b>,
-   아는 사실 18건 채점 <b>17건 통과</b>.<br>
-   나머지는 나열 문장이라 관계로 보지 않았습니다.`;
+   선은 <b>한 문장 안에 함께 나온 것</b>입니다. 관계 종류는 세 갈래로 적었습니다.<br>
+   <b>확정 ${links.filter(l => l.rel && !l.relMixed).length}개</b> — 한 종류가 60% 넘게 우세<br>
+   <b>혼재 ${links.filter(l => l.relMixed).length}개</b> — 근거는 넉넉한데 안 갈림(점선).
+   미국—북한이 그렇습니다: 대화 45 · 갈등 31 · 협력 28<br>
+   <b>모름 ${links.filter(l => !l.rel).length}개</b> — 두 이름 사이에 관계말이 없음.
+   대부분 <i>"멕시코, 브라질, 인도 등"</i> 같은 나열입니다<br><br>
+   표본 20개를 원문과 대조한 결과 <b>19건이 맞았습니다(95%)</b>.
+   아는 사실 18건 채점 <b>18건 통과</b>.`;
 
 document.getElementById("viewNote").textContent = VIEW[view].note;
 renderPeriods();

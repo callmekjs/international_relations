@@ -97,6 +97,16 @@ _JOSA = re.compile(r"(?:을|를|의|에|와|과|은|는|이|가|으로|로|에�
 # 나라 이름처럼 보이지만 아닌 것. 지역 이름·복합어에 갇힌 글자다.
 _REGION_NOISE = re.compile(r"인도[-‐‑–—ㆍ·]?\s?태평양")
 
+# 나라 이름을 품고 있지만 그 나라가 아닌 말. 찾을 때만 가린다.
+#   인도적 구호 · 인도주의 지원 · 인도양 · 인도차이나
+# 2026-08-16 실측: '인도' 로 시작하는 말 3,578회 중 838회(23%)가 나라 인도가
+# 아니었다. 표본 20개 검사에서 나온 오류 3건 중 2건이 이것이었다
+#   "【인도】적 구호활동" → 유엔—인도 '지원' 관계가 생겼다.
+_NAME_NOISE = re.compile(r"인도적|인도주의|인도양|인도차이나")
+# 가릴 때 쓰는 글자. 한글이 아니라 어떤 이름과도 안 겹치고,
+# **길이가 같아** 글자 자리가 밀리지 않는다(관계는 자리로 읽는다).
+_MASK = "○"
+
 _ENG = re.compile(r"[（(]\s*[A-Za-z][A-Za-z0-9 ,.\-&/']{4,60}[)）]")
 
 # ── 관계에 종류 붙이기 ───────────────────────────────────────────────────────
@@ -135,6 +145,10 @@ ENG_RATIO_MIN = 0.10
 # 관계 종류를 붙일 조건. 과반이 한 쪽이고, 그 근거가 세 문장 이상일 때만.
 REL_CONF_MIN = 0.60
 REL_COUNT_MIN = 3
+# '섞여 있다' 로 인정할 최소 근거 수. 이만큼 읽어냈는데도 한 종류가 우세하지
+# 않으면, 못 읽은 것이 아니라 **그 관계가 실제로 여러 얼굴**이라고 본다.
+# 미국—북한(대화 45·갈등 31·협력 28·지원 11)이 그런 짝이다.
+REL_MIXED_MIN = 8
 # 개체 하나에 붙일 근거 문장 수. 한 해에서 너무 많이 가져오면 편중된다.
 DOCS_PER_YEAR = 3
 DOCS_PER_NODE = 24
@@ -199,33 +213,53 @@ MAX_SPAN_CHARS = 120
 _LIST_MARK = re.compile(r"[,、·ㆍ]|및|등")
 
 
-def relation_between(text: str, a: str, b: str, others: set[str]) -> str | None:
-    """a 와 b **사이 구간**에서 관계를 읽는다.
+def relation_between(text: str, sa: tuple[int, int], sb: tuple[int, int],
+                     others: list[tuple[int, int]]) -> str | None:
+    """두 이름 **사이 구간**에서 관계를 읽는다.
 
     문장 전체를 보면 안 된다. 2026-08-16 실측:
         "중국의 사태가 발생하고 일본의 정국이 극히 유동적으로 진행되어…"
     이 문장에 '협력'이 어딘가 있다는 이유로 미국—일본이 '협력'으로 붙었다.
     관계는 **두 이름 사이에 쓰인 말**이 정한다.
 
-    그리고 **하나만 딱 맞을 때만** 답한다. 둘 이상 걸리면 무엇인지 알 수 없다."""
-    ia, ib = text.find(a), text.find(b)
-    if ia < 0 or ib < 0:
+    **이름이 아니라 자리를 받는다.** 앞서 이름으로 받아 `text.find()` 로
+    되찾았더니, 원문이 별칭을 쓴 경우 못 찾고 관계를 통째로 버렸다 —
+    문장에서는 '국제연합' 을 찾아 놓고 대표 이름 '유엔' 으로 되찾으려 한 것이다.
+    짝 판정의 18.4%(4,136회)가 이렇게 사라졌다(2026-08-16 실측).
+
+    관계말이 둘 이상 걸리면 **두 이름에 가장 가까운 것**을 고른다. 앞서는
+    그냥 버렸는데, 그렇게 버린 것이 531회였다. 가까운 말이 그 짝을 설명한다."""
+    lo, hi = (sa[1], sb[0]) if sa[0] < sb[0] else (sb[1], sa[0])
+    if hi <= lo:                     # 이름이 겹쳐 있으면 관계를 말할 수 없다
         return None
-    lo, hi = (ia + len(a), ib) if ia < ib else (ib + len(b), ia)
     if hi - lo > MAX_SPAN_CHARS:
         return None
-    between = text[lo:hi]
     # 사이에 **다른 개체**가 끼어 있으면 나열이다. 이웃한 두 이름만 잇는다.
-    if any(o in between for o in others):
+    if any(lo <= s < hi or lo < e <= hi for s, e in others):
         return None
+    between = text[lo:hi]
     # 쉼표·가운뎃점·'및'·'등'이 사이에 있으면 그것도 나열이다.
     #   "아르헨티나, 【호주】, 【중국】과는 상용 복수사증협정체결을 추진"
     # 한국이 각각과 맺은 것이지 호주—중국의 관계가 아니다.
     if _LIST_MARK.search(between):
         return None
-    span = text[max(0, lo - SPAN_BACK): hi + SPAN_FWD]
-    hits = [k for k, pat in _REL_PAT.items() if pat.search(span)]
-    return hits[0] if len(hits) == 1 else None
+    span_lo, span_hi = max(0, lo - SPAN_BACK), hi + SPAN_FWD
+    span = text[span_lo:span_hi]
+    hits = []
+    for k, pat in _REL_PAT.items():
+        m = pat.search(span)
+        if not m:
+            continue
+        # 두 이름 사이(lo~hi)에서 얼마나 떨어져 있나
+        p = span_lo + m.start()
+        hits.append((0 if lo <= p < hi else min(abs(p - lo), abs(p - hi)), k))
+    if not hits:
+        return None
+    hits.sort()
+    # 가장 가까운 것이 둘이면 여전히 알 수 없다. 그때는 답하지 않는다.
+    if len(hits) > 1 and hits[0][0] == hits[1][0]:
+        return None
+    return hits[0][1]
 
 
 def main() -> None:
@@ -268,6 +302,9 @@ def main() -> None:
             sent_per_year[year] += 1
 
             found: set[str] = set()
+            # 이름이 원문에서 **어디에** 있었나. 관계를 읽을 때 쓴다.
+            # 대표 이름으로 되찾으면 별칭을 쓴 문장에서 못 찾는다.
+            at: dict[str, tuple[int, int]] = {}
             # '인도-태평양'은 지역 이름이지 인도(India)가 아니다. 먼저 지운다.
             # 2026-08-16 표본에서 '인도—인태전략', '영국—인도' 같은 헛 관계가
             # 전부 여기서 나왔다.
@@ -275,22 +312,36 @@ def main() -> None:
             # 모아 둔다 — 나라 찾기에서도 빠지고, '인도-태평양 전략'과 '인태전략'이
             # 한 이름으로 합쳐진다.
             text = _REGION_NOISE.sub("인태", text)
-            rest = text
+            # 찾기용 글월. 보여줄 문장(text)은 손대지 않는다 — 근거로 내놓을
+            # 원문이 ○○○ 로 보이면 안 된다. 길이가 같아 자리는 그대로다.
+            dtext = _NAME_NOISE.sub(lambda m: _MASK * len(m.group(0)), text)
+            rest = dtext
             # 찾은 이름은 지우면서 간다 — '인도네시아' 한 번에 '인도'까지 세지 않게
             for alias, canon in country_alias:
                 if alias in rest:
                     found.add(canon); kind_of[canon] = "country"
+                    # 자리는 **가려지기 전 원문**에서 잡는다. rest 는 찾은 이름을
+                    # 한 글자로 바꿔가므로 자리가 밀린다.
+                    i = dtext.find(alias)
+                    if i >= 0 and canon not in at:
+                        at[canon] = (i, i + len(alias))
                     rest = rest.replace(alias, "\x00")
             for alias, canon in org_alias:
                 if alias in rest:
                     found.add(canon); kind_of[canon] = "org"
+                    i = dtext.find(alias)
+                    if i >= 0 and canon not in at:
+                        at[canon] = (i, i + len(alias))
                     rest = rest.replace(alias, "\x00")
             for kind in ("policy", "event", "treaty"):
-                for w0 in find_named(text, kind):
+                for w0 in find_named(dtext, kind):
                     w = canon_name(w0)
                     found.add(w); kind_of[w] = kind
                     surfaces[w][w0] += 1
-                    i = text.find(w0) + len(w0)
+                    i0 = dtext.find(w0)
+                    if i0 >= 0 and w not in at:
+                        at[w] = (i0, i0 + len(w0))
+                    i = i0 + len(w0)
                     if _ENG.search(text[i:i + 70]):
                         eng_of[w] += 1
 
@@ -311,8 +362,10 @@ def main() -> None:
                     key = (a, b)
                     edges[key] += 1
                     edge_years[key][year] += 1
-                    rk = (relation_between(text, a, b, found - {a, b})
-                          if len(found) <= MAX_ENTITIES_FOR_REL else None)
+                    rk = (relation_between(dtext, at[a], at[b],
+                                           [at[o] for o in found - {a, b} if o in at])
+                          if len(found) <= MAX_ENTITIES_FOR_REL
+                          and a in at and b in at else None)
                     if rk:
                         edge_kinds[key][rk] += 1
                         # 샘플은 **그 라벨을 뒷받침하는 문장**이어야 한다.
@@ -406,6 +459,13 @@ def main() -> None:
     for (a, b), w in edges.items():
         if a not in kept or b not in kept:
             continue
+        # **이름이 이름을 품은 짝은 관계가 아니다.**
+        #   우크라이나 — 우크라이나전쟁 / 유엔 — 유엔해양법협약 / 이라크 — 이라크사태
+        # 사건·조약 이름에 나라 이름이 들어 있으니 언제나 함께 나온다.
+        # "우크라이나가 우크라이나전쟁과 관계있다" 는 아무것도 말해주지 않는다.
+        # 다만 **같은 종류끼리는 남긴다** — 인도—인도네시아는 진짜 두 나라다.
+        if (a in b or b in a) and kept[a] != kept[b]:
+            continue
         bar = MIN_EDGE if (kept[a] in _DENSE and kept[b] in _DENSE) else MIN_EDGE_RARE
         if w < bar:
             continue
@@ -414,24 +474,42 @@ def main() -> None:
         #   pmi     '우연보다 얼마나 자주 함께 나오나' — 특별한 관계가 드러난다
         #           (라오스—캄보디아, 브라질—아르헨티나 같은 것)
         pmi = math.log(w * n_sent / (total_of[a] * total_of[b]))
+        # 관계 종류. **'모른다' 와 '섞여 있다' 를 가른다.**
+        #
+        # 앞서는 한 종류가 60% 를 넘지 못하면 통째로 버렸다. 그래서
+        # 미국—북한(대화 45·갈등 31·협력 28·지원 11)이 '종류 없음' 이 됐다.
+        # 근거가 없어서가 아니라 **정말로 섞여 있어서** 우세하지 않은 것이다.
+        # 둘은 다른 사실이므로 다르게 적는다(2026-08-16).
+        #
+        #   확정  한 종류가 60% 이상        rel='협력'   mixed=false
+        #   혼재  근거는 넉넉한데 안 갈림    rel='대화'   mixed=true, relTop2
+        #   모름  근거 자체가 모자람        rel=None
         ks = edge_kinds[(a, b)]
-        rel, conf = None, 0.0
+        rel, conf, mixed, top2 = None, 0.0, False, []
         if ks:
             top, c = ks.most_common(1)[0]
-            share = c / sum(ks.values())
+            tot_k = sum(ks.values())
+            share = c / tot_k
             if share >= REL_CONF_MIN and c >= REL_COUNT_MIN:
                 rel, conf = top, round(share, 2)
+            elif tot_k >= REL_MIXED_MIN:
+                rel, conf, mixed = top, round(share, 2), True
+                top2 = [{"kind": k, "share": round(v / tot_k, 2)}
+                        for k, v in ks.most_common(2)]
         links.append({
             "source": a, "target": b, "weight": w, "pmi": round(pmi, 2),
-            "rel": rel, "relConf": conf,
+            "rel": rel, "relConf": conf, "relMixed": mixed, "relTop2": top2,
             "relCounts": dict(ks.most_common()) if ks else {},
             "byYear": {str(y): c for y, c in sorted(edge_years[(a, b)].items())},
             "sample": (edge_sample.get((a, b), {}).get(rel) if rel else None),
         })
     links.sort(key=lambda e: -e["weight"])
-    labeled = sum(1 for l in links if l["rel"])
-    print(f"  관계 {len(links):,}개 · 종류가 붙은 것 {labeled:,}개 "
-          f"({labeled/max(len(links),1)*100:.0f}%)")
+    sure = sum(1 for l in links if l["rel"] and not l["relMixed"])
+    mix = sum(1 for l in links if l["relMixed"])
+    unk = len(links) - sure - mix
+    n = max(len(links), 1)
+    print(f"  관계 {len(links):,}개 — 확정 {sure:,}개({sure/n*100:.0f}%) · "
+          f"혼재 {mix:,}개({mix/n*100:.0f}%) · 모름 {unk:,}개({unk/n*100:.0f}%)")
 
     gaps = {}
     for y in sorted(year_admin):
