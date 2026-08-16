@@ -24,11 +24,11 @@
         "page": null
       },
       "markStyle": "ordinal-word",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "1990 외교백서 제1장.pdf"
       ],
-      "note": "원문은 국한문 혼용이다. 스캔 글자 인식이 굵은 한자 제목을 못 읽어(500dpi·판독방식 3종 시험, 핵심어 6개 중 1개) 스캔 원본을 사람이 직접 읽었고, 화면에는 한글 독음으로 적었다. 쪽을 적어 두었으니 원본에서 확인할 수 있다"
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어(300·500dpi × psm 3·4·6 전부 시험, 핵심어 6개 중 1개) 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
     },
     {
       "coverageYear": 1990,
@@ -43,11 +43,11 @@
         "page": null
       },
       "markStyle": "ordinal-word",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "1991 외교백서 제1장.pdf"
       ],
-      "note": "원문은 국한문 혼용이다. 스캔 글자 인식이 굵은 한자 제목을 못 읽어(500dpi·판독방식 3종 시험, 핵심어 6개 중 1개) 스캔 원본을 사람이 직접 읽었고, 화면에는 한글 독음으로 적었다. 쪽을 적어 두었으니 원본에서 확인할 수 있다"
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
     },
     {
       "coverageYear": 1991,
@@ -62,11 +62,11 @@
         "page": null
       },
       "markStyle": "ordinal-word",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "1992 외교백서 제1장.pdf"
       ],
-      "note": "원문은 국한문 혼용이다. 스캔 글자 인식이 굵은 한자 제목을 못 읽어(500dpi·판독방식 3종 시험, 핵심어 6개 중 1개) 스캔 원본을 사람이 직접 읽었고, 화면에는 한글 독음으로 적었다. 쪽을 적어 두었으니 원본에서 확인할 수 있다"
+      "note": "원문은 국한문 혼용. 글자 인식이 굵은 한자 제목을 못 읽어 스캔 원본을 사람이 직접 읽어 대조했다. 항목마다 쪽을 적어 두었다(flags=from-scan). 화면에는 한글 독음으로 적었다"
     },
     {
       "coverageYear": 1992,
@@ -264,11 +264,11 @@
         "page": null
       },
       "markStyle": "ordinal-word",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "2002 외교백서 제2장.hwp"
       ],
-      "note": "첫째~여섯째까지 확인. 일곱째 이후가 있는지 미확인"
+      "note": "첫째~여섯째 6개. 원문에 일곱째가 없음을 확인했다(2026-08-16)"
     },
     {
       "coverageYear": 2002,
@@ -359,11 +359,11 @@
         "page": 23
       },
       "markStyle": "roman",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "2007 외교백서 제1장.pdf"
       ],
-      "note": "정책목표 Ⅰ~Ⅴ. 각 목표 아래 ①~⑤ 세부과제가 따로 있다. Ⅱ~Ⅴ 본문 인용 미수집"
+      "note": "정책목표 Ⅰ~Ⅴ 5개 전부. 각 목표 아래 ①~⑤ 세부과제는 한 단계 아래라 넣지 않는다"
     },
     {
       "coverageYear": 2007,
@@ -378,11 +378,11 @@
         "page": 7
       },
       "markStyle": "circled",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "2008 외교백서 제1장.pdf"
       ],
-      "note": "①~⑤ 5개 분야. 본문은 Ⅰ~Ⅴ 로 다시 받는다. 세로쓰기 머리글이 문장을 파고들어 4·5번 미수집"
+      "note": "① ~ ⑤ 5개 분야 전부. 세로쓰기 머리글이 문장을 파고들어 인용은 (…) 로 끊어 적었다"
     },
     {
       "coverageYear": 2008,
@@ -397,11 +397,11 @@
         "page": 18
       },
       "markStyle": "number",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [
         "2009 외교백서_제1장.pdf"
       ],
-      "note": "창조적 실용외교. 1~3번까지 확인, 이후 미수집"
+      "note": "창조적 실용외교 1~6번 전부. 20쪽 그림에도 여섯 개가 그려져 있다"
     },
     {
       "coverageYear": 2009,
@@ -549,9 +549,9 @@
         "page": null
       },
       "markStyle": "heading",
-      "status": "partial",
+      "status": "verified",
       "sourceFiles": [],
-      "note": "제1장은 「2016년 국제 정세」 하나뿐이라 「외교정책 기조」 절이 없다. 대신 **장 배열이 그 해의 우선순위**다(제2~7장). extract.py 는 제1·2장만 읽으므로 장 표지 쪽을 인용해 근거를 댄다"
+      "note": "「외교정책 기조」 절이 없는 판이라 **장 배열이 그 해의 우선순위**다(제2~7장). extract.py 는 제1·2장만 읽어 대조용 글월에 제3~7장이 없다. 장 표지 쪽을 적어 사람이 확인할 수 있게 했다(flags=page-cited)"
     },
     {
       "coverageYear": 2017,
@@ -2583,6 +2583,38 @@
       ]
     },
     {
+      "id": "2007-4",
+      "coverageYear": 2007,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "재외국민 보호, 영사서비스 강화 및 국민의 지지 확보",
+      "quote": "2007년은 참여정부 마지막 해로서, ① 한반도와 동북아 평화·번영 추구 ② 국제협력 (…) 증진 및 국가이미지 제고 ③ 경제·통상 외교 강화 ④ 재외국민 보호, 영사서비스 강화 (…) 및 외교정책에 대한 국민의 지지 확보 ⑤ 외교역량 강화 등 5개 분야에 중점을 두고 외교 (…) 정책을 추진하였다",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
+      "id": "2007-5",
+      "coverageYear": 2007,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "외교통상부 역량 강화",
+      "quote": "2007년은 참여정부 마지막 해로서, ① 한반도와 동북아 평화·번영 추구 ② 국제협력 (…) 증진 및 국가이미지 제고 ③ 경제·통상 외교 강화 ④ 재외국민 보호, 영사서비스 강화 (…) 및 외교정책에 대한 국민의 지지 확보 ⑤ 외교역량 강화 등 5개 분야에 중점을 두고 외교 (…) 정책을 추진하였다",
+      "stream": "capacity",
+      "source": {
+        "edition": "2008 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 21
+      },
+      "flags": []
+    },
+    {
       "id": "2008-1",
       "coverageYear": 2008,
       "ordinal": 1,
@@ -2635,6 +2667,54 @@
       "flags": [
         "partial"
       ]
+    },
+    {
+      "id": "2008-4",
+      "coverageYear": 2008,
+      "ordinal": 4,
+      "ordinalSource": "기조절",
+      "title": "국제 사회 내 역할과 위상 제고",
+      "quote": "국제 사회 내 역할과 위상 제고",
+      "stream": "global-role",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2008-5",
+      "coverageYear": 2008,
+      "ordinal": 5,
+      "ordinalSource": "기조절",
+      "title": "영사 서비스 확충",
+      "quote": "영사 서비스 확충",
+      "stream": "overseas-koreans",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 19
+      },
+      "flags": []
+    },
+    {
+      "id": "2008-6",
+      "coverageYear": 2008,
+      "ordinal": 6,
+      "ordinalSource": "기조절",
+      "title": "외교 역량 강화",
+      "quote": "외교 역량 강화",
+      "stream": "capacity",
+      "source": {
+        "edition": "2009 외교백서",
+        "chapter": 1,
+        "section": 2,
+        "page": 20
+      },
+      "flags": []
     },
     {
       "id": "2009-1",
@@ -4447,6 +4527,7 @@
         "2004-7",
         "2006-3",
         "2007-2",
+        "2008-4",
         "2009-4",
         "2010-3",
         "2010-5",
@@ -4482,6 +4563,8 @@
         "2000-5",
         "2002-5",
         "2003-6",
+        "2007-4",
+        "2008-5",
         "2009-5",
         "2010-6",
         "2011-4",
@@ -4530,6 +4613,8 @@
         "1995-6",
         "2002-6",
         "2003-8",
+        "2007-5",
+        "2008-6",
         "2009-6",
         "2010-7",
         "2011-6",
