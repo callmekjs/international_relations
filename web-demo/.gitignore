@@ -38,3 +38,7 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# 빌드 도구가 만드는 캐시 — 언제든 다시 생긴다
+/.vite
+/build/.cache
