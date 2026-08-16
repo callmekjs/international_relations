@@ -70,6 +70,9 @@ def pages_of(year: int) -> list[dict]:
 # (1997~2000년이 그렇게 잘못 잡혔다. 그 네 해는 목차가 정말 없다).
 TOC_PAGE_MAX_CHARS = 3000
 
+# 앞선 출처(목차 카드)를 계속 쓸 기준. 가장 많이 뽑힌 것의 이만큼이면 쓴다.
+KEEP_PREFERRED = 0.8
+
 
 class ChapterWalker:
     """목차를 훑어 내려가며 지금이 몇 장인지 따라간다.
@@ -83,12 +86,17 @@ class ChapterWalker:
 
     def __init__(self, start: int | None = None):
         self.ch, self.title, self.last_sec = start, None, 0
+        self.explicit = False
 
     def chapter(self, num: int, title: str | None) -> None:
         self.ch, self.title, self.last_sec = num, title, 0
+        self.explicit = True
 
     def section(self, num: int) -> None:
-        if self.ch is None or num <= self.last_sec:
+        # **장 번호가 적혀 있으면 그것만 믿는다.** 짐작은 안 적혀 있을 때만.
+        # 쪽마다 되풀이되는 머리글('제1절 …')이 절 번호를 되돌려, 장을
+        # 자꾸 늘렸다. 2024년이 6장짜리인데 53장으로 부풀었다.
+        if not self.explicit and (self.ch is None or num <= self.last_sec):
             self.ch = (self.ch or 0) + 1
             self.title = None
         self.last_sec = num
@@ -195,24 +203,31 @@ def collect(year: int, force: str | None = None) -> tuple[list[dict], str]:
     # 시작해 다른 장의 절이 한데 섞인다(2010년에 실제로 그랬다).
     # 파일마다 따로 만들어 보고 **가장 온전한 하나**만 쓴다. 파일을 다 합치면
     # 다른 장 표제지의 절이 같은 (장,절) 자리를 다투어 앞 절을 덮는다.
-    streams: dict[str, list[tuple[str, int]]] = {}
+    # 목차 쪽을 **이어진 덩어리**로 묶는다. 한 파일 안에 책 전체 목차 쪽과
+    # 장별 표제지가 함께 있는 판이 있어서다(2024년: 4쪽이 전체 목차,
+    # 16·32·84·105쪽이 장 표제지). 덩어리로 갈라야 섞이지 않는다.
+    blocks: list[tuple[str, list[tuple[str, int]]]] = []
     for f in by_file:
         if _TOC_FILE.search(f):
             continue
-        s: list[tuple[str, int]] = []
+        prev_pg, cur = None, []
         for p in pages:
             if p["출처파일"] != f:
                 continue
             text = p.get("원문") or ""
-            if len(text) > TOC_PAGE_MAX_CHARS:
-                continue
             lines = text.splitlines()
-            if len(heading_lines(lines)) < TOC_PAGE_MIN and \
-                    not any(_TOC_MARK.match(x) for x in lines):
+            is_toc = len(text) <= TOC_PAGE_MAX_CHARS and (
+                len(heading_lines(lines)) >= TOC_PAGE_MIN
+                or any(_TOC_MARK.match(x) for x in lines))
+            if not is_toc:
                 continue
-            s += [(ln, p["쪽"]) for ln in lines]
-        if s:
-            streams[f] = s
+            if prev_pg is not None and p["쪽"] - prev_pg > 1 and cur:
+                blocks.append((f, cur))
+                cur = []
+            cur += [(ln, p["쪽"]) for ln in lines]
+            prev_pg = p["쪽"]
+        if cur:
+            blocks.append((f, cur))
 
     def restarts(s: list[tuple[str, int]]) -> int:
         """절 번호가 몇 번 1로 되돌아가나. 두 번 넘으면 **책 전체 목차**다."""
@@ -221,19 +236,19 @@ def collect(year: int, force: str | None = None) -> tuple[list[dict], str]:
                                for i in range(len(lines))) if h]
         return sum(1 for a, b in zip(nums, nums[1:]) if b <= a)
 
-    whole = {f: s for f, s in streams.items() if restarts(s) >= 2}
+    whole = [(f, s) for f, s in blocks if restarts(s) >= 2]
     if whole:
-        # 가) 책 전체 목차가 든 파일이 있다 — **그 파일 하나만** 쓴다.
-        #     다른 파일의 표제지를 섞으면 같은 (장,절) 자리를 다투어
-        #     다른 장의 절이 이 장 것으로 바뀐다(2010년에 실제로 그랬다).
+        # 가) 책 전체 목차 덩어리가 있다 — **그 덩어리 하나만** 쓴다.
+        #     다른 덩어리를 섞으면 같은 (장,절) 자리를 다투어 다른 장의
+        #     절이 이 장 것으로 바뀐다(2010·2024년에 실제로 그랬다).
         rows2 = max((harvest([x for x, _ in s], [y for _, y in s], f, None,
-                             use_leader=True) for f, s in whole.items()),
+                             use_leader=True) for f, s in whole),
                     key=_named, default=[])
     else:
-        # 나) 장마다 표제지에 그 장의 절 목록만 있는 판 — 파일을 모으되
+        # 나) 장마다 표제지에 그 장의 절 목록만 있는 판 — 모으되
         #     **파일명이 알려준 장에 묶는다**(2014·2016·2018년).
         rows2 = []
-        for f, s in streams.items():
+        for f, s in blocks:
             ch = file_chapter(f)
             rows2 += harvest([x for x, _ in s], [y for _, y in s], f, ch,
                              lock_chapter=ch is not None, use_leader=True)
@@ -276,8 +291,17 @@ def collect(year: int, force: str | None = None) -> tuple[list[dict], str]:
                 return rs, where
         return [], "없음"
 
-    best = max(cands, key=lambda c: _named(c[0]))
-    return best if _named(best[0]) else ([], "없음")
+    # **출처의 순서를 존중한다.** 목차 카드가 본문 제목줄보다 믿을 만하다.
+    # 개수만 보고 고르면, 본문에서 조각난 제목이 잔뜩 나온 해가 목차를
+    # 이겨버린다. 그래서 앞선 출처가 가장 많은 것의 이만큼만 되어도 쓴다.
+    # 1989~1996년처럼 목차가 OCR 로 심하게 깨진 해에서는 자연히 뒤로 밀린다.
+    top = max(_named(rs) for rs, _ in cands)
+    if not top:
+        return [], "없음"
+    for rs, where in cands:
+        if _named(rs) >= top * KEEP_PREFERRED:
+            return rs, where
+    return max(cands, key=lambda c: _named(c[0]))
 
 
 def dedupe(rows: list[dict], year: int, admin: str, source: str) -> list[dict]:
