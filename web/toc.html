@@ -1,0 +1,229 @@
+<title>외교백서 색인 1989–2025</title>
+<style>
+:root{
+  --ground:#f6f4ef; --panel:#fffdf9; --line:#ddd7c9; --line-soft:#eae5d9;
+  --ink:#1c1a17; --ink-2:#57524a; --ink-3:#8b8478;
+  --src-toc:#1f6f6b; --src-page:#3a5a8f; --src-body:#8a6a1f;
+  --hit:#a8442a;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
+  --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
+  --src-toc:#5fc7bd; --src-page:#7fa8e0; --src-body:#d8ae53;
+  --hit:#e58a68;
+}}
+:root[data-theme="dark"]{
+  --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
+  --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
+  --src-toc:#5fc7bd; --src-page:#7fa8e0; --src-body:#d8ae53;
+  --hit:#e58a68;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Nanum Myeongjo","Apple SD Gothic Neo",Batang,serif}
+.wrap{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+
+aside{background:var(--panel);border-right:1px solid var(--line);padding:18px 14px;
+  display:flex;flex-direction:column;gap:16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+@media(max-width:900px){aside{position:static;height:auto}}
+h1{font-size:17px;line-height:1.3;margin:0;letter-spacing:-.01em}
+.sub{color:var(--ink-3);font-size:11px;margin-top:5px;font-variant-numeric:tabular-nums}
+.searchbox{width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;
+  background:var(--ground);color:var(--ink);font:inherit;font-size:12.5px}
+.searchbox:focus-visible{outline:2px solid var(--ink-2);outline-offset:1px}
+.lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-3);font-weight:700;
+  margin-bottom:6px}
+.adm{margin-bottom:12px}
+.adm .name{font-size:11.5px;color:var(--ink-2);font-weight:700;margin-bottom:4px}
+.years{display:flex;flex-wrap:wrap;gap:3px}
+.yr{border:1px solid var(--line-soft);border-radius:5px;background:none;color:var(--ink-2);
+  font:inherit;font-size:11px;padding:2px 6px;cursor:pointer;font-variant-numeric:tabular-nums}
+.yr:hover{border-color:var(--line);color:var(--ink)}
+.yr[aria-current="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink);font-weight:700}
+.yr:focus-visible{outline:2px solid var(--ink-2);outline-offset:1px}
+
+main{padding:26px 30px 60px;max-width:900px}
+@media(max-width:600px){main{padding:20px 16px 40px}}
+.head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.head h2{font-size:25px;margin:0;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.head .admtag{font-size:13px;color:var(--ink-2)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--ink-3);
+  margin-bottom:22px;font-variant-numeric:tabular-nums}
+.badge{display:inline-flex;align-items:center;gap:5px;border:1px solid currentColor;border-radius:20px;
+  padding:1px 9px;font-size:10.5px;font-weight:600}
+.badge.toc{color:var(--src-toc)} .badge.page{color:var(--src-page)} .badge.body{color:var(--src-body)}
+
+.chap{margin-bottom:22px;border-left:2px solid var(--line);padding-left:14px}
+.chap h3{font-size:15px;margin:0 0 8px;line-height:1.4;font-weight:700;text-wrap:balance}
+.chap h3 .n{color:var(--ink-3);font-weight:400;font-size:12px;margin-right:7px;
+  font-variant-numeric:tabular-nums}
+.secs{display:flex;flex-direction:column;gap:1px}
+.sec{display:flex;gap:9px;align-items:baseline;padding:3px 0;font-size:13px;line-height:1.5}
+.sec .n{color:var(--ink-3);font-size:11px;flex:0 0 34px;font-variant-numeric:tabular-nums}
+.sec .t{flex:1;min-width:0}
+.sec .p{color:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums;flex:0 0 auto}
+mark{background:color-mix(in srgb,var(--hit) 26%,transparent);color:inherit;border-radius:2px;padding:0 1px}
+
+.results .row{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:7px 0;
+  border-top:1px solid var(--line-soft);align-items:baseline}
+.results .row:first-child{border-top:0}
+.results .y{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums;font-weight:700}
+.results .where{font-size:10.5px;color:var(--ink-3);margin-top:2px}
+.empty{color:var(--ink-3);font-size:13px;padding:18px 0}
+.note{font-size:11px;color:var(--ink-3);line-height:1.65;border-top:1px solid var(--line-soft);
+  padding-top:12px;margin-top:30px}
+.note b{color:var(--ink-2)}
+</style>
+
+<div class="wrap">
+<aside>
+  <div>
+    <h1 class="serif">외교백서 색인</h1>
+    <div class="sub" id="scope"></div>
+  </div>
+  <input class="searchbox" id="q" type="search" placeholder="낱말로 찾기 — 북핵, 공공외교…"
+         autocomplete="off" aria-label="색인 검색">
+  <div id="rail"></div>
+</aside>
+<main id="main"></main>
+</div>
+
+<script>
+const DATA = /*DATA*/null/*DATA*/;
+
+const ADMIN_ORDER = ["노태우","김영삼","김대중","노무현","이명박","박근혜","문재인","윤석열","이재명"];
+const SRC = {
+  "목차파일":   {cls:"toc",  label:"목차 파일에서"},
+  "본문속목차": {cls:"page", label:"본문 속 목차 쪽에서"},
+  "본문제목줄": {cls:"body", label:"본문 제목줄에서 되만듦"},
+};
+
+const byYear = new Map();
+for (const r of DATA.rows) {
+  if (!byYear.has(r["연도"])) byYear.set(r["연도"], []);
+  byYear.get(r["연도"]).push(r);
+}
+const years = [...byYear.keys()].sort((a,b)=>a-b);
+let current = years[years.length-1];
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function hl(text, q){
+  if (!q) return esc(text);
+  const i = String(text).toLowerCase().indexOf(q.toLowerCase());
+  if (i < 0) return esc(text);
+  return esc(text.slice(0,i)) + "<mark>" + esc(text.slice(i,i+q.length)) + "</mark>" + esc(text.slice(i+q.length));
+}
+
+function buildRail(){
+  const rail = document.getElementById("rail");
+  const groups = new Map();
+  for (const y of years){
+    const adm = byYear.get(y)[0]["정권"] || "—";
+    if (!groups.has(adm)) groups.set(adm, []);
+    groups.get(adm).push(y);
+  }
+  const order = [...groups.keys()].sort((a,b)=>ADMIN_ORDER.indexOf(a)-ADMIN_ORDER.indexOf(b));
+  rail.innerHTML = `<div class="lbl">정권별 연도</div>` + order.map(adm => `
+    <div class="adm">
+      <div class="name">${esc(adm)}</div>
+      <div class="years">${groups.get(adm).map(y =>
+        `<button class="yr" data-y="${y}" aria-current="${y===current}">${y}</button>`).join("")}</div>
+    </div>`).join("");
+  rail.querySelectorAll(".yr").forEach(b => b.addEventListener("click", () => {
+    current = +b.dataset.y;
+    document.getElementById("q").value = "";
+    render();
+  }));
+}
+
+function renderYear(){
+  const rows = byYear.get(current) || [];
+  const adm = rows.length ? rows[0]["정권"] : "";
+  const src = rows.length ? rows[0]["출처"] : "";
+  const s = SRC[src] || {cls:"body", label:src};
+  const secs = rows.filter(r => r["절"] != null);
+  const chapters = [];
+  for (const r of rows){
+    if (r["절"] == null){
+      chapters.push({n:r["장"], title:r["장제목"], secs:[]});
+    } else {
+      let c = chapters.find(x => x.n === r["장"]);
+      if (!c){ c = {n:r["장"], title:r["장제목"], secs:[]}; chapters.push(c); }
+      c.secs.push(r);
+    }
+  }
+  const paper = current + 1;
+  return `
+    <div class="head">
+      <h2>${current}년</h2>
+      <span class="admtag">${esc(adm)} 정부 &middot; 「${paper} 외교백서」</span>
+    </div>
+    <div class="meta">
+      <span class="badge ${s.cls}">${esc(s.label)}</span>
+      <span>장 ${chapters.length}개 &middot; 절 ${secs.length}개</span>
+    </div>
+    ${chapters.map(c => `
+      <section class="chap">
+        <h3><span class="n">제${c.n ?? "?"}장</span>${esc(c.title || "")}</h3>
+        <div class="secs">${c.secs.map(r => `
+          <div class="sec">
+            <span class="n">제${r["절"]}절</span>
+            <span class="t">${esc(r["절제목"] || "(제목 없음)")}</span>
+            <span class="p">${r["쪽"] ?? ""}쪽</span>
+          </div>`).join("")}</div>
+      </section>`).join("")}
+  `;
+}
+
+function renderSearch(q){
+  const hits = DATA.rows.filter(r => r["절제목"] && r["절제목"].toLowerCase().includes(q.toLowerCase()));
+  if (!hits.length) return `<div class="head"><h2>${esc(q)}</h2></div>
+    <div class="empty">37개년 색인에 그 말이 든 절이 없습니다.</div>`;
+  const yearsHit = new Set(hits.map(h => h["연도"]));
+  return `
+    <div class="head"><h2>${esc(q)}</h2></div>
+    <div class="meta"><span>${hits.length}개 절 &middot; ${yearsHit.size}개년</span></div>
+    <div class="results">
+      ${hits.sort((a,b)=>a["연도"]-b["연도"]).map(r => `
+        <div class="row">
+          <div class="y">${r["연도"]}</div>
+          <div>
+            <div>${hl(r["절제목"], q)}</div>
+            <div class="where">제${r["장"] ?? "?"}장 ${esc(r["장제목"] || "")} &middot; 제${r["절"]}절</div>
+          </div>
+        </div>`).join("")}
+    </div>`;
+}
+
+function render(){
+  const q = document.getElementById("q").value.trim();
+  document.getElementById("main").innerHTML =
+    (q ? renderSearch(q) : renderYear()) + `
+    <div class="note">
+      <b>이 색인이 어디서 왔나.</b> 백서마다 목차가 실린 자리가 다릅니다.
+      목차 전용 파일이 있는 해, 본문 파일 안에 목차 쪽이 든 해, 그리고
+      목차가 아예 없어 본문에 적힌 제목을 모아 되만든 해가 있습니다.
+      줄마다 어느 쪽인지 기록해 두었습니다.<br><br>
+      <b>되만든 것이 얼마나 맞나.</b> 목차가 있는 ${DATA.audit.years}개년에서
+      목차가 말하는 절과 본문으로 되만든 절을 맞대봤습니다.
+      정답 ${DATA.audit.gold}개 중 ${DATA.audit.hit}개(${DATA.audit.rate}%)를 되찾았습니다.
+      1997~2000년은 목차가 정말 없어 이 방법으로 만들었습니다.<br><br>
+      <b>1989~1996년은 스캔본입니다.</b> 국한문 혼용이라 제목이 한자로 적혀 있고,
+      글자 인식 오탈자가 섞여 있습니다. 구조(몇 장 몇 절)는 맞지만 제목 글자는
+      원문 대조가 필요합니다.
+    </div>`;
+  document.querySelectorAll(".yr").forEach(b =>
+    b.setAttribute("aria-current", String(+b.dataset.y === current && !q)));
+}
+
+document.getElementById("scope").textContent =
+  `${years[0]}–${years[years.length-1]} · ${years.length}개년 · 절 ${DATA.rows.filter(r=>r["절"]!=null).length}개`;
+document.getElementById("q").addEventListener("input", render);
+buildRail();
+render();
+</script>
