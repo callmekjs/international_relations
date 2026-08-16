@@ -105,7 +105,13 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
     on_disk = sorted(f.name for f in (DATA_ROOT / str(year)).iterdir()
                      if f.is_file() and f.suffix.lower() in READABLE)
     handled = sorted(s["file"] for s in meta["sources"])
-    missing = set(on_disk) - set(handled)
+    # 일부러 건너뛴 것은 누락이 아니다. 같은 파일이 이름만 다르게 두 번 들어
+    # 있으면 ETL 이 하나만 쓰고 그 사실을 meta 에 적어 둔다(2004년 실측).
+    skipped = {s["file"] for s in meta.get("skipped", [])}
+    missing = set(on_disk) - set(handled) - skipped
+    if skipped:
+        rows.append(("OK", "중복 건너뜀",
+                     " · ".join(f"{s['file']} = {s['sameAs']}" for s in meta["skipped"])))
     if missing:
         rows.append(("오류", "파일 누락", f"{len(missing)}개가 처리되지 않았다: {sorted(missing)[:3]}"))
     else:
@@ -226,6 +232,9 @@ def main() -> None:
     ap.add_argument("--out", default="etl_test")
     ap.add_argument("--delete-on-fail", action="store_true",
                     help="오류가 나면 그 해 산출물을 지운다. 반쪽 결과가 남으면 안 된다")
+    ap.add_argument("--accept", action="store_true",
+                    help="기준선이 달라진 것이 **의도한 변화**일 때. 그 해의 기준선을 "
+                         "새로 깐다. 기준선 말고 다른 오류가 있으면 거부한다")
     ap.add_argument("--save-baseline", action="store_true",
                     help="통과한 해의 숫자를 기준선으로 저장한다")
     a = ap.parse_args()
@@ -251,12 +260,21 @@ def main() -> None:
         for lvl, label, msg in rows:
             print(f"  {mark[lvl]} {label:<10} {msg}")
 
+        # 기준선만 어긋난 해는, 그 변화가 의도한 것이라면 승인할 수 있다.
+        # 파이프라인을 고치면 숫자는 당연히 달라진다 — 그때마다 손으로 파일을
+        # 고치게 두면 사람이 기준선 파일을 직접 만지게 되고, 그게 더 위험하다.
+        only_baseline = (verdict == "오류" and
+                         all(lbl == "기준선" for lv, lbl, _ in rows if lv == "오류"))
+        if a.accept and only_baseline:
+            verdict = "승인됨"
+            print("\n  → 기준선이 달라진 것을 의도한 변화로 받아들인다")
+
         if verdict == "오류":
             failed += 1
             if a.delete_on_fail:
                 shutil.rmtree(out_root / str(y), ignore_errors=True)
                 print(f"\n  → {out_root / str(y)} 를 지웠다. 원인을 고치고 다시 돌린다.")
-        elif a.save_baseline:
+        elif a.save_baseline or (a.accept and verdict == "승인됨"):
             meta = json.loads((out_root / str(y) / "meta.json").read_text(encoding="utf-8"))
             sents_all = [json.loads(l) for l in
                          (out_root / str(y) / "sentences.jsonl").read_text(encoding="utf-8").splitlines()]
@@ -268,7 +286,7 @@ def main() -> None:
                 "chars": meta["counts"]["chars"]}
             print(f"\n  → 기준선 저장")
 
-    if a.save_baseline:
+    if a.save_baseline or a.accept:
         write_json_atomic(bpath, baseline)
 
     print()

@@ -21,6 +21,7 @@
 ETL_VERSION = "v0.1"
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -93,16 +94,31 @@ def sort_key(role: str, chapter: int | None) -> tuple[int, int]:
     return ({"front": 0, "chapter": 1, "whole": 2, "appendix": 3}.get(role, 9), chapter or 0)
 
 
-def select_files(year: int) -> list[tuple[Path, str, int | None]]:
-    """그 해의 **모든** 읽을 수 있는 파일. 부록도 포함한다 — 전문을 뽑는 것이다."""
+def select_files(year: int) -> tuple[list[tuple[Path, str, int | None]], list[dict]]:
+    """그 해의 **모든** 읽을 수 있는 파일. 부록도 포함한다 — 전문을 뽑는 것이다.
+
+    같은 파일이 이름만 다르게 두 번 들어 있으면 하나만 쓴다. 2004년이
+    그랬다(2026-08-16): '2005 외교백서 제1장.pdf' 와 '제2장.pdf' 의 지문이
+    똑같았다 — 같은 파일을 복사해 이름만 바꿔 배포한 것이다. 그대로 두면
+    1장 내용이 1장으로 한 번, 2장으로 또 한 번 세어져 통계가 부풀려진다.
+
+    **원본은 건드리지 않는다.** 배포된 자료를 우리가 지울 일이 아니고,
+    거르는 일은 파이프라인이 할 몫이다."""
     folder = DATA_ROOT / str(year)
-    picked = []
+    picked, seen, skipped = [], {}, []
     for f in sorted(folder.iterdir()):
-        if f.is_file() and f.suffix.lower() in READABLE:
-            role, ch = classify(f.stem)
-            picked.append((f, role, ch))
+        if not (f.is_file() and f.suffix.lower() in READABLE):
+            continue
+        digest = hashlib.sha256(f.read_bytes()).hexdigest()
+        if digest in seen:
+            print(f"   ! {f.name} 은 {seen[digest]} 와 같은 파일 — 건너뛴다")
+            skipped.append({"file": f.name, "sameAs": seen[digest], "reason": "중복"})
+            continue
+        seen[digest] = f.name
+        role, ch = classify(f.stem)
+        picked.append((f, role, ch))
     picked.sort(key=lambda t: sort_key(t[1], t[2]))
-    return picked
+    return picked, skipped
 
 
 # 한국어 공문서의 문장 끝. 이 형태들로 끝나고 뒤에 공백이 오면 문장이 끊긴다.
@@ -345,7 +361,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         shutil.rmtree(out_dir)      # 하다 만 흔적 — 조용히 치우고 다시 한다
     out_dir.mkdir(parents=True)
 
-    picked = select_files(year)
+    picked, skipped = select_files(year)
     admin = administration(year)
     print(f"{year}년 · {admin} · 파일 {len(picked)}개")
 
@@ -525,6 +541,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
             "emptyPages": sum(1 for c in chars if c < 50),
             "chapters": sorted({r["장"] for r in page_rows if r["장"]}),
         },
+        "skipped": skipped,
         "sources": sources,
     }
     write_json_atomic(out_dir / "meta.json", meta)
