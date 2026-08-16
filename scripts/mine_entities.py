@@ -229,8 +229,17 @@ def main() -> None:
     print(f"  관계 {len(links):,}개")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    gaps = {}
+    for y in sorted(year_admin):
+        m = PROJECT_ROOT / "etl_test" / str(y) / "meta.json"
+        if m.exists():
+            g = json.loads(m.read_text(encoding="utf-8")).get("knownGaps", [])
+            if g:
+                gaps[str(y)] = g
+
     OUT.write_text(json.dumps({
         "meta": {
+            "gaps": gaps,
             "sentences": n_sent,
             "years": sorted(year_admin),
             "admins": [year_admin[y] for y in sorted(year_admin)],

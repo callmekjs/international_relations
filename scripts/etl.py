@@ -42,6 +42,28 @@ if __name__ == "__main__":
 DATA_ROOT = PROJECT_ROOT / "data"
 READABLE = {".pdf", ".hwp", ".doc"}
 
+# 원본이 없어서 못 뽑은 것. 사람이 확인해 적어 둔 표다.
+# 이것을 산출물에 함께 실어야 "왜 이 해만 적지?"에 답할 수 있다 —
+# 자료가 없는 것과 그 해에 일이 없었던 것은 전혀 다르다.
+GAPS_TSV = PROJECT_ROOT / "config" / "자료결손.tsv"
+
+
+def known_gaps(year: int) -> list[dict]:
+    if not GAPS_TSV.exists():
+        return []
+    out, header = [], None
+    for line in GAPS_TSV.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        cols = line.split("	")
+        if header is None:
+            header = cols
+            continue
+        row = dict(zip(header, cols + [""] * (len(header) - len(cols))))
+        if row.get("year", "").strip() == str(year):
+            out.append({k: v.strip() for k, v in row.items() if k != "year"})
+    return out
+
 # 어느 해가 어느 정권인가. 연도는 **대상 연도**다(「2014 외교백서」는 2013년).
 ADMINISTRATIONS = [
     ("노태우", 1989, 1992), ("김영삼", 1993, 1997), ("김대중", 1998, 2002),
@@ -542,6 +564,7 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
             "chapters": sorted({r["장"] for r in page_rows if r["장"]}),
         },
         "skipped": skipped,
+        "knownGaps": known_gaps(year),
         "sources": sources,
     }
     write_json_atomic(out_dir / "meta.json", meta)
