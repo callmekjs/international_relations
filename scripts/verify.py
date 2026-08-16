@@ -80,6 +80,25 @@ def main() -> None:
 
     for r in rows:
         year = int(r["coverageYear"])
+
+        # **스캔에서 사람이 읽어 적은 줄.** 글자 인식이 못 읽는 쪽이 있다
+        # (1989~1991년 국한문 혼용 스캔본). 그 쪽은 OCR 글월과 대조할 수 없다.
+        #
+        # 대조를 못 한다고 그냥 통과시키면 지어내도 아무도 모른다. 그래서
+        # **대신 지켜야 할 것**을 요구한다 — 어느 파일 몇 쪽인지 정확히 적을 것.
+        # 누구든 그 쪽을 열어 눈으로 확인할 수 있으면 근거는 성립한다.
+        if "from-scan" in (r.get("flags") or ""):
+            checked += 1
+            if not (r.get("srcEdition") or "").strip():
+                failures.append((r["id"], "from-scan 인데 srcEdition 이 없다"))
+            if not (r.get("srcPage") or "").strip():
+                failures.append((r["id"], "from-scan 인데 srcPage 가 없다 — "
+                                          "사람이 열어볼 쪽을 반드시 적는다"))
+            for field in ("title", "quote"):
+                if not (r.get(field) or "").strip():
+                    failures.append((r["id"], f"{field} 가 비어 있다"))
+            continue
+
         if year not in cache:
             p = TEXT_ROOT / f"{year}.txt"
             if not p.exists():
