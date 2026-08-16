@@ -41,6 +41,12 @@ REFERENCE = PROJECT_ROOT / "docs" / "reference" / "기조절-141개-정답지.ts
 # 기준선에서 이만큼 벗어나면 세운다. 조판이 조금 달라져도 5%는 안 넘는다.
 BASELINE_TOLERANCE = 0.05
 
+# 기준선 숫자를 '어떻게 재는지'의 판 번호. 재는 방법을 바꾸면 여기를 올린다.
+# 그래야 옛 눈금과 새 눈금을 나란히 놓고 헛경보를 울리는 일이 없다.
+#   1  chars = 쪽 원문 글자 수 (여백 공백 포함)
+#   2  chars = 공백을 뺀 글자 수 — 조판이 아니라 내용을 잰다 (2026-08-16)
+METRIC_VERSION = 2
+
 # 빈 쪽 비율. 스캔 실패·추출 실패의 징후다.
 EMPTY_PAGE_WARN = 0.05
 EMPTY_PAGE_FAIL = 0.20
@@ -180,7 +186,17 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
 
     # 7. 기준선 — 지난번 통과한 결과와 얼마나 달라졌나
     base = baseline.get(str(year))
-    if base:
+    if base and base.get("metricVersion") != METRIC_VERSION:
+        # **재는 방법이 바뀌면 옛 눈금과 비교할 수 없다.** 2026-08-16 에
+        # chars 를 '공백 포함'에서 '공백 제외'로 바꿨더니 27개년이 한꺼번에
+        # -45% 로 찍혔다. 데이터는 멀쩡했고 자만 달라진 것이었다.
+        #
+        # 이때 '오류'로 세우면 스스로를 가둔다 — 오류인 해는 기준선을 새로
+        # 저장하지 않으므로 영원히 오류로 남는다. 그래서 '미완'으로 둔다.
+        rows.append(("미완", "기준선",
+                     f"재는 방법이 바뀌었다(v{base.get('metricVersion', '?')}→v{METRIC_VERSION}) "
+                     "— --save-baseline 으로 새로 깐다"))
+    elif base:
         # 본문 문장과 표줄을 따로 센다. 부록 처리가 바뀌면 표줄만 늘어야지
         # 본문이 함께 흔들리면 안 된다 — 나눠 놔야 어느 쪽이 변했는지 보인다.
         cur = {"pages": meta["counts"]["pages"],
@@ -245,6 +261,7 @@ def main() -> None:
             sents_all = [json.loads(l) for l in
                          (out_root / str(y) / "sentences.jsonl").read_text(encoding="utf-8").splitlines()]
             baseline[str(y)] = {
+                "metricVersion": METRIC_VERSION,
                 "pages": meta["counts"]["pages"],
                 "sentences": sum(1 for s in sents_all if s.get("단위", "문장") == "문장"),
                 "tableLines": sum(1 for s in sents_all if s.get("단위") == "표줄"),
