@@ -109,6 +109,11 @@ def check_year(year: int, out_root: Path, baseline: dict) -> tuple[str, list[tup
     # 있으면 ETL 이 하나만 쓰고 그 사실을 meta 에 적어 둔다(2004년 실측).
     skipped = {s["file"] for s in meta.get("skipped", [])}
     missing = set(on_disk) - set(handled) - skipped
+    # 원본이 없어서 못 뽑은 것은 우리 잘못이 아니다. 다만 **반드시 보여준다** —
+    # 조용히 넘어가면 그 해 숫자가 작은 이유를 아무도 모르게 된다.
+    for g in meta.get("knownGaps", []):
+        rows.append(("알림", "원본 결손",
+                     f"{g.get('missing','')} 없음 ({g.get('ratio','')}) — {g.get('cause','')}"))
     if skipped:
         rows.append(("OK", "중복 건너뜀",
                      " · ".join(f"{s['file']} = {s['sameAs']}" for s in meta["skipped"])))
@@ -251,7 +256,7 @@ def main() -> None:
         print("연도를 적어야 한다.  예:  python scripts/check.py --year 2013")
         sys.exit(2)
 
-    mark = {"OK": "OK  ", "미완": "미완 ", "오류": "오류 "}
+    mark = {"OK": "OK  ", "미완": "미완 ", "오류": "오류 ", "알림": "알림 "}
     failed = 0
 
     for y in years:

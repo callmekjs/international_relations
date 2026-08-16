@@ -53,6 +53,9 @@ input[type=range]{width:100%;accent-color:var(--country)}
 .searchbox{width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:7px;
   background:var(--ground);color:var(--ink);font:inherit;font-size:12.5px}
 .searchbox:focus-visible{outline:2px solid var(--ink-2);outline-offset:1px}
+.gap{font-size:11.5px;line-height:1.6;color:var(--ink-2);background:color-mix(in srgb,var(--event) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--event) 30%,transparent);border-radius:7px;padding:9px 11px}
+.gap b{color:var(--event)}
 .hint{font-size:11px;color:var(--ink-3);line-height:1.55;border-top:1px solid var(--line-soft);padding-top:12px;margin-top:auto}
 
 /* ── 가운데 ── */
@@ -102,6 +105,8 @@ canvas:active{cursor:grabbing}
     <div class="yr"><span id="ylo"></span><b id="ynow"></b><span id="yhi"></span></div>
     <div class="adm" id="adm"></div>
   </div>
+
+  <div id="gap"></div>
 
   <div class="grp">
     <div class="lbl">찾기</div>
@@ -166,6 +171,11 @@ function setYear() {
   year = i === years.length ? null : years[i];
   document.getElementById("ynow").textContent = year ?? "전체";
   document.getElementById("adm").textContent = year ? DATA.meta.yearAdmin[year] + " 정권" : "37개년 전부";
+  const g = year && (DATA.meta.gaps || {})[year];
+  document.getElementById("gap").innerHTML = g
+    ? `<div class="gap"><b>원본 결손</b> — ${g.map(x => `${x.missing} 없음(${x.ratio})`).join(", ")}.
+       ${g[0].cause} 이 해가 작아 보이는 것은 <b>자료가 없어서</b>이지 외교가 적었기 때문이 아닙니다.</div>`
+    : "";
   layout();
 }
 yr.oninput = setYear;
