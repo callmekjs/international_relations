@@ -333,10 +333,16 @@ def run_year(year: int, out_root: Path, force: bool) -> dict:
         raise SystemExit(f"[ERROR] data/{year} 가 없다.")
 
     out_dir = out_root / str(year)
-    if out_dir.exists():
+    # '끝났다'의 기준은 폴더가 아니라 meta.json 이다. 폴더는 그 해를 **시작할 때**
+    # 만들어지므로, 도중에 멈추면 빈 껍데기가 남는다. 그것을 '이미 있다'로 보면
+    # 다음 실행이 거기서 멈춘다 — 2026-08-16 새벽에 빈 1990 폴더 하나가 밤샘
+    # 작업을 5시간 반 동안 세웠다.
+    if (out_dir / "meta.json").exists():
         if not force:
-            raise SystemExit(f"[ERROR] {out_dir} 가 이미 있다. --force 로 덮어쓴다.")
+            raise SystemExit(f"[ERROR] {out_dir} 는 이미 끝났다. --force 로 덮어쓴다.")
         shutil.rmtree(out_dir)
+    elif out_dir.exists():
+        shutil.rmtree(out_dir)      # 하다 만 흔적 — 조용히 치우고 다시 한다
     out_dir.mkdir(parents=True)
 
     picked = select_files(year)
