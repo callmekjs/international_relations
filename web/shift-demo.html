@@ -1,0 +1,405 @@
+<title>정권이 바뀌면 외교가 바뀌는가</title>
+<style>
+:root{
+  --ground:#f6f4ef; --panel:#fffdf9; --line:#ddd7c9; --line-soft:#eae5d9;
+  --ink:#1c1a17; --ink-2:#57524a; --ink-3:#8b8478;
+  --swap:#a8442a; --steady:#8b8478; --peak:#b23a2e;
+  --arrive:#2f7d5e; --leave:#a8442a;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
+  --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
+  --swap:#e58a68; --steady:#726d64; --peak:#e5715f;
+  --arrive:#5fbf92; --leave:#e5715f;
+}}
+:root[data-theme="dark"]{
+  --ground:#14161a; --panel:#1b1e24; --line:#2f343d; --line-soft:#252a31;
+  --ink:#eceae5; --ink-2:#a8a49b; --ink-3:#726d64;
+  --swap:#e58a68; --steady:#726d64; --peak:#e5715f;
+  --arrive:#5fbf92; --leave:#e5715f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Nanum Myeongjo","Apple SD Gothic Neo",Batang,serif}
+.page{max-width:1080px;margin:0 auto;padding:40px 26px 80px;
+  display:flex;flex-direction:column;gap:46px}
+@media(max-width:640px){.page{padding:26px 15px 50px;gap:34px}}
+
+header h1{font-size:31px;line-height:1.22;margin:0;letter-spacing:-.025em;text-wrap:balance}
+@media(max-width:640px){header h1{font-size:24px}}
+header .lede{font-size:15px;color:var(--ink-2);margin-top:12px;max-width:62ch}
+header .lede b{color:var(--ink)}
+
+.finding{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;
+  background:var(--line-soft);border:1px solid var(--line-soft);border-radius:9px;overflow:hidden;
+  margin-top:22px}
+.finding div{background:var(--panel);padding:13px 15px}
+.finding .k{font-size:9.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--ink-3)}
+.finding .v{font-size:23px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.25;
+  margin-top:3px}
+.finding .n{font-size:11px;color:var(--ink-3);margin-top:2px}
+
+section{display:flex;flex-direction:column;gap:14px}
+.hd{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+.hd .num{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;font-weight:700;
+  letter-spacing:.06em}
+.hd h2{font-size:20px;margin:0;letter-spacing:-.015em}
+.hd .say{font-size:12.5px;color:var(--ink-3)}
+.frame{background:var(--panel);border:1px solid var(--line-soft);border-radius:10px;
+  padding:16px 16px 10px;overflow-x:auto}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.axis{font-size:9.5px;fill:var(--ink-3);font-variant-numeric:tabular-nums}
+.admlab{font-size:10px;fill:var(--ink-2);font-weight:700}
+.gridline{stroke:var(--line-soft);stroke-width:1}
+.admline{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
+
+.legend{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chip{display:flex;align-items:center;gap:6px;padding:3px 9px;border:1px solid var(--line-soft);
+  border-radius:6px;background:none;color:var(--ink);font:inherit;font-size:11.5px;cursor:pointer;
+  transition:opacity .15s,border-color .15s}
+.chip:hover{border-color:var(--line)}
+.chip[aria-pressed="false"]{opacity:.3}
+.chip:focus-visible{outline:2px solid var(--ink-2);outline-offset:2px}
+.dot{width:9px;height:9px;border-radius:2px;flex:0 0 auto}
+.chip .n{color:var(--ink-3);font-size:10px;font-variant-numeric:tabular-nums}
+
+.seg{display:inline-flex;border:1px solid var(--line-soft);border-radius:7px;overflow:hidden}
+.seg button{padding:5px 11px;border:0;background:none;color:var(--ink-2);font:inherit;font-size:11.5px;
+  cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ground);color:var(--ink);font-weight:700}
+.seg button:focus-visible{outline:2px solid var(--ink-2);outline-offset:-2px}
+
+.bar{cursor:pointer}
+.bar rect{transition:opacity .12s}
+.bar:hover rect{opacity:.72}
+.bar[aria-current="true"] rect{stroke:var(--ink);stroke-width:1.5}
+
+.words{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.words{grid-template-columns:1fr}}
+.wordbox{border:1px solid var(--line-soft);border-radius:9px;padding:13px 15px;background:var(--panel)}
+.wordbox .k{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  margin-bottom:9px}
+.wordbox.in .k{color:var(--arrive)} .wordbox.out .k{color:var(--leave)}
+.wordbox ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:5px}
+.wordbox li{border:1px solid var(--line-soft);border-radius:5px;padding:2px 8px;font-size:12.5px}
+.wordbox.in li{border-color:color-mix(in srgb,var(--arrive) 40%,transparent)}
+.wordbox.out li{border-color:color-mix(in srgb,var(--leave) 40%,transparent)}
+
+.pick{font-size:13px;color:var(--ink-2);margin-bottom:4px}
+.pick b{color:var(--ink);font-size:15px}
+.pick .d{font-variant-numeric:tabular-nums;color:var(--ink-3);font-size:11.5px;margin-left:6px}
+
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line-soft)}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);font-weight:700}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.swap td{color:var(--ink)} tr.swap td:first-child{font-weight:700}
+tr.plain td{color:var(--ink-3)}
+
+.note{font-size:11.5px;color:var(--ink-3);line-height:1.7;border-top:1px solid var(--line-soft);
+  padding-top:14px}
+.note b{color:var(--ink-2)}
+.tip{position:fixed;pointer-events:none;background:var(--panel);border:1px solid var(--line);
+  border-radius:7px;padding:7px 10px;font-size:11.5px;opacity:0;transition:opacity .1s;z-index:9;
+  box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.tip b{font-variant-numeric:tabular-nums}
+</style>
+
+<div class="page">
+
+<header>
+  <h1 class="serif">정권이 바뀌면 외교정책도 바뀌는가</h1>
+  <div class="lede">
+    외교백서 37개년(1989–2025)의 낱말 분포를 해마다 만들고, 이웃한 해끼리 얼마나
+    다른지 쟀습니다. <b>정권이 바뀌는 해에 유난히 크게 변합니다 — 다만 1위는
+    정권 교체가 아니었습니다.</b>
+  </div>
+  <div class="finding" id="finding"></div>
+</header>
+
+<section>
+  <div class="hd">
+    <span class="num">장면 1</span>
+    <h2>정권마다 무엇을 다뤘나</h2>
+    <span class="say">백서의 절을 13개 줄기로 묶어, 해마다의 비중을 쌓았습니다</span>
+  </div>
+  <div class="seg" role="group" aria-label="보기 방식">
+    <button id="mode-share" aria-pressed="true">비중(%)</button>
+    <button id="mode-count" aria-pressed="false">절 수</button>
+  </div>
+  <div class="frame"><svg id="flow" viewBox="0 0 1000 380" role="img"
+    aria-label="1989년부터 2025년까지 외교 주제 비중의 변화"></svg></div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<section>
+  <div class="hd">
+    <span class="num">장면 2</span>
+    <h2>해마다 앞해와 얼마나 달라졌나</h2>
+    <span class="say">막대를 누르면 그때 들고 난 말이 아래에 나옵니다</span>
+  </div>
+  <div class="frame"><svg id="curve" viewBox="0 0 1000 300" role="img"
+    aria-label="해마다 앞해 대비 변화량"></svg></div>
+</section>
+
+<section>
+  <div class="hd">
+    <span class="num">장면 3</span>
+    <h2>그때 들고 난 말</h2>
+  </div>
+  <div class="pick" id="pick"></div>
+  <div class="words">
+    <div class="wordbox in"><div class="k">새로 들어온 말</div><ul id="arrived"></ul></div>
+    <div class="wordbox out"><div class="k">사라진 말</div><ul id="left"></ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="hd"><span class="num">표</span><h2>정권 교체 8건의 순위</h2></div>
+  <div class="frame" style="padding:6px 10px 2px"><table id="rank"></table></div>
+</section>
+
+<div class="note" id="note"></div>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = {"theme":{"meta":{"years":[1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"yearAdmin":{"1989":"노태우","1990":"노태우","1991":"노태우","1992":"노태우","1993":"김영삼","1994":"김영삼","1995":"김영삼","1996":"김영삼","1997":"김영삼","1998":"김대중","1999":"김대중","2000":"김대중","2001":"김대중","2002":"김대중","2003":"노무현","2004":"노무현","2005":"노무현","2006":"노무현","2007":"노무현","2008":"이명박","2009":"이명박","2010":"이명박","2011":"이명박","2012":"이명박","2013":"박근혜","2014":"박근혜","2015":"박근혜","2016":"박근혜","2017":"문재인","2018":"문재인","2019":"문재인","2020":"문재인","2021":"문재인","2022":"윤석열","2023":"윤석열","2024":"윤석열","2025":"이재명"},"themes":[{"name":"코로나·보건","color":"#111318"},{"name":"한반도·북핵","color":"#b23a2e"},{"name":"개발협력","color":"#7fa8e0"},{"name":"영사·재외국민","color":"#5fc7bd"},{"name":"공공·문화외교","color":"#cf8ab6"},{"name":"법적기반","color":"#6f6a9c"},{"name":"외교인프라","color":"#a9a396"},{"name":"경제·통상","color":"#2f7d5e"},{"name":"다자·국제기구","color":"#3a5a8f"},{"name":"주변국·동맹","color":"#e0955f"},{"name":"지역외교","color":"#9c7b1f"},{"name":"국민과 함께","color":"#8f6f3a"},{"name":"국제정세","color":"#57524a"}],"sections":931,"matched":920,"unmatched":11,"matchRate":98.8},"byYear":{"1989":{"지역외교":8,"국제정세":1,"주변국·동맹":1,"한반도·북핵":1,"다자·국제기구":2,"경제·통상":1,"개발협력":1,"영사·재외국민":2,"국민과 함께":1,"공공·문화외교":2},"1990":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":2,"다자·국제기구":1,"지역외교":6,"경제·통상":1,"개발협력":1,"영사·재외국민":2,"국민과 함께":1,"공공·문화외교":2},"1991":{"국제정세":2,"지역외교":6,"주변국·동맹":1,"한반도·북핵":1,"다자·국제기구":1,"경제·통상":1,"개발협력":1,"영사·재외국민":3},"1992":{"국제정세":3,"지역외교":6,"주변국·동맹":2,"한반도·북핵":1,"다자·국제기구":2,"경제·통상":1,"개발협력":1,"영사·재외국민":3,"국민과 함께":1,"공공·문화외교":1},"1993":{"국제정세":3,"주변국·동맹":2,"지역외교":2,"다자·국제기구":10,"한반도·북핵":2,"경제·통상":4,"법적기반":1,"영사·재외국민":4,"공공·문화외교":3},"1994":{"국제정세":5,"한반도·북핵":4,"지역외교":1,"경제·통상":4,"개발협력":1,"다자·국제기구":7,"법적기반":1,"공공·문화외교":2,"영사·재외국민":2},"1995":{"국제정세":6,"한반도·북핵":5,"지역외교":3,"경제·통상":5,"개발협력":1,"다자·국제기구":5,"법적기반":1,"공공·문화외교":2,"영사·재외국민":2},"1996":{"국제정세":3,"한반도·북핵":4,"지역외교":2,"경제·통상":1,"다자·국제기구":2,"법적기반":1,"공공·문화외교":1,"영사·재외국민":2,"외교인프라":3},"1997":{"국제정세":3,"한반도·북핵":5,"지역외교":2,"경제·통상":1,"다자·국제기구":3,"법적기반":1,"공공·문화외교":1,"영사·재외국민":3,"외교인프라":3},"1998":{"국제정세":3,"한반도·북핵":5,"지역외교":2,"경제·통상":3,"외교인프라":4,"공공·문화외교":2,"다자·국제기구":3,"법적기반":1,"영사·재외국민":2},"1999":{"경제·통상":6,"한반도·북핵":5,"지역외교":2,"국제정세":2,"개발협력":1,"다자·국제기구":3,"법적기반":1,"공공·문화외교":1,"영사·재외국민":2,"외교인프라":3},"2000":{"경제·통상":5,"한반도·북핵":5,"지역외교":7,"국제정세":2,"개발협력":1,"다자·국제기구":2,"법적기반":1,"공공·문화외교":2,"영사·재외국민":2,"외교인프라":2},"2001":{"국제정세":3,"한반도·북핵":4,"지역외교":7,"경제·통상":4,"개발협력":1,"다자·국제기구":2,"법적기반":1,"공공·문화외교":2,"영사·재외국민":2,"외교인프라":4},"2002":{"경제·통상":5,"한반도·북핵":3,"지역외교":7,"국제정세":2,"개발협력":1,"다자·국제기구":2,"법적기반":1,"공공·문화외교":2,"영사·재외국민":4,"외교인프라":4},"2003":{"경제·통상":7,"한반도·북핵":5,"지역외교":7,"국제정세":2,"주변국·동맹":2,"개발협력":1,"다자·국제기구":2,"법적기반":1,"공공·문화외교":2,"영사·재외국민":4,"외교인프라":4},"2004":{"경제·통상":4,"국제정세":1,"한반도·북핵":2,"주변국·동맹":2,"외교인프라":2},"2005":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":3,"다자·국제기구":2,"개발협력":1,"공공·문화외교":1,"경제·통상":4,"영사·재외국민":3,"국민과 함께":1,"외교인프라":1},"2006":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":4,"다자·국제기구":3,"지역외교":2,"개발협력":1,"법적기반":1,"경제·통상":3,"영사·재외국민":3,"공공·문화외교":1,"국민과 함께":1},"2007":{"한반도·북핵":3,"주변국·동맹":2,"다자·국제기구":1,"개발협력":1,"공공·문화외교":1,"법적기반":1,"경제·통상":5,"영사·재외국민":1,"국민과 함께":1,"국제정세":1,"외교인프라":1},"2008":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":2,"지역외교":5,"경제·통상":5,"다자·국제기구":1,"개발협력":1,"공공·문화외교":2,"법적기반":1,"영사·재외국민":2,"외교인프라":3},"2009":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":2,"지역외교":5,"경제·통상":6,"개발협력":1,"다자·국제기구":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2010":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":2,"지역외교":5,"경제·통상":6,"개발협력":1,"다자·국제기구":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2011":{"국제정세":2,"한반도·북핵":3,"주변국·동맹":2,"지역외교":5,"경제·통상":6,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2012":{"국제정세":2,"한반도·북핵":3,"주변국·동맹":2,"지역외교":5,"경제·통상":6,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2013":{"국제정세":2,"한반도·북핵":3,"주변국·동맹":2,"지역외교":5,"경제·통상":4,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2014":{"한반도·북핵":3,"주변국·동맹":2,"지역외교":5,"경제·통상":4,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2015":{"국제정세":2,"한반도·북핵":3,"주변국·동맹":2,"지역외교":4,"경제·통상":3,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1,"외교인프라":3},"2016":{"한반도·북핵":3,"주변국·동맹":2,"지역외교":5,"경제·통상":3,"개발협력":1,"공공·문화외교":1,"법적기반":1,"영사·재외국민":2,"국민과 함께":1},"2017":{"국제정세":1,"한반도·북핵":2,"주변국·동맹":2,"지역외교":5,"경제·통상":3,"다자·국제기구":2,"개발협력":1,"법적기반":1,"외교인프라":3,"영사·재외국민":1},"2018":{"한반도·북핵":2,"주변국·동맹":3,"지역외교":6,"경제·통상":4,"다자·국제기구":2,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":3,"외교인프라":1},"2019":{"한반도·북핵":2,"주변국·동맹":2,"지역외교":6,"경제·통상":4,"다자·국제기구":2,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":3},"2020":{"국제정세":2,"코로나·보건":2,"다자·국제기구":4,"한반도·북핵":2,"주변국·동맹":2,"지역외교":5,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":3},"2021":{"국제정세":1,"코로나·보건":2,"다자·국제기구":3,"한반도·북핵":1,"주변국·동맹":2,"지역외교":4,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":2},"2022":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":1,"지역외교":6,"다자·국제기구":3,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":3,"외교인프라":2},"2023":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":1,"지역외교":6,"다자·국제기구":3,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":2},"2024":{"국제정세":2,"한반도·북핵":2,"주변국·동맹":2,"지역외교":6,"다자·국제기구":3,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":2},"2025":{"국제정세":2,"한반도·북핵":1,"주변국·동맹":2,"지역외교":6,"다자·국제기구":3,"경제·통상":4,"개발협력":1,"법적기반":1,"공공·문화외교":1,"국민과 함께":2,"영사·재외국민":2,"외교인프라":2}}},"shift":{"meta":{"years":[1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"yearAdmin":{"1989":"노태우","1990":"노태우","1991":"노태우","1992":"노태우","1993":"김영삼","1994":"김영삼","1995":"김영삼","1996":"김영삼","1997":"김영삼","1998":"김대중","1999":"김대중","2000":"김대중","2001":"김대중","2002":"김대중","2003":"노무현","2005":"노무현","2006":"노무현","2007":"노무현","2008":"이명박","2009":"이명박","2010":"이명박","2011":"이명박","2012":"이명박","2013":"박근혜","2014":"박근혜","2015":"박근혜","2016":"박근혜","2017":"문재인","2018":"문재인","2019":"문재인","2020":"문재인","2021":"문재인","2022":"윤석열","2023":"윤석열","2024":"윤석열","2025":"이재명"},"skipped":[2004],"vocabSize":2500,"insideMean":0.2026,"acrossMean":0.2653,"ratio":1.31},"steps":[{"from":1989,"to":1990,"fromAdmin":"노태우","toAdmin":"노태우","swap":false,"distance":0.2016,"arrived":["년대","공동번영","실리외교","태지역","통상외교","유엔가입","쿠웨이트","통하여","추구외"],"left":["아국","일까지","한미","부쉬","남북","아태","단장","통일","있으나"],"rank":15},{"from":1990,"to":1991,"fromAdmin":"노태우","toAdmin":"노태우","swap":false,"distance":0.1489,"arrived":["러시아","독립국가연합","아세안","지성정세","기자재","과학기술협력","구소련","하였으며","비핵화"],"left":["일까지","대하여","우루과이라운","공동번영","태지역","쿠웨이트","대개도국","외무부","국회의장"],"rank":26},{"from":1991,"to":1992,"fromAdmin":"노태우","toAdmin":"노태우","swap":false,"distance":0.1731,"arrived":["외교활동","클린턴","지역정세","부쉬","실질협력관계","인해","국제정세","의원","민주당"],"left":["소련","주요외교활동","외무장관","통상외교","고르바초프","아세안","부터","년대","지성정세"],"rank":20},{"from":1992,"to":1993,"fromAdmin":"노태우","toAdmin":"김영삼","swap":true,"distance":0.2451,"arrived":["국제정세","통일외교","한미","지역정세","핵문제","아태","클린턴","제장","김영삼"],"left":["실리외교","년대","외교활동","과학기술협력","비동맹","추구외","공동번영","독립국가연합","노태우"],"rank":11},{"from":1993,"to":1994,"fromAdmin":"김영삼","toAdmin":"김영삼","swap":false,"distance":0.2399,"arrived":["주변정세","제네바","통상외교","김영삼","대개도국","준비","년중","개최하여","핵문제"],"left":["지역정세","클린턴","한미","아태","남북","엘친","민주화","제장","남북한"],"rank":12},{"from":1994,"to":1995,"fromAdmin":"김영삼","toAdmin":"김영삼","swap":false,"distance":0.2062,"arrived":["오사카","재외동포","억달러","나라","자유화","쿠알라룸푸르","통상협력","인해","발생한"],"left":["통상외교","핵문제","통일외교","준비","과학기술협력","태지역","보이고","대개도국","대중국"],"rank":14},{"from":1995,"to":1996,"fromAdmin":"김영삼","toAdmin":"김영삼","swap":false,"distance":0.1812,"arrived":["외교활동","있는데","나라","자회담","동구","외무부","지방자치단체","싱가포르","환경협력"],"left":["오사카","재외동포","다자외교","쿠알라룸푸르","통상협력","러시아","아세안","보스니아","문화교류"],"rank":19},{"from":1996,"to":1997,"fromAdmin":"김영삼","toAdmin":"김영삼","swap":false,"distance":0.201,"arrived":["아세안","위하여","자회담","쟝쩌민","본회담","유지하고","지역안보포럼","외환위기","전자"],"left":["외교활동","국제정세","주변정세","나라","동구","일까지","다자외교","임기","환경협력"],"rank":16},{"from":1997,"to":1998,"fromAdmin":"김영삼","toAdmin":"김대중","swap":true,"distance":0.1591,"arrived":["김대중","대북","외교안보연구","경제위기","대량살상무기","통상교섭본부","차기","인해","분과위"],"left":["외무부","김영삼","외무장관","보이고","전자","억달러","아세안","물론","제네바"],"rank":23},{"from":1998,"to":1999,"fromAdmin":"김대중","toAdmin":"김대중","swap":false,"distance":0.1029,"arrived":["대북","동티모르","통하여","위하여","러시아","세기","제네바","코소보","뉴라운드"],"left":["아세안","외교안보연구","대량살상무기","관련하여","금융위기","인해","외무장관회담","쟝쩌민","경제위기"],"rank":34},{"from":1999,"to":2000,"fromAdmin":"김대중","toAdmin":"김대중","swap":false,"distance":0.135,"arrived":["남북정상회담","남북","남북관계","화해","김대중","김정일","역사적인","이탈리아","개최하여"],"left":["대북","통하여","코소보","제네바","경제위기","외교안보연구","러시아","안전조치협정","인해"],"rank":31},{"from":2000,"to":2001,"fromAdmin":"김대중","toAdmin":"김대중","swap":false,"distance":0.1724,"arrived":["테러사태","반테러","지속가능발전","코이즈미","인해","대테러","한승수","화해","도하개발아젠"],"left":["남북정상회담","억달러","남북","위하여","외교안보연구","중인","연구","긴장완화","진행"],"rank":21},{"from":2001,"to":2002,"fromAdmin":"김대중","toAdmin":"김대중","swap":false,"distance":0.1813,"arrived":["딬몔뭉","달러","대량파괴무기","중장기","외교안보연구","세이프가드","정보화","핵문제","국제법"],"left":["김대중","테러사태","반덤핑","뉴라운드","남북정상회담","실질협력","한승수","반테러","화해"],"rank":18},{"from":2002,"to":2003,"fromAdmin":"김대중","toAdmin":"노무현","swap":true,"distance":0.2773,"arrived":["국제정세","주변정세","다자외교","노무현","지역협력","평화번영정책","대량살상무기","위하여","문화외교"],"left":["딬몔뭉","테러사태","대북","대량파괴무기","김대중","월드컵","화해","유엔총회","코이즈미"],"rank":8},{"from":2005,"to":2006,"fromAdmin":"노무현","toAdmin":"노무현","swap":false,"distance":0.3315,"arrived":["계기","출처","통하여","외교장관","인해","하였으며","타결","만명","재개"],"left":["북핵","달러","국익","노무현","국방부","이번","미래지향적","남북","진전"],"rank":4},{"from":2006,"to":2007,"fromAdmin":"노무현","toAdmin":"노무현","swap":false,"distance":0.2288,"arrived":["유치","국방부","실무그룹","비핵화","북핵","싱가포르","위하여","계기","문화외교"],"left":["노무현","반기문","러시아","정상외교","일까지","보편적","알제리","인해","자회담"],"rank":13},{"from":2007,"to":2008,"fromAdmin":"노무현","toAdmin":"이명박","swap":true,"distance":0.357,"arrived":["이명박","달러","일까지","금융위기","영사","사건","해적","저탄소","유명환"],"left":["북핵","노무현","유치","국방부","만명","전방위","실무그룹","영사서비스","건수"],"rank":2},{"from":2008,"to":2009,"fromAdmin":"이명박","toAdmin":"이명박","swap":false,"distance":0.2469,"arrived":["활활활활활","이탈리아","녹색성장","핵실험","코펜하겐","기후변화","글로벌","예멘","국제사회"],"left":["달러","일까지","영사","금융위기","사건","베이징","자회담","검증","미래"],"rank":10},{"from":2009,"to":2010,"fromAdmin":"이명박","toAdmin":"이명박","swap":false,"distance":0.1439,"arrived":["협력해","공공외교","파나마","러시아","방한한","만명","무역수지","아이티","터키"],"left":["활활활활활","기후변화","코펜하겐","이탈리아","핵실험","위하여","런던","예멘","원활한"],"rank":28},{"from":2010,"to":2011,"fromAdmin":"이명박","toAdmin":"이명박","swap":false,"distance":0.1468,"arrived":["김성환","글로벌","북핵","김정일","비핵화","김황식","리비아","위원장","사망"],"left":["이명박","방한한","유명환","에너지협력","의장성명","자회담","재외동포","터키","러시아"],"rank":27},{"from":2011,"to":2012,"fromAdmin":"이명박","toAdmin":"이명박","swap":false,"distance":0.1589,"arrived":["네트워크","핵안보정상회","방한한","계기","장거리","발사","국제사회","글로벌","하였으며"],"left":["자회담","김정일","달러","리비아","북핵","주년","비핵화","콩고민주공화","대아프리카"],"rank":24},{"from":2012,"to":2013,"fromAdmin":"이명박","toAdmin":"박근혜","swap":true,"distance":0.2918,"arrived":["박근혜","윤병세","공공외교","창조경제","신뢰프로세스","시리아","맞춤형","외교장관","공동성명"],"left":["이명박","네트워크","핵안보정상회","김성환","녹색성장","발사","장거리","김황식","글로벌"],"rank":6},{"from":2013,"to":2014,"fromAdmin":"박근혜","toAdmin":"박근혜","swap":false,"distance":0.1863,"arrived":["아세안","에볼라","달러","이번","외교장관회담","통일","유라시아","파트너십","동북아평화협"],"left":["외교장관","실질협력","시리아","지속가능한","계기","주년","개발협력","하였으며","윤병세"],"rank":17},{"from":2014,"to":2015,"fromAdmin":"박근혜","toAdmin":"박근혜","swap":false,"distance":0.1428,"arrived":["실질협력","개발협력","주년","지속가능개발","외교장관회담","경제외교","열고","기후변화","윤병세"],"left":["아세안","에볼라","글로벌","파트너십","이미지","관심","네덜란드","물론","러시아"],"rank":29},{"from":2015,"to":2016,"fromAdmin":"박근혜","toAdmin":"박근혜","swap":false,"distance":0.2932,"arrived":["핵실험","계기","개최하여","북한인권","제재","공공외교","참석하여","난민","포럼"],"left":["박근혜","윤병세","외교장관회담","실질협력","유라시아","이번","열고","보건","맞춤형"],"rank":5},{"from":2016,"to":2017,"fromAdmin":"박근혜","toAdmin":"문재인","swap":true,"distance":0.2918,"arrived":["문재인","아세안","평창","정상외교","실질협력","외교지평","외교장관회담","국빈","트럼프"],"left":["계기","개발협력","핵실험","제재","달러","포럼","난민","북핵","이번"],"rank":7},{"from":2017,"to":2018,"fromAdmin":"문재인","toAdmin":"문재인","swap":false,"distance":0.2661,"arrived":["남북정상회담","평창동계올림","완전한","강경화","비핵화","참석해","항구적","개최해","방문해"],"left":["참석하여","개최하여","평창","외교지평","정상외교","동력","북핵문제","혁신","역량"],"rank":9},{"from":2018,"to":2019,"fromAdmin":"문재인","toAdmin":"문재인","swap":false,"distance":0.1524,"arrived":["아세안","사고","평화프로세스","외교지평","메콩","인프라","리비아","내실화","에티오피아"],"left":["남북정상회담","평창동계올림","비핵화","완전한","중앙아","남북관계","평양","러시아","판문점"],"rank":25},{"from":2019,"to":2020,"fromAdmin":"문재인","toAdmin":"문재인","swap":false,"distance":0.6568,"arrived":["코로나","통화","방역","통화하고","대면","화상","비대면","외교장관","협력해"],"left":["아세안","이낙연","공공외교","국빈","문재인","실질협력","인프라","외교지평","외교장관회담"],"rank":1},{"from":2020,"to":2021,"fromAdmin":"문재인","toAdmin":"문재인","swap":false,"distance":0.1382,"arrived":["개발협력","백신","글로벌","디지털","기후변화","중미","공급망","사건","계기"],"left":["코로나","통화","강경화","문재인","방역","통화하고","남북","인해","외교장관"],"rank":30},{"from":2021,"to":2022,"fromAdmin":"문재인","toAdmin":"윤석열","swap":true,"distance":0.3405,"arrived":["글로벌","윤석열","우크라이나","경제안보","네트워크","박진","자유","개최하여","과학기술외교"],"left":["코로나","백신","개발협력","개최해","보건","사건","방문해","비대면","대면"],"rank":3},{"from":2022,"to":2023,"fromAdmin":"윤석열","toAdmin":"윤석열","swap":false,"distance":0.1185,"arrived":["계기","유엔총회","한미동맹","박진","국빈","개발협력","나가자고","캠프","핵심광물"],"left":["코로나","과학기술외교","아세안","외교장관회담","북핵","경제안보","대면","우크라이나","비핵화"],"rank":32},{"from":2023,"to":2024,"fromAdmin":"윤석열","toAdmin":"윤석열","swap":false,"distance":0.1126,"arrived":["조태열","방한한","외교장관회담","국방","공급망","이번","방문한","사건","파트너십"],"left":["박진","네트워크","윤석열","유엔총회","공공외교","디지털","주년","태평양도서국","캠프"],"rank":33},{"from":2024,"to":2025,"fromAdmin":"윤석열","toAdmin":"이재명","swap":true,"distance":0.1598,"arrived":["이재명","조현","경주","한미","경제외교","지평","확장","역량","한일"],"left":["조태열","윤석열","계기","방한한","경제안보","자유","외교장관","사건","공급망"],"rank":22}]}};
+const S = DATA.shift, T = DATA.theme;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NS = "http://www.w3.org/2000/svg";
+const el = (n, a = {}) => { const e = document.createElementNS(NS, n);
+  for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+/* ── 머리말 숫자 ─────────────────────────────────────────── */
+const top1 = S.steps.reduce((a, b) => a.distance > b.distance ? a : b);
+$("finding").innerHTML = `
+  <div><div class="k">정권 교체 때</div><div class="v">${S.meta.ratio}배</div>
+    <div class="n">같은 정권 안보다 크게 변한다</div></div>
+  <div><div class="k">같은 정권 안</div><div class="v">${S.meta.insideMean}</div>
+    <div class="n">이웃한 해 평균 거리</div></div>
+  <div><div class="k">정권이 바뀌는 해</div><div class="v">${S.meta.acrossMean}</div>
+    <div class="n">8번의 교체 평균</div></div>
+  <div><div class="k">가장 크게 변한 해</div><div class="v">${top1.from}→${top1.to}</div>
+    <div class="n">${top1.swap ? "정권 교체" : "같은 정권 안"} · 거리 ${top1.distance}</div></div>`;
+
+/* ── 장면 1 · 주제 흐름 ──────────────────────────────────── */
+// 쌓는 차례. 붙이는 우선순위(themes.py)와 **보는 차례**는 다르다.
+// 가까운 주제끼리 붙여 놓아야 띠가 뒤섞이지 않고 흐름으로 읽힌다.
+// 아래에서 위로: 한반도 → 나라 → 지역 → 다자 → 경제 → 사람 → 살림.
+const STACK = ["한반도·북핵", "주변국·동맹", "지역외교", "다자·국제기구", "개발협력",
+               "경제·통상", "코로나·보건", "영사·재외국민", "국민과 함께",
+               "공공·문화외교", "법적기반", "외교인프라", "국제정세"];
+const byName = Object.fromEntries(T.meta.themes.map(t => [t.name, t]));
+const themes = STACK.filter(n => byName[n]).map(n => byName[n]);
+let hidden = new Set(), mode = "share";
+const yearsT = T.meta.years;
+const admOf = T.meta.yearAdmin;
+
+function flowSeries(){
+  const shown = themes.filter(t => !hidden.has(t.name));
+  return yearsT.map(y => {
+    const row = T.byYear[String(y)] || {};
+    const vals = shown.map(t => row[t.name] || 0);
+    const sum = vals.reduce((a, b) => a + b, 0) || 1;
+    return {y, vals, sum};
+  });
+}
+
+function drawFlow(){
+  const svg = $("flow"); svg.textContent = "";
+  const W = 1000, H = 380, L = 34, R = 12, TOP = 26, B = 30;
+  const shown = themes.filter(t => !hidden.has(t.name));
+  const series = flowSeries();
+  const maxSum = Math.max(...series.map(s => s.sum), 1);
+  const x = i => L + i * (W - L - R) / Math.max(yearsT.length - 1, 1);
+  const total = s => mode === "share" ? s.sum : maxSum;
+  const y = v => TOP + (H - TOP - B) * (1 - v);
+
+  // 정권 경계 세로선
+  let prev = null;
+  yearsT.forEach((yr, i) => {
+    const a = admOf[String(yr)];
+    if (prev !== null && a !== prev){
+      svg.appendChild(el("line", {x1:x(i)-((x(1)-x(0))/2), x2:x(i)-((x(1)-x(0))/2),
+        y1:TOP-14, y2:H-B, class:"admline"}));
+      const t = el("text", {x:x(i)-((x(1)-x(0))/2)+4, y:TOP-18, class:"admlab"});
+      t.textContent = a; svg.appendChild(t);
+    }
+    if (prev === null){
+      const t = el("text", {x:L+2, y:TOP-18, class:"admlab"}); t.textContent = a;
+      svg.appendChild(t);
+    }
+    prev = a;
+  });
+
+  // 쌓기
+  const base = series.map(() => 0);
+  shown.forEach((th, ti) => {
+    let d = "";
+    series.forEach((s, i) => {
+      const v = base[i] + s.vals[ti] / total(s);
+      d += (i ? "L" : "M") + x(i) + " " + y(v);
+    });
+    for (let i = series.length - 1; i >= 0; i--)
+      d += "L" + x(i) + " " + y(base[i]);
+    d += "Z";
+    series.forEach((s, i) => { base[i] += s.vals[ti] / total(s); });
+    const p = el("path", {d, fill: th.color, "fill-opacity": .82, stroke: "none"});
+    p.addEventListener("mousemove", e => showTip(e, th, series));
+    p.addEventListener("mouseleave", hideTip);
+    svg.appendChild(p);
+  });
+
+  // 연도 눈금
+  yearsT.forEach((yr, i) => {
+    if (yr % 5 && i !== 0 && i !== yearsT.length - 1) return;
+    const t = el("text", {x:x(i), y:H-B+16, class:"axis", "text-anchor":"middle"});
+    t.textContent = yr; svg.appendChild(t);
+  });
+  const yl = el("text", {x:2, y:TOP+4, class:"axis"});
+  yl.textContent = mode === "share" ? "100%" : maxSum + "절";
+  svg.appendChild(yl);
+}
+
+function showTip(e, th, series){
+  const svg = $("flow"), r = svg.getBoundingClientRect();
+  const i = Math.round((e.clientX - r.left) / r.width * 1000 - 34)
+          / ((1000 - 46) / Math.max(series.length - 1, 1));
+  const k = Math.max(0, Math.min(series.length - 1, Math.round(i)));
+  const s = series[k], v = s.vals[themes.filter(t => !hidden.has(t.name)).indexOf(th)] || 0;
+  const tip = $("tip");
+  tip.innerHTML = `<b>${s.y}</b> · ${esc(th.name)}<br>절 <b>${v}</b>개 · 비중 <b>${(100*v/s.sum).toFixed(0)}%</b>`;
+  tip.style.left = Math.min(e.clientX + 13, innerWidth - 170) + "px";
+  tip.style.top = (e.clientY + 13) + "px";
+  tip.style.opacity = 1;
+}
+const hideTip = () => { $("tip").style.opacity = 0; };
+
+function drawLegend(){
+  const counts = {};
+  for (const t of themes) counts[t.name] = 0;
+  for (const y of yearsT){ const row = T.byYear[String(y)] || {};
+    for (const k in row) counts[k] = (counts[k] || 0) + row[k]; }
+  $("legend").innerHTML = themes.map(t => `
+    <button class="chip" data-t="${esc(t.name)}" aria-pressed="${!hidden.has(t.name)}">
+      <span class="dot" style="background:${t.color}"></span>${esc(t.name)}
+      <span class="n">${counts[t.name] || 0}</span></button>`).join("");
+  $("legend").querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+    const n = b.dataset.t;
+    hidden.has(n) ? hidden.delete(n) : hidden.add(n);
+    if (hidden.size === themes.length) hidden.delete(n);
+    drawLegend(); drawFlow();
+  }));
+}
+$("mode-share").addEventListener("click", () => setMode("share"));
+$("mode-count").addEventListener("click", () => setMode("count"));
+function setMode(m){
+  mode = m;
+  $("mode-share").setAttribute("aria-pressed", String(m === "share"));
+  $("mode-count").setAttribute("aria-pressed", String(m === "count"));
+  drawFlow();
+}
+
+/* ── 장면 2 · 변화량 ─────────────────────────────────────── */
+let picked = S.steps.findIndex(s => s.swap);
+
+function drawCurve(){
+  const svg = $("curve"); svg.textContent = "";
+  const W = 1000, H = 300, L = 40, R = 12, TOP = 24, B = 42;
+  const steps = S.steps;
+  const max = Math.max(...steps.map(s => s.distance)) * 1.08;
+  const bw = (W - L - R) / steps.length;
+  const y = v => TOP + (H - TOP - B) * (1 - v / max);
+
+  // 같은 정권 평균 가로선
+  [["insideMean", "같은 정권 평균"], ["acrossMean", "교체 평균"]].forEach(([k, lab]) => {
+    const yy = y(S.meta[k]);
+    svg.appendChild(el("line", {x1:L, x2:W-R, y1:yy, y2:yy, class:"gridline"}));
+    const t = el("text", {x:L+3, y:yy-4, class:"axis"});
+    t.textContent = `${lab} ${S.meta[k]}`; svg.appendChild(t);
+  });
+
+  steps.forEach((s, i) => {
+    const g = el("g", {class:"bar", role:"button", tabindex:"0",
+      "aria-current":String(i === picked),
+      "aria-label":`${s.from}에서 ${s.to}, 거리 ${s.distance}`});
+    const h = (H - B) - y(s.distance);
+    g.appendChild(el("rect", {x:L + i*bw + 1.5, y:y(s.distance), width:bw-3, height:Math.max(h,1),
+      rx:2, fill: s.swap ? "var(--swap)" : (s.rank === 1 ? "var(--peak)" : "var(--steady)"),
+      "fill-opacity": s.swap ? .95 : (s.rank === 1 ? .95 : .42)}));
+    g.addEventListener("click", () => { picked = i; drawCurve(); drawWords(); });
+    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){
+      e.preventDefault(); picked = i; drawCurve(); drawWords(); } });
+    svg.appendChild(g);
+
+    if (s.swap || s.rank === 1){
+      const t = el("text", {x:L + i*bw + bw/2, y:y(s.distance) - 6, class:"axis",
+        "text-anchor":"middle", fill: s.swap ? "var(--swap)" : "var(--peak)"});
+      t.textContent = s.rank + "위"; svg.appendChild(t);
+    }
+    // 1위가 정권 교체가 아니라는 것이 이 그림의 요점이다. 이름을 붙여 둔다.
+    if (s.rank === 1 && !s.swap){
+      const t = el("text", {x:L + i*bw + bw/2, y:y(s.distance) - 19, class:"axis",
+        "text-anchor":"middle", fill:"var(--peak)", "font-weight":"700"});
+      t.textContent = "코로나"; svg.appendChild(t);
+    }
+    if (s.from % 5 === 0 || i === 0 || i === steps.length - 1){
+      const t = el("text", {x:L + i*bw + bw/2, y:H-B+15, class:"axis", "text-anchor":"middle"});
+      t.textContent = s.from; svg.appendChild(t);
+    }
+    if (s.swap){
+      const t = el("text", {x:L + i*bw + bw/2, y:H-B+29, class:"axis", "text-anchor":"middle",
+        fill:"var(--swap)"});
+      t.textContent = s.toAdmin; svg.appendChild(t);
+    }
+  });
+  const t0 = el("text", {x:L-6, y:TOP+4, class:"axis", "text-anchor":"end"});
+  t0.textContent = max.toFixed(1); svg.appendChild(t0);
+}
+
+/* ── 장면 3 · 들고 난 말 ─────────────────────────────────── */
+function drawWords(){
+  const s = S.steps[picked];
+  $("pick").innerHTML = `<b>${s.from} → ${s.to}</b>
+    ${s.swap ? `${esc(s.fromAdmin)} → ${esc(s.toAdmin)}` : `${esc(s.fromAdmin)} 정부 안`}
+    <span class="d">거리 ${s.distance} · 전체 ${S.steps.length}쌍 중 ${s.rank}위</span>`;
+  $("arrived").innerHTML = s.arrived.map(w => `<li>${esc(w)}</li>`).join("");
+  $("left").innerHTML = s.left.map(w => `<li>${esc(w)}</li>`).join("");
+}
+
+/* ── 표 ─────────────────────────────────────────────────── */
+const swaps = S.steps.filter(s => s.swap).sort((a, b) => a.rank - b.rank);
+const topInside = S.steps.filter(s => !s.swap).sort((a, b) => a.rank - b.rank).slice(0, 2);
+$("rank").innerHTML = `
+  <tr><th>교체</th><th>연도</th><th class="num">거리</th><th class="num">순위</th></tr>
+  ${swaps.map(s => `<tr class="swap"><td>${esc(s.fromAdmin)} → ${esc(s.toAdmin)}</td>
+    <td>${s.from}→${s.to}</td><td class="num">${s.distance}</td>
+    <td class="num">${s.rank}위</td></tr>`).join("")}
+  ${topInside.map(s => `<tr class="plain"><td>${esc(s.fromAdmin)} 정부 안 — 교체 아님</td>
+    <td>${s.from}→${s.to}</td><td class="num">${s.distance}</td>
+    <td class="num">${s.rank}위</td></tr>`).join("")}`;
+
+$("note").innerHTML = `
+  <b>어떻게 쟀나.</b> 해마다 백서 본문의 낱말 분포를 만들고, 이웃한 해끼리
+  코사인 거리를 쟀습니다. 두 가지를 걷어냈습니다 — 편집자가 바뀌면 달라지는
+  <b>문체·서식 낱말</b>('하였다'↔'했다', '외교부'↔'외교통상부'),
+  그리고 원본이 60% 결손된 <b>2004년</b>. 걷어내지 않으면 1.04배(차이 없음)로
+  나옵니다.<br><br>
+  <b>줄기는 어떻게 묶었나.</b> 백서 목차의 절 ${T.meta.sections}개를 13개 줄기로
+  묶었습니다. 줄기 이름과 열쇠말은 모두 절 제목에 실제로 쓰인 말입니다.
+  ${T.meta.matched}개(${T.meta.matchRate}%)가 붙었고 ${T.meta.unmatched}개는
+  어디에도 안 붙었습니다 — 대부분 옛 스캔본의 글자 인식이 깨진 제목입니다.
+  표본 40개를 원문과 대조해 뚜렷한 오분류는 없었습니다.<br><br>
+  <b>주의.</b> 낱말이 달라졌다는 것이 곧 정책이 달라졌다는 뜻은 아닙니다.
+  대통령 이름과 장관 이름도 낱말이라 정권이 바뀌면 반드시 달라집니다.
+  이 그림은 <b>"얼마나 달라 보이나"</b> 를 잰 것이지 정책의 옳고 그름이 아닙니다.`;
+
+drawLegend(); drawFlow(); drawCurve(); drawWords();
+</script>
